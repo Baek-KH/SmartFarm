@@ -1,0 +1,55 @@
+
+
+Board
+no		댓글번호
+bno		게시물번호
+grp		댓글이 속한 댓글 번호
+grps		같은 grp 중에 순서
+grpl		댓글의 깊이 
+writer 		작성자
+content		컨텐트
+date		작성일시
+
+user 
+name		이름
+id		접속아이디
+pw		패스워드
+admin		관리자접속권한 
+zip		우편번호
+addr		주소
+addrDetail 	상세주소
+
+product
+name		식물명
+period		생육기간
+minTemp		최저온도
+maxTemp		최고온도
+minHum		최저습도
+maxHum		최고습도
+
+product - price
+name 
+date
+price
+
+plant - area
+area		구역명
+temperature	온도	
+Humidity	습도
+
+
+cart
+area		구역명
+cartId		카트ID
+proName		파종식물
+startDate	파종일
+endDate		재배일
+line 
+id
+
+
+error code
+
+
+
+
