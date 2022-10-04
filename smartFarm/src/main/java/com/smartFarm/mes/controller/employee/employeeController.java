@@ -52,12 +52,13 @@ public class employeeController {
 	}
 
 	@RequestMapping("/insertEmployee.do")
-	public String insertBoard(EmployeeVO vo, EmployeeDAO EmployeeDAO , Model model) {
+	public String insertBoard(EmployeeVO vo, EmployeeDAO employeeDAO , Model model) {
 
 		System.out.println("insertDO 진입");
 		System.out.println(vo.toString());
 		
 		model.addAttribute("vo",vo);
+		employeeDAO.insertEmployee(vo);
 //		EmployeeDAO.insertBoard(vo);
 		return "NewFile";
 	}
