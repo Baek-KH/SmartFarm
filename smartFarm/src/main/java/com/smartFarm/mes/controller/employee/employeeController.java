@@ -1,5 +1,6 @@
 package com.smartFarm.mes.controller.employee;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,31 +15,11 @@ import com.smartFarm.mes.vo.employee.EmployeeVO;
 @SessionAttributes("employee")
 public class employeeController {
 
-
-
-//	@ModelAttribute("conditionMap")
-//	public Map<String, String> searchConditionMap(){
-//		Map<String,	String> conditionMap = new HashMap()<>();
-//		conditionMap.put("����", "TITLE");
-//		conditionMap.put("����", "CONTENT");
-//		conditionMap.put("�ۼ���", "WRITER");
-//
-//		return conditionMap;
-//
-//	}
-
-//	@RequestMapping("/getBoardList.do")
-//	public String getBoardList(
-//			@RequestParam(value="searchCondition", defaultValue="TITLE", required=false) String condition,
-//			@RequestParam(value="searchKeyword", defaultValue="", required=false) String keyword,
-//			EmployeeVO vo, EmployeeDAO EmployeeDAO, Model model) {
-//
-//
-//		model.addAttribute("boardList", EmployeeDAO.getBoardList(vo));
-//		return "getBoardList.jsp";
-//	}
-
-//
+	@Autowired
+	EmployeeDAO employeeDAO;
+	
+	
+	
 	@RequestMapping("/getEmployee.do")
 	public String getBoard(EmployeeVO vo, EmployeeDAO EmployeeDAO, Model model) {
 //		model.addAttribute("board", EmployeeDAO.getBoard(vo));
