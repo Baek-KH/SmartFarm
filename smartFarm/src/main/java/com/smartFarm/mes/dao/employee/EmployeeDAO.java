@@ -22,8 +22,10 @@ public class EmployeeDAO {
 	private final String EMPLOYEE_INSERT ="insert into Employee (emp_id, emp_no , emp_name, emp_pw, emp_email) values (?,?,?,?,?)";
 //	private final String EMPLOYEE_UPDATE ="update Employee set title=?, content=? where seq=?";
 //	private final String EMPLOYEE_DELETE ="delete from Employee where seq=?";
-//	private final String EMPLOYEE_GET ="select * from Employee where seq=?";
+	private final String EMPLOYEE_GET ="select * from Employee where emp_id=?";
 	private final String EMPLOYEE_LIST ="select * from Employee order by emp_no desc";
+	private final String EMPLOYEE_LIST_S ="select * from Employee where ? like ? order by emp_no desc";
+	
 //	private final String EMPLOYEE_LIST_T ="select * from Employee where title like ? order by seq desc";
 //	private final String EMPLOYEE_LIST_C ="select * from Employee where content like ? order by seq desc";
 
@@ -56,6 +58,36 @@ public class EmployeeDAO {
 		}		
 	}
 	
+	// 2. getEmployee
+	public EmployeeVO getEmployee(String emp_id) {
+		
+		System.out.println("==> JDBC getEmployee");
+		EmployeeVO employee = new EmployeeVO();
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(EMPLOYEE_GET);
+			stmt.setString(1, emp_id);
+			rs = stmt.executeQuery();	
+			while(rs.next()) {
+				employee.setEmp_id(rs.getString("emp_id"));
+				employee.setEmp_no(rs.getInt("emp_no"));
+				employee.setEmp_name(rs.getString("emp_name"));
+				employee.setEmp_email(rs.getString("emp_email"));
+				employee.setEmp_admin(rs.getString("emp_admin"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(null, stmt, conn);
+		}
+		return employee;	
+		
+	}
+	
+	
+	
 //	
 //	// 3. �ۻ���
 //	public void deleteEmployee(EmployeeVO vo) {
@@ -70,7 +102,7 @@ public class EmployeeDAO {
 //		return jdbcTemplate.queryForObject(Employee_GET, args, new EmployeeRowMapper());
 //	}
 //	
-	// 5. �۸��
+	// Employee List 출력
 	public List<EmployeeVO> getEmployeeList() {
 		System.out.println("==> JDBC getEmployeeList");
 		List<EmployeeVO> employeeList = new ArrayList<EmployeeVO>();
@@ -97,6 +129,40 @@ public class EmployeeDAO {
 		return employeeList;		
 	}
 	
+	// Employee List Search 출력
+		public List<EmployeeVO> getEmployeeListSearch(String field, String query) {
+			
+			System.out.println("==> JDBC getEmployeeListSearch");
+			
+			
+			List<EmployeeVO> employeeList = new ArrayList<EmployeeVO>();
+			
+			
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(EMPLOYEE_LIST_S);
+				stmt.setString(1, field);
+				stmt.setString(2, query);
+				rs = stmt.executeQuery();	
+				while(rs.next()) {
+					EmployeeVO employee = new EmployeeVO();
+					employee.setEmp_id(rs.getString("emp_id"));
+					employee.setEmp_no(rs.getInt("emp_no"));
+					employee.setEmp_name(rs.getString("emp_name"));
+					employee.setEmp_email(rs.getString("emp_email"));
+					employee.setEmp_admin(rs.getString("emp_admin"));
+					employeeList.add(employee);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(null, stmt, conn);
+			}
+			return employeeList;		
+		}
+
+		
 	
 	
 

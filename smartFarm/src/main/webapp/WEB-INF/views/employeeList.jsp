@@ -18,6 +18,7 @@
 	      	<td>${employeeVO.getEmp_name()}</td>
 	      	<td>${employeeVO.getEmp_email()}</td>
 	      	<td>${employeeVO.getEmp_admin()}</td>
+	      	<td>a<a href="getEmployee.do">getEmployee.do</a></td>
 	     </tr>
 	</table>     
 	</c:forEach>
