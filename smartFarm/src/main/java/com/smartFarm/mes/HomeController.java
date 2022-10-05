@@ -31,10 +31,13 @@ public class HomeController {
 //		return "home.jsp";
 //	}
 
-	@RequestMapping("/insertEmployee")
-	public String main() {
-		System.out.println("여기는 홈컨트롤러");
-		return "/insertEmployee.do";
+	@RequestMapping("/signUp")
+	public String main() {	
+		return "signUp";
+	}
+	@RequestMapping("/")
+	public String index() {	
+		return "index";
 	}
 
 }
