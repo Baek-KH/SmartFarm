@@ -1,36 +1,21 @@
 <%@page import="java.util.List"%>
-<%@page import="com.lec.web.board.impl.BoardDAO"%>
-<%@page import="com.lec.web.board.BoardVO"%>
+<%@page import="com.smartFarm.mes.dao.process.BoardDAO"%>
+<%@page import="com.smartFarm.mes.vo.process.BoardVO"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 페이지</title>
 </head>
 <body>
 	<center>
 		<h1>글 목록</h1>
 		<h3>
-			${userName}님 환영합니다!!~ <a href="logout.do">Log-out</a>
+			관리자님 환영합니다!!~ <a href="logout.do">Log-out</a>
 		</h3>
-		<!-- 검색 -->
-		<form action="getBoardList.do" method="post">
-			<table border="1" width="700">
-				<tr>
-					<td align="right">
-						<select name="searchCondition">
-						<c:forEach items="${conditionMap}" var="option">
-							<option value="${option.value}">${option.key}</option>
-						</c:forEach>
-						</select>
-						<input type="text" name="searchKeyword" /> <input type="submit" value="검색">
-					</td>
-				</tr>
-			</table>
-		</form>
-		
+
 		<!-- 글목록 -->
 		<table border="1" width="700">
 			<tr>
