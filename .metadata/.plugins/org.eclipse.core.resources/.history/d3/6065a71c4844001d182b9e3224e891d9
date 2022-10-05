@@ -1,0 +1,28 @@
+package com.lec.web.board.impl2;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.lec.web.board.pipVO;
+
+public class pipRowMapper implements RowMapper<pipVO> {
+
+	@Override
+	public pipVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		
+		pipVO vo = new pipVO();
+		vo.setPip_no(rs.getInt("NO"));
+		vo.setPip_name(rs.getString("NAME"));
+		vo.setPip_period(rs.getDate("DATE"));
+		vo.setPip_category(rs.getString("CATEGORY"));
+		vo.setPip_min_temp(rs.getString("MINTEMP"));
+		vo.setPip_max_temp(rs.getString("MAXTEMP"));
+		vo.setPip_min_hum(rs.getString("MINHUM"));
+		vo.setPip_min_hum(rs.getString("MAXHUM"));	
+		
+		return vo;
+	}
+
+}
