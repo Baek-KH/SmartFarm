@@ -32,8 +32,12 @@ public class HomeController {
 //	}
 
 	@RequestMapping("/signUp")
-	public String main() {	
+	public String signUp() {	
 		return "signUp";
+	}
+	@RequestMapping("/signIn")
+	public String login() {	
+		return "signIn";
 	}
 	@RequestMapping("/")
 	public String index() {	

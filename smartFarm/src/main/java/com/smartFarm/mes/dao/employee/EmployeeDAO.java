@@ -19,12 +19,13 @@ public class EmployeeDAO {
 	private ResultSet rs = null;
 
 	
-	private final String EMPLOYEE_INSERT ="insert into Employee (emp_id, emp_no , emp_name, emp_pw, emp_email) values (?,?,?,?,?)";
-//	private final String EMPLOYEE_UPDATE ="update Employee set title=?, content=? where seq=?";
-//	private final String EMPLOYEE_DELETE ="delete from Employee where seq=?";
+	private final String EMPLOYEE_INSERT ="insert into Employee (emp_id, emp_no , emp_name, emp_pw, emp_email, emp_admin) values (?,?,?,?,?,?)";
+	private final String EMPLOYEE_UPDATE ="update Employee set emp_name=?, emp_email=?, emp_admin=? where emp_id = ?";
+	private final String EMPLOYEE_DELETE ="delete from Employee where emp_id=?";
 	private final String EMPLOYEE_GET ="select * from Employee where emp_id=?";
 	private final String EMPLOYEE_LIST ="select * from Employee order by emp_no desc";
-	private final String EMPLOYEE_LIST_S ="select * from Employee where ? like ? order by emp_no desc";
+	private final String EMPLOYEE_LIST_I ="select * from Employee where emp_id like ? ";
+	private final String EMPLOYEE_LIST_N ="select * from Employee where emp_name like ? ";
 	
 //	private final String EMPLOYEE_LIST_T ="select * from Employee where title like ? order by seq desc";
 //	private final String EMPLOYEE_LIST_C ="select * from Employee where content like ? order by seq desc";
@@ -50,6 +51,7 @@ public class EmployeeDAO {
 			stmt.setString(3, vo.getEmp_name());
 			stmt.setString(4, vo.getEmp_pw());
 			stmt.setString(5, vo.getEmp_email());
+			stmt.setString(6, "regular");
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,6 +77,7 @@ public class EmployeeDAO {
 				employee.setEmp_name(rs.getString("emp_name"));
 				employee.setEmp_email(rs.getString("emp_email"));
 				employee.setEmp_admin(rs.getString("emp_admin"));
+				employee.setEmp_pw(rs.getString("emp_pw"));
 			}
 			
 		} catch (Exception e) {
@@ -86,22 +89,44 @@ public class EmployeeDAO {
 		
 	}
 	
+	// 3. update
+		public void updateEmployee(EmployeeVO vo) {
+			
+			System.out.println("==> JDBC Employee update");
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(EMPLOYEE_UPDATE);
+				stmt.setString(1, vo.getEmp_name());
+				stmt.setString(2, vo.getEmp_email());
+				stmt.setString(3, vo.getEmp_admin());
+				stmt.setString(4, vo.getEmp_id());
+				stmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(null, stmt, conn);
+			}		
+		}
 	
 	
-//	
-//	// 3. �ۻ���
-//	public void deleteEmployee(EmployeeVO vo) {
-//		System.out.println("==> JDBC�� deleteEmployee() �޼��� ȣ��!!");
-//		jdbcTemplate.update(Employee_DELETE, vo.getSeq());
-//	}
-//	
-//	// 4. ����ȸ
-//	public EmployeeVO getEmployee(EmployeeVO vo) {
-//		System.out.println("==> JDBC�� getEmployee() �޼��� ȣ��!!");
-//		Object[] args = { vo.getSeq() };				
-//		return jdbcTemplate.queryForObject(Employee_GET, args, new EmployeeRowMapper());
-//	}
-//	
+	
+	
+	// 4. delete 
+	public void deleteEmployee(EmployeeVO vo) {
+
+		System.out.println("==> JDBC Employee delete");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(EMPLOYEE_DELETE);
+			stmt.setString(1, vo.getEmp_id());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(null, stmt, conn);
+		}		
+	}
+
 	// Employee List 출력
 	public List<EmployeeVO> getEmployeeList() {
 		System.out.println("==> JDBC getEmployeeList");
@@ -140,9 +165,13 @@ public class EmployeeDAO {
 			
 			try {
 				conn = JDBCUtil.getConnection();
-				stmt = conn.prepareStatement(EMPLOYEE_LIST_S);
-				stmt.setString(1, field);
-				stmt.setString(2, query);
+				if(field =="emp_name"){
+					stmt = conn.prepareStatement(EMPLOYEE_LIST_N);					
+				} else {
+					stmt = conn.prepareStatement(EMPLOYEE_LIST_I);					
+				}
+				
+				stmt.setString(1, "%"+query+"%");
 				rs = stmt.executeQuery();	
 				while(rs.next()) {
 					EmployeeVO employee = new EmployeeVO();
@@ -152,6 +181,7 @@ public class EmployeeDAO {
 					employee.setEmp_email(rs.getString("emp_email"));
 					employee.setEmp_admin(rs.getString("emp_admin"));
 					employeeList.add(employee);
+			
 				}
 				
 			} catch (Exception e) {

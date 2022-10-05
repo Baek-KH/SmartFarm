@@ -15,11 +15,12 @@ import com.smartFarm.mes.vo.employee.EmployeeVO;
 
 
 @Controller
-@SessionAttributes("employee")
-public class employeeController {
-
+@SessionAttributes("line")
+public class lineController {
 	
-	// getEmployee
+	// Only Update & Read
+	
+	// Read
 	@RequestMapping(value = "/getEmployee.do" , method = {RequestMethod.GET, RequestMethod.POST})
 	public String getEmployee(@RequestParam(value = "emp_id") String emp_id,EmployeeDAO employeeDAO, Model model) {
 		
@@ -29,15 +30,6 @@ public class employeeController {
 		return "employee";
 	}
 	
-	// insert
-	@RequestMapping(value = "/insertEmployee.do", method = RequestMethod.POST)
-	public String insertEmployee(EmployeeVO vo, EmployeeDAO employeeDAO , Model model) {
-		
-		System.out.println("insertEmployee 진입");
-		model.addAttribute("vo",vo);
-		employeeDAO.insertEmployee(vo);
-		return "redirect:/getEmployeeList.do";
-	}
 	
 	// update
 	@RequestMapping(value = "/updateEmployee.do" , method = RequestMethod.POST)
@@ -50,18 +42,6 @@ public class employeeController {
 		return "redirect:/getEmployeeList.do";
 	}
 
-	// delete
-	@RequestMapping("/deleteEmployee.do")
-	public String deleteEmployee(EmployeeVO vo, EmployeeDAO EmployeeDAO) {
-		System.out.println("deleteEmployee 진입");
-		System.out.println(vo.toString());
-		
-		EmployeeDAO.deleteEmployee(vo);
-		return "redirect:/getEmployeeList.do";
-	}
-	
-		
-	
 	// List
 	@RequestMapping(value = "/getEmployeeList.do")
 	public String getEmployeeList(EmployeeDAO employeeDAO, Model model) {
