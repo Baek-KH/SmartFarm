@@ -14,6 +14,7 @@
 		<a href="/mes/signUp"> 회원 가입 </a></br>
 		<a href="getEmployeeList.do">리스트 보기</a>
 		<a href="getProductList.do">제품 목록 바로가기</a>
+		<a href="getCollectDataList.do">컬렉데이타</a>
  	</div>
  	<div>
 		<form action="getEmployeeListSearch.do">리스트 검색 field, query parameter

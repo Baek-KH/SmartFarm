@@ -19,6 +19,7 @@ public class ProductRowMapper implements RowMapper<ProductVO> {
 		product.setPro_qty(rs.getInt("PRO_QTY"));
 		product.setPro_price(rs.getInt("PRO_PRICE"));
 		product.setPro_content(rs.getString("PRO_CONTENT"));
+		product.setPro_date(rs.getString("PRO_DATE"));
 		System.out.println("RowMapper VO 만들기" );
 		return product;
 	}

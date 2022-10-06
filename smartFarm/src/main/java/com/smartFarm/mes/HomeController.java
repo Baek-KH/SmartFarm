@@ -43,5 +43,8 @@ public class HomeController {
 	public String index() {	
 		return "index";
 	}
-
+	@RequestMapping("/collectData")
+    public String collectData() {  
+        return "collectData";
+    }
 }

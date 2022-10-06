@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void deleteProduct(ProductVO vo) {
-		productDAO.deleteProduct(vo);
+		productDAO.deleteProduct(vo.getPro_id());
 	}
 
 	@Override

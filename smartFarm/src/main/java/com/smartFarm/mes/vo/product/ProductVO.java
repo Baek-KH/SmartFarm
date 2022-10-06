@@ -1,5 +1,4 @@
 package com.smartFarm.mes.vo.product;
-
 public class ProductVO {
 
 	private String searchCondition;
@@ -12,6 +11,15 @@ public class ProductVO {
 	private int pro_qty;
 	private int pro_price;
 	private String pro_content;
+	private String pro_date;
+
+	public String getPro_date() {
+		return this.pro_date;
+	}
+
+	public void setPro_date(String pro_date) {
+		this.pro_date = pro_date;
+	}
 
 	public int getPro_no() {
 		return this.pro_no;
