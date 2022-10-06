@@ -18,14 +18,14 @@ import com.smartFarm.mes.vo.employee.EmployeeVO;
 
 @Controller
 @SessionAttributes("Employee")
-public class logController {
+public class LogController {
 	
 	
 	@Autowired
 	private EmployeeDAO employeeDAO;
 	
 	// signIn 
-	@RequestMapping(value = "/signIn.do", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/signin.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String signInCheck(HttpServletResponse res, EmployeeVO vo, Model model) throws Exception {
 		
 		System.out.println("==> signIn check");

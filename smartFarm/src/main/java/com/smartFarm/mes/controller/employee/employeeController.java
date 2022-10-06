@@ -16,7 +16,7 @@ import com.smartFarm.mes.vo.employee.EmployeeVO;
 
 @Controller
 @SessionAttributes("employee")
-public class employeeController {
+public class EmployeeController {
 
 	
 	// getEmployee
@@ -63,7 +63,7 @@ public class employeeController {
 		
 	
 	// List
-	@RequestMapping(value = "/getEmployeeList.do")
+	@RequestMapping("/getEmployeeList.do")
 	public String getEmployeeList(EmployeeDAO employeeDAO, Model model) {
 
 		System.out.println("getEmployeeList 진입");

@@ -1,7 +1,8 @@
 package com.smartFarm.mes.vo.employee;
 
 public class EmployeeVO {
-
+	
+	
 	private String emp_id;
 	private int emp_no;
 	private String emp_name;

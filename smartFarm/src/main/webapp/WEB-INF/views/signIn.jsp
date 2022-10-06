@@ -10,7 +10,7 @@
 
 <body>
 	<div align="center">
-		<form action="/mes/signIn.do" method="post">
+		<form action="signin.do" method="post">
 			<label>id 입력</label>
 			<input type="text" name="emp_id" />  
 			<label>pw 입력</label>
