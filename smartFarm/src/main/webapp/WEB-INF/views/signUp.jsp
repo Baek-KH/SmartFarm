@@ -9,7 +9,7 @@
 <body>
 	<h1>회원가입</h1>
 
-	<form action="/mes/insertEmployee.do" method="post">
+	<form action="insertEmployee.do" method="post">
 		<input type="text" name="emp_id" >아이디</input>
 		<input type="text" name="emp_name" >이름</input>
 		<input type="password" name="emp_pw" >비밀번호</input>

@@ -10,18 +10,19 @@
 <body>
 
  	<h1>EmployeeList 출력 </h1>
+	<table border="2">
 	<c:forEach items="${EmployeeList}" var="employeeVO">
-	<table>
 	    <tr>
 	      	<td>${employeeVO.getEmp_id()}</td>
 	      	<td>${employeeVO.getEmp_no()}</td>
 	      	<td>${employeeVO.getEmp_name()}</td>
 	      	<td>${employeeVO.getEmp_email()}</td>
 	      	<td>${employeeVO.getEmp_admin()}</td>
-	      	<td>a<a href="getEmployee.do">getEmployee.do</a></td>
+			<td><a href="getEmployee.do?emp_id=${employeeVO.getEmp_id()}">상세보기</a></td>
 	     </tr>
-	</table>     
 	</c:forEach>
+	</table>     
+	
 	
 </body>
 </html>

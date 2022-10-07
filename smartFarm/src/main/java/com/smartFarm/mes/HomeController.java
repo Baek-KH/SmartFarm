@@ -14,6 +14,7 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+<<<<<<< HEAD
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -39,9 +40,26 @@ public class HomeController {
     public String insertProduct() {  
         return "insertProduct";
     }
+=======
+>>>>>>> BKH
 	@RequestMapping("/")
 	public String index() {	
 		return "index";
 	}
+	@RequestMapping("/signUp")
+	public String signUp() {	
+		return "signUp";
+	}
+	@RequestMapping("/signIn")
+	public String login() {	
+		return "signIn";
+	}
+	@RequestMapping("/statusList")
+	public String statusList() {	
+		return "statusList";
+	}
 
+	
+	
+	
 }

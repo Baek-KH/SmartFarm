@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 <%@page import="com.smartFarm.mes.dao.product.ProductDAOSpring"%>
 <%@page import="com.smartFarm.mes.vo.product.ProductVO"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	ProductVO vo = (ProductVO) session.getAttribute("product");
 %>
+=======
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+>>>>>>> BKH
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +15,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 	<center>
+=======
+	<div>
+>>>>>>> BKH
 		<h1>제품 상세</h1>
 		<hr>
 		<form action="updateProduct.do" method="post">
@@ -47,6 +55,10 @@
 		<a href="insertProduct.jsp">제품등록</a>&nbsp;&nbsp;&nbsp; 
 		<a href="deleteProduct.do?pro_no=${product.pro_id }">글삭제</a>&nbsp;&nbsp;&nbsp;
 		<a href="getProductList.do">글목록</a>
+<<<<<<< HEAD
 	</center>
+=======
+	</div>
+>>>>>>> BKH
 </body>
 </html>

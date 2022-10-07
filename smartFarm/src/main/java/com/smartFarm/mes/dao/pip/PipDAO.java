@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+=======
+>>>>>>> BKH
 import org.springframework.stereotype.Repository;
 
 import com.smartFarm.mes.commons.JDBCUtil;
@@ -165,6 +168,10 @@ public class PipDAO {
 	
 	// Pip 검색기능
 	public List<PipVO> getPipListSearch(String field, String query) {
+<<<<<<< HEAD
+=======
+		// field { pip_name, pip_no}
+>>>>>>> BKH
 		
 		System.out.println("==>DAO pip_serch");
 		
@@ -176,7 +183,11 @@ public class PipDAO {
 			conn = JDBCUtil.getConnection();
 			if(field =="pip_name"){
 				stmt = conn.prepareStatement(PIP_LIST_NA);					
+<<<<<<< HEAD
 			} else {
+=======
+			} else if(field =="pip_no") {
+>>>>>>> BKH
 				stmt = conn.prepareStatement(PIP_LIST_NO);					
 			}
 			stmt.setString(1, "%"+query+"%");
