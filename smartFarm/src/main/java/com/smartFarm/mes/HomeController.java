@@ -35,6 +35,10 @@ public class HomeController {
 	public String main() {	
 		return "signUp";
 	}
+	@RequestMapping("/insertProduct")
+    public String insertProduct() {  
+        return "insertProduct";
+    }
 	@RequestMapping("/")
 	public String index() {	
 		return "index";

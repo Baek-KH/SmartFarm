@@ -5,15 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> WJH
 <title>Insert title here</title>
 </head>
 <body>
  <h1>Welcome page</h1>
  	
+
+	<%-- left bar --%>
+	<div class="leftbar-user">
+
+
+	</div>
+
+
+
+
  	
  	<div>
 		<a href="/mes/signUp"> 회원 가입 </a></br>
 		<a href="getEmployeeList.do">리스트 보기</a>
+		<a href="getProductList.do">제품 목록 바로가기</a>
  	</div>
  	<div>
 		<form action="getEmployeeListSearch.do">리스트 검색 field, query parameter
