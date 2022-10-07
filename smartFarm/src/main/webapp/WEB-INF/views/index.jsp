@@ -15,6 +15,7 @@
 		<a href="/mes/signUp"> 회원 가입 </a></br>
 		<a href="getEmployeeList.do">리스트 보기</a></br>
 		<a href="/mes/signIn">로그인</a></br>
+		<a href="getProductList.do">제품 목록 바로가기</a>
  	</div>
  	
  	<div>
@@ -56,7 +57,7 @@
 		<c:if test="${singIn.getEmp_id()==null }">
 			<h1>로그인이 필요합니다.</h1>
 		</c:if>
-		<c:if test="${singIn.getEmp_admin()==admin }">
+		<c:if test="${singIn.getEmp_admin() == 'admin' }">
 			<h1 style="coloe:red">관리자로 로그인 하셨습니다. </h1>
 		</c:if>
 	
