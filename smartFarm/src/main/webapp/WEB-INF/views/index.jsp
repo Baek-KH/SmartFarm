@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>Insert title here</title>
 </head>
 <body>
@@ -25,6 +26,17 @@
 			<input type="text" name="query" value="검색"></input>
 			<input type="submit">
 		</form>
+=======
+<title>테스트페이지</title>
+</head>
+<body>
+ <h1>테스트</h1>
+ 	
+ 	
+ 	<div>
+		<a href="/mes/getPipList">작물리스트</a>
+		<a href="/mes/createPip">작물등록</a>
+>>>>>>> MSC
  	</div>
 		
 </body>
