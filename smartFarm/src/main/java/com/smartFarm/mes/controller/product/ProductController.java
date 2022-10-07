@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.smartFarm.mes.dao.product.ProductDAOSpring;
+import com.smartFarm.mes.dao.product.ProductDAO;
 import com.smartFarm.mes.vo.product.ProductVO;
 
 
@@ -35,7 +35,7 @@ public class ProductController {
 	public String getProductList(
 			@RequestParam(value="searchCondition", defaultValue="PRO_ID", required=false) String condition,
 			@RequestParam(value="searchKeyword", defaultValue="", required=false) String keyword,	
-			ProductVO vo, ProductDAOSpring productDAO, Model model) {
+			ProductVO vo, ProductDAO productDAO, Model model) {
 		    System.out.println("11111 컨트롤러 리스트");
 		
 		model.addAttribute("productList", productDAO.getProductList(vo));
@@ -43,20 +43,20 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/getProduct.do") 
-	public String getProduct(ProductVO vo, ProductDAOSpring productDAO, Model model) {
+	public String getProduct(ProductVO vo, ProductDAO productDAO, Model model) {
 		model.addAttribute("product", productDAO.getProduct(vo));
 		return "getProduct";
 	}
 	
 	@RequestMapping("/updateProduct.do") 
-	public String updateProduct(@ModelAttribute("product") ProductVO vo, ProductDAOSpring productDAO) {
+	public String updateProduct(@ModelAttribute("product") ProductVO vo, ProductDAO productDAO) {
 	   
 		productDAO.updateProduct(vo);
 		return "getProductList";
 	}
 	
 	@RequestMapping("/insertProduct.do") 
-	public String insertProduct(ProductVO vo, ProductDAOSpring productDAO) {
+	public String insertProduct(ProductVO vo, ProductDAO productDAO) {
 		
 		productDAO.insertProduct(vo);
 		return "getProductList";
@@ -65,7 +65,7 @@ public class ProductController {
 	@RequestMapping("/deleteProduct.do") 
 	public String deleteProduct(
 	        @RequestParam(value="pro_id", defaultValue="", required=false) String pro_id 
-	        , ProductDAOSpring productDAO) {
+	        , ProductDAO productDAO) {
 		productDAO.deleteProduct(pro_id);
 		return "getProductList";
 	}	

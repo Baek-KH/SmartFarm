@@ -1,4 +1,7 @@
 package com.smartFarm.mes.vo.product;
+
+import java.util.Date;
+
 public class ProductVO {
 
 	private String searchCondition;
@@ -11,15 +14,51 @@ public class ProductVO {
 	private int pro_qty;
 	private int pro_price;
 	private String pro_content;
-	private String pro_date;
+	private Date pro_date;
 
-	public String getPro_date() {
+	private String line_no;
+	private String line_id;
+	private String tray_id;
+
+	public String getLine_no() {
+		return this.line_no;
+	}
+
+	public void setLine_no(String line_no) {
+		this.line_no = line_no;
+	}
+
+	public String getLine_id() {
+		return this.line_id;
+	}
+
+	public void setLine_id(String line_id) {
+		this.line_id = line_id;
+	}
+
+	public String getTray_id() {
+		return this.tray_id;
+	}
+
+	public void setTray_id(String tray_id) {
+		this.tray_id = tray_id;
+	}
+
+
+
+
+
+
+	public Date getPro_date() {
 		return this.pro_date;
 	}
 
-	public void setPro_date(String pro_date) {
+	public void setPro_date(Date pro_date) {
 		this.pro_date = pro_date;
 	}
+
+
+	
 
 	public int getPro_no() {
 		return this.pro_no;

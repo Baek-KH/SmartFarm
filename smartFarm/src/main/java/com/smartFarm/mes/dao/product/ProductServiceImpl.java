@@ -14,7 +14,7 @@ import com.smartFarm.mes.vo.product.ProductVO;
 public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
-	private ProductDAOSpring productDAO;
+	private ProductDAO productDAO;
 	
 	@Override
 	public void insertProduct(ProductVO vo) {

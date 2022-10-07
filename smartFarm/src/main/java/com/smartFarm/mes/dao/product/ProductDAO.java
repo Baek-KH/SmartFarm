@@ -1,7 +1,7 @@
 package com.smartFarm.mes.dao.product;
 
 import java.sql.Connection;
-import java.util.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -18,13 +18,17 @@ import com.smartFarm.mes.vo.product.ProductVO;
 
 
 @Repository("productDAO")
-public class ProductDAOSpring {
+public class ProductDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
+	// 추가 예정 커리?
+	// private String line_no;
+	// private String line_id;
+	// private String tray_id;
 	
-	private final String PRODUCT_INSERT ="insert into product (pro_no, pro_id, pip_name, pro_qty, pro_price, pro_content, pro_date) values((select nvl(max(pro_no), 0)+1 from product t1), ?,?,?,?,?,?)";
+	private final String PRODUCT_INSERT ="insert into product (pro_no, pro_id, pip_name, pro_qty, pro_price, pro_content, pro_date) values((select nvl(max(pro_no), 0)+1 from product t1), ?,?,?,?,?,now())";
 	private final String PRODUCT_UPDATE ="update product set pip_name=?, pro_qty=?, pro_price=?, pro_content=? where pro_id=?";
 	private final String PRODUCT_DELETE ="delete from product where pro_id = ?";
 	private final String PRODUCT_GET ="select * from product where pro_no=?";
@@ -39,12 +43,12 @@ public class ProductDAOSpring {
 	public void insertProduct(ProductVO vo) {
 		System.out.println("==> JDBC로 insertProduct() 메서드 호출!!");
 		
-		    Date nowDate = new Date();
-		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy.MM.dd"); 
-		           //원하는 데이터 포맷 지정
-		    String strNowDate = simpleDateFormat.format(nowDate); 
-		           //지정한 포맷으로 변환 
-		    System.out.println("포맷 지정 후 : " + strNowDate);
+		    // Date nowDate = new Date();
+		    // SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy.MM.dd"); 
+		    //        //원하는 데이터 포맷 지정
+		    // String strNowDate = simpleDateFormat.format(nowDate); 
+		    //        //지정한 포맷으로 변환 
+		    // System.out.println("포맷 지정 후 : " + strNowDate);
 		
 		
 		
@@ -57,7 +61,7 @@ public class ProductDAOSpring {
 			stmt.setInt(3, vo.getPro_qty());
 			stmt.setInt(4, vo.getPro_price());
 			stmt.setString(5, vo.getPro_content());
-			stmt.setString(6, strNowDate);
+		
 			System.out.println(vo.toString());
 			
 			stmt.executeUpdate();
@@ -136,7 +140,7 @@ public class ProductDAOSpring {
 				product.setPro_qty(rs.getInt("PRO_QTY"));
 				product.setPro_price(rs.getInt("PRO_PRICE"));
 				product.setPro_content(rs.getString("PRO_CONTENT"));
-				product.setPro_date(rs.getString("PRO_DATE"));
+				product.setPro_date(rs.getTimestamp("PRO_DATE"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -170,7 +174,7 @@ public class ProductDAOSpring {
 				product.setPro_qty(rs.getInt("PRO_QTY"));
 				product.setPro_price(rs.getInt("PRO_PRICE"));
 				product.setPro_content(rs.getString("PRO_CONTENT"));
-				product.setPro_date(rs.getString("PRO_DATE"));
+				product.setPro_date(rs.getTimestamp("PRO_DATE"));
 				productList.add(product);
 				System.out.println(rs.toString());
 			}
