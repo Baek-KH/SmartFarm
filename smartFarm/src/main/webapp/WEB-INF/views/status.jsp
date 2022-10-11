@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body> 
 	 <h1>line_Status 출력 </h1>
 	<table border="2">
 	    <tr>

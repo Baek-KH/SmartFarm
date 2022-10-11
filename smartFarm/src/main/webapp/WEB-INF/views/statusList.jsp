@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ 
  	<h1>status 검색 및 출력 </h1>
  	<div>
  		<form action="getStatusListSearch.do" method="get">statusSearch 추가

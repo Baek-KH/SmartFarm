@@ -20,8 +20,8 @@ public class AttendenceDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	private final String ATTENDENCE_INSERT ="insert into attendence values (?,?,?,?,?,?,?)";
-	private final String ATTENDENCE_GET ="select * from attendence where emp_id like ? order by att_work_date desc limit 1";
+	private final String ATTENDENCE_INSERT ="insert into attendence(emp_id, emp_name, att_work_on, att_work_date, att_dayoff ) values (?,?,?,?,?)";
+	private final String ATTENDENCE_GET ="select * from attendence where emp_id like ? and att_work_date = CURDATE() order by att_work_date desc limit 1";
 	private final String ATTENDENCE_UPDATE_OFF ="update attendence set att_work_off=? where emp_id = ?";
 
 	private final String ATTENDENCE_LIST ="select * from attendence where emp_id like ? order by att_work_date desc";
@@ -49,8 +49,9 @@ public class AttendenceDAO {
 
 		// sql timestamp 로 형변환
 		// java.util.date 값이 필요.
-		java.sql.Timestamp awo = new java.sql.Timestamp(vo.getAtt_work_on().getTime());
-		java.sql.Timestamp awof = new java.sql.Timestamp(vo.getAtt_work_off().getTime());
+		
+		java.sql.Timestamp awo = new java.sql.Timestamp(vo.getAtt_work_on().getTime()); 			
+//		java.sql.Timestamp awof = new java.sql.Timestamp(vo.getAtt_work_off().getTime());
 		java.sql.Timestamp awd = new java.sql.Timestamp(vo.getAtt_work_date().getTime());
 
 		try {
@@ -59,9 +60,9 @@ public class AttendenceDAO {
 			stmt.setString(1, vo.getEmp_id());
 			stmt.setString(2, vo.getEmp_name());
 			stmt.setTimestamp(3, awo);
-			stmt.setTimestamp(4, awof);
-			stmt.setTimestamp(5, awd);
-			stmt.setString(6, vo.getAtt_dayoff());
+//			stmt.setTimestamp(4, awof);
+			stmt.setTimestamp(4, awd);
+			stmt.setString(5, vo.getAtt_dayoff());
 
 			stmt.executeUpdate();
 		} catch (Exception e) {
@@ -71,7 +72,7 @@ public class AttendenceDAO {
 		}
 	}
 
-	// 2. getAttendence
+	// 2. getAttendence - 오늘
 	public AttendenceVO getAttendence(String emp_id) {
 
 		System.out.println("==> JDBC getAttendence");

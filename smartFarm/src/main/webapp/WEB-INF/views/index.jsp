@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -84,7 +84,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
-                        <a class="collapse-item" href="utilities-color.html">마이페이지</a>
+                        <a class="collapse-item" href="getAttendenceList.do">마이페이지</a>
                         <a class="collapse-item" href="utilities-border.html">사원관리</a>
                         <a class="collapse-item" href="utilities-border.html">근태</a>
 
@@ -121,16 +121,18 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>재배관리</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>보고페이지</span></a>
-            </li>
+            <c:if test="${signIn.getEmp_admin() == 'admin'}">
+	        <li class="nav-item">
+	            <a class="nav-link" href="tables.html">
+	                <i class="fas fa-fw fa-table"></i>
+	                <span>재배관리</span></a>
+	        </li>
+	        <li class="nav-item">
+	            <a class="nav-link" href="tables.html">
+	                <i class="fas fa-fw fa-table"></i>
+	                <span>보고페이지</span></a>
+	        </li>
+            </c:if>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -201,8 +203,17 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Log Out -->
-                        <c:if test="${singIn.getEmp_id()!=null }">
-                        <a class="btn btn-success btn-sm" href="">Log Out</a>
+                        <c:if test="${ signIn.getEmp_id() != NUll }">
+                        
+                        	<c:if test="${ attendence.getEmp_id() != NULL }">
+                        		<a class="btn btn-warning btn-sm" href="/updateAttendence.do">퇴근</a>
+                        	</c:if>
+                        	<c:if test="${ attendence.getEmp_id() == NULL }">                        		
+                        		<a class="btn btn-success btn-sm" href="/insertAttendence.do">출근</a>
+                        	</c:if>
+                        	</br>
+                        	
+                        	<a class="btn btn-success btn-sm" href="signOut.do">Log Out</a>
                         </c:if>
 						
                     </ul>
@@ -217,7 +228,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                                class="fas fa-download fa-sm text-white-50"></i> ${ signIn.getEmp_admin() == 'admin' }..  </a>
                     </div>
 
                     <!-- Content Row -->

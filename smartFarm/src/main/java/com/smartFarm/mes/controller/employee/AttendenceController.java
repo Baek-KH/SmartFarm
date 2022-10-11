@@ -40,12 +40,12 @@ public class AttendenceController {
 		EmployeeVO employeeVO = (EmployeeVO) session.getAttribute("signIn");
 
 		AttendenceVO attendenceVO = attendenceDAO.getAttendence(employeeVO.getEmp_id());
-		model.addAttribute("attendenceVO",attendenceVO );
+		model.addAttribute("attendence",attendenceVO );
 		return "attendence";
 	}
 
 	// insert - 출근등록
-	@RequestMapping(value = "/insertAttendence.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertAttendence.do", method = RequestMethod.GET)
 	public String insertAttendence(HttpServletRequest req, AttendenceDAO attendenceDAO , Model model) {
 
 		System.out.println("insertAttendence 진입");
@@ -55,7 +55,8 @@ public class AttendenceController {
 
 		AttendenceVO attendenceVO = new AttendenceVO();
 		attendenceVO.setEmp_id(vo.getEmp_id());
-		attendenceVO.setEmp_name(vo.getEmp_name());
+		attendenceVO.setEmp_name(vo.getEmp_name());		
+		attendenceVO.setAtt_work_on(new Date());
 		attendenceVO.setAtt_work_date(new Date());
 
 		attendenceDAO.insertAttendence(attendenceVO);
@@ -76,7 +77,7 @@ public class AttendenceController {
 
 		List<AttendenceVO> attendenceList = attendenceDAO.getAttendenceList(vo);
 		model.addAttribute("AttendenceList", attendenceList);
-		return "attendenceList";
+		return "myPage";
 	}
 
 	// ListSearch
@@ -103,18 +104,19 @@ public class AttendenceController {
 
 
 			model.addAttribute("AttendenceList", attendenceList);
-			return "attendenceList";
+			return "myPage";
 		}
 
 	// update - 퇴근
-	@RequestMapping(value = "/updateAttendence.do" , method = RequestMethod.POST)
+	@RequestMapping(value = "/updateAttendence.do" )
 	public String updateAttendence(HttpServletRequest req, AttendenceDAO AttendenceDAO, Model model) {
 
 		System.out.println("updateAttendence 진입");
 
 		HttpSession session = req.getSession();
 		AttendenceVO vo = (AttendenceVO) session.getAttribute("attendence");
-
+		System.out.println(vo.toString());
+		vo.setAtt_work_off(new Date());
 		AttendenceDAO.updateAttendenceOff(vo);
 		model.addAttribute("attendence",vo);
 
