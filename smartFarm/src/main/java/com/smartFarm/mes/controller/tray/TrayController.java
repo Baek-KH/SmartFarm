@@ -60,7 +60,7 @@ public class TrayController {
 
 		System.out.println("getTrayList 진입");
 
-		List<TrayVO> trayList = new ArrayList<TrayVO>();
+		List<TrayVO> trayList = new ArrayList<>();
 
 		if (field != null & query != null) {
 

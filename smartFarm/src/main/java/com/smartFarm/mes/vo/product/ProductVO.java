@@ -58,7 +58,7 @@ public class ProductVO {
 	}
 
 
-	
+
 
 	public int getPro_no() {
 		return this.pro_no;
@@ -110,8 +110,8 @@ public class ProductVO {
 
 
 
-	
-	
+
+
 	public String getSearchCondition() {
 		return searchCondition;
 	}
@@ -126,7 +126,7 @@ public class ProductVO {
 	}
 
 
-	
-	
-	
+
+
+
 }

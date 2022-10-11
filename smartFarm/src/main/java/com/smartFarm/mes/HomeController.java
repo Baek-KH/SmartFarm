@@ -15,23 +15,23 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping("/")
-	public String index() {	
-		return "index";
+	public String index() {
+		return "signIn";
 	}
 	@RequestMapping("/signUp")
-	public String signUp() {	
+	public String signUp() {
 		return "signUp";
 	}
 	@RequestMapping("/signIn")
-	public String login() {	
+	public String login() {
 		return "signIn";
 	}
 	@RequestMapping("/statusList")
-	public String statusList() {	
+	public String statusList() {
 		return "statusList";
 	}
 
-	
-	
-	
+
+
+
 }

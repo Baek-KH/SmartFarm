@@ -3,18 +3,18 @@ package com.smartFarm.mes.vo.line;
 import java.util.Date;
 
 public class StatusVO {
-	
-	
-	private String status_id;	
-	private String status_line_id;	
-	private String status_temp;	
-	private String status_line_temp;	
-	private String status_hum;	
-	private String status_line_hum;	
+
+
+	private String status_id;
+	private String status_line_id;
+	private String status_temp;
+	private String status_line_temp;
+	private String status_hum;
+	private String status_line_hum;
 	private Date status_time;
-	
-	
-	
+
+
+
 	public String getStatus_id() {
 		return status_id;
 	}
@@ -57,16 +57,16 @@ public class StatusVO {
 	public void setStatus_time(Date status_time) {
 		this.status_time = status_time;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "StatusVO [status_id=" + status_id + ", status_line_id=" + status_line_id + ", status_temp="
 				+ status_temp + ", status_line_temp=" + status_line_temp + ", status_hum=" + status_hum
 				+ ", status_line_hum=" + status_line_hum + ", status_time=" + status_time + "]";
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

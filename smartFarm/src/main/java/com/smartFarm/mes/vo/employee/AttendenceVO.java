@@ -3,23 +3,23 @@ package com.smartFarm.mes.vo.employee;
 import java.util.Date;
 
 public class AttendenceVO {
-    
-    private String emp_id; 
+
+    private String emp_id;
     private String emp_name;
     private Date att_work_on;
     private Date att_work_off;
     private Date att_work_date;
     private String att_dayoff;
-    
-    
+
+
     @Override
     public String toString() {
         return "attendenceVO [emp_id=" + emp_id + ", user_name=" + emp_name + ", att_work_on=" + att_work_on
                 + ", att_work_off=" + att_work_off + ", att_work_date=" + att_work_date + ", att_dayoff=" + att_dayoff
                 + "]";
     }
-    
-    
+
+
     public String getEmp_id() {
         return emp_id;
     }
@@ -56,7 +56,7 @@ public class AttendenceVO {
     public void setAtt_dayoff(String att_dayoff) {
         this.att_dayoff = att_dayoff;
     }
-    
-    
-    
+
+
+
 }

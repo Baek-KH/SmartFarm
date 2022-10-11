@@ -11,7 +11,7 @@ public class ProductRowMapper implements RowMapper<ProductVO> {
 
 	@Override
 	public ProductVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-		
+
 		ProductVO product = new ProductVO();
 		product.setPro_no(rs.getInt("PRO_NO"));
 		product.setPro_id(rs.getString("PRO_ID"));

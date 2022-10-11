@@ -19,7 +19,7 @@ public class TrayDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	
+
 	private final String TRAY_INSERT ="insert into tray values (?,?,?,?,?, now(),DATE_ADD(now(), INTERVAL ? DAY))";
 	private final String TRAY_GET ="select * from tray where tray_id=?";
 	private final String TRAY_DELETE ="delete from tray where tray_id=?";
@@ -30,21 +30,21 @@ public class TrayDAO {
 	private final String TRAY_LIST_DM ="select * from tray where month(tray_start_date) like ? order by tray_start_date desc";
 	private final String TRAY_LIST_DD ="select * from tray where day(tray_start_date) like ? order by tray_start_date desc";
 
-	
+
 	// 1. insert
 	public void insertTray(TrayVO vo) {
-		
+
 		System.out.println("==> JDBC Tray insert");
-		
+
 		PipDAO pipDAO = new PipDAO();
-		PipVO pipVO = pipDAO.getPip(vo.getPip_name());		
+		PipVO pipVO = pipDAO.getPip(vo.getPip_name());
 		vo.setPip_period(pipVO.getPip_period());
 		String getTray_NO = "select tray_id from tray ORDER BY tray_id DESC LIMIT 1";
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
-			
-			rs = stmt.executeQuery();	
+
+			rs = stmt.executeQuery();
 			stmt = conn.prepareStatement(getTray_NO);
 			if(rs.next()) {
 				vo.setTray_id((Integer.parseInt(rs.getString("tray_id"))+1)+"");
@@ -63,20 +63,20 @@ public class TrayDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(null, stmt, conn);
-		}		
+		}
 	}
-	
+
 	// 2. getTray
 	public TrayVO getTray(String tray_id) {
-		
+
 		System.out.println("==> JDBC getTray");
 		TrayVO tray = new TrayVO();
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(TRAY_GET);
 			stmt.setString(1, tray_id);
-			rs = stmt.executeQuery();	
+			rs = stmt.executeQuery();
 			while(rs.next()) {
 				tray.setTray_id(rs.getString("tray_id"));
 				tray.setLine_id(rs.getString("line_id"));
@@ -86,47 +86,47 @@ public class TrayDAO {
 				tray.setTray_start_date(rs.getTimestamp("tray_start_date"));
 				tray.setTray_end_date(rs.getTimestamp("tray_end_date"));
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(rs, stmt, conn);
 		}
-		return tray;	
-		
+		return tray;
+
 	}
-	
+
 	// 3. update
 	// BANNED
-	
-	// 4. delete 
+
+	// 4. delete
 	public void deleteTray(TrayVO vo) {
 
 		System.out.println("==> JDBC Tray delete");
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(TRAY_DELETE);
 			stmt.setString(1, vo.getTray_id());
 			stmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(null, stmt, conn);
-		}		
+		}
 	}
 
-	
+
 	// Tray List 출력
 	public List<TrayVO> getTrayList() {
 		System.out.println("==> JDBC getTrayList");
-		List<TrayVO> trayList = new ArrayList<TrayVO>();
-		
+		List<TrayVO> trayList = new ArrayList<>();
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(TRAY_LIST);
-			rs = stmt.executeQuery();	
+			rs = stmt.executeQuery();
 			while(rs.next()) {
 				TrayVO tray = new TrayVO();
 				tray.setTray_id(rs.getString("tray_id"));
@@ -138,26 +138,26 @@ public class TrayDAO {
 				tray.setTray_end_date(rs.getTimestamp("tray_end_date"));
 				trayList.add(tray);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(rs, stmt, conn);
 		}
-		return trayList;		
+		return trayList;
 	}
-	
-	
+
+
 	// Tray List Search
 	public List<TrayVO> getTrayListSearch(String field, String query) {
 		// field { line_id, year, month, day }
-		
-		
+
+
 		System.out.println("==> JDBC getTrayListSearch");
-		
-		List<TrayVO> trayList = new ArrayList<TrayVO>();
-		
-		
+
+		List<TrayVO> trayList = new ArrayList<>();
+
+
 		try {
 			conn = JDBCUtil.getConnection();
 			if(field.equals("line_id")) {
@@ -173,8 +173,8 @@ public class TrayDAO {
 				stmt = conn.prepareStatement(TRAY_LIST_DD);
 				stmt.setInt(1, Integer.parseInt(query));
 			}
-			
-			rs = stmt.executeQuery();	
+
+			rs = stmt.executeQuery();
 			while(rs.next()) {
 				TrayVO tray = new TrayVO();
 				tray.setTray_id(rs.getString("tray_id"));
@@ -186,17 +186,17 @@ public class TrayDAO {
 				tray.setTray_end_date(rs.getTimestamp("tray_end_date"));
 				trayList.add(tray);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(rs, stmt, conn);
 		}
-		return trayList;		
+		return trayList;
 	}
 
-		
-	
-	
+
+
+
 
 }

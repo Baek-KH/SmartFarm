@@ -3,19 +3,19 @@ package com.smartFarm.mes.vo.tray;
 import java.util.Date;
 
 public class TrayVO {
-	
-	
+
+
 	private String tray_id;
-	private String line_id;	
+	private String line_id;
 	private String pip_name;
 	private String pip_qty;
 	private String pip_period;
 	private Date tray_start_date;
 	private Date tray_end_date;
-	
-	
-	
-	
+
+
+
+
 	public String getTray_id() {
 		return tray_id;
 	}
@@ -58,8 +58,8 @@ public class TrayVO {
 	public void setTray_end_date(Date tray_end_date) {
 		this.tray_end_date = tray_end_date;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "TrayVO [tray_id=" + tray_id + ", line_id=" + line_id + ", pip_name=" + pip_name + ", pip_qty=" + pip_qty
@@ -67,16 +67,16 @@ public class TrayVO {
 				+ tray_end_date + "]";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
 }

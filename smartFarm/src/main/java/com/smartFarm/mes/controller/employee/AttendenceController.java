@@ -1,7 +1,13 @@
-package com.smartFarm.mes.controller.attendence;
+package com.smartFarm.mes.controller.employee;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,92 +16,186 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.smartFarm.mes.commons.ScriptAlertUtils;
 import com.smartFarm.mes.dao.employee.AttendenceDAO;
 import com.smartFarm.mes.vo.employee.AttendenceVO;
+import com.smartFarm.mes.vo.employee.EmployeeVO;
 
 
 @Controller
 @SessionAttributes("attendence")
 public class AttendenceController {
+	// regular
+	// 출근, 퇴근, 조회, 검색
 
-	
+
+
 	// getAttendence
 	@RequestMapping(value = "/getAttendence.do" , method = {RequestMethod.GET, RequestMethod.POST})
-	public String getAttendence(@RequestParam(value = "emp_id") String emp_id,AttendenceDAO attendenceDAO, Model model) {
-		
+	public String getAttendence(HttpServletRequest req,AttendenceDAO attendenceDAO, Model model) {
+
 		System.out.println("getAttendence 진입");
-		AttendenceVO attendenceVO = attendenceDAO.getAttendence(emp_id);
+
+		HttpSession session = req.getSession();
+		EmployeeVO employeeVO = (EmployeeVO) session.getAttribute("signIn");
+
+		AttendenceVO attendenceVO = attendenceDAO.getAttendence(employeeVO.getEmp_id());
 		model.addAttribute("attendenceVO",attendenceVO );
 		return "attendence";
 	}
-	
-	// insert
+
+	// insert - 출근등록
 	@RequestMapping(value = "/insertAttendence.do", method = RequestMethod.POST)
-	public String insertAttendence(AttendenceVO vo, AttendenceDAO attendenceDAO , Model model) {
-		
+	public String insertAttendence(HttpServletRequest req, AttendenceDAO attendenceDAO , Model model) {
+
 		System.out.println("insertAttendence 진입");
-		model.addAttribute("vo",vo);
-		attendenceDAO.insertAttendence(vo);
-		return "redirect:/getAttendenceList.do";
-	}
-	
-	// update
-	@RequestMapping(value = "/updateAttendence.do" , method = RequestMethod.POST)
-//	public String updateAttendence(@ModelAttribute("attendenceVO") AttendenceVO vo, AttendenceDAO AttendenceDAO, Model model) {
-	public String updateAttendence(AttendenceVO vo, AttendenceDAO AttendenceDAO, Model model) {
-	
-		System.out.println("updateAttendence 진입");
-		AttendenceDAO.updateAttendence(vo);
-		model.addAttribute("vo",vo);
+
+		HttpSession session = req.getSession();
+		EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
+
+		AttendenceVO attendenceVO = new AttendenceVO();
+		attendenceVO.setEmp_id(vo.getEmp_id());
+		attendenceVO.setEmp_name(vo.getEmp_name());
+		attendenceVO.setAtt_work_date(new Date());
+
+		attendenceDAO.insertAttendence(attendenceVO);
+
+		model.addAttribute("attendence", attendenceVO);
+
 		return "redirect:/getAttendenceList.do";
 	}
 
-	// delete
-	@RequestMapping("/deleteAttendence.do")
-	public String deleteAttendence(AttendenceVO vo, AttendenceDAO AttendenceDAO) {
-		System.out.println("deleteAttendence 진입");
-		System.out.println(vo.toString());
-		
-		AttendenceDAO.deleteAttendence(vo);
-		return "redirect:/getAttendenceList.do";
-	}
-	
-		
-	
-	// List
+	// List - regular
 	@RequestMapping("/getAttendenceList.do")
-	public String getAttendenceList(AttendenceDAO attendenceDAO, Model model) {
+	public String getAttendenceList(HttpServletRequest req, AttendenceDAO attendenceDAO, Model model) {
 
 		System.out.println("getAttendenceList 진입");
-		
-		List<AttendenceVO> attendenceList = attendenceDAO.getAttendenceList();
+
+		HttpSession session = req.getSession();
+		EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
+
+		List<AttendenceVO> attendenceList = attendenceDAO.getAttendenceList(vo);
 		model.addAttribute("AttendenceList", attendenceList);
 		return "attendenceList";
 	}
-	
+
 	// ListSearch
-	@RequestMapping(value = "/getAttendenceListSearch.do")
-	public String getAttendenceListSearch(
-			@RequestParam(value="field", defaultValue="", required=false) String field,
-			@RequestParam(value="query", defaultValue="", required=false) String query,	   
-			AttendenceDAO attendenceDAO, Model model) {
-		
-		System.out.println("getAttendenceList 진입");
-		
-		List<AttendenceVO> attendenceList = new ArrayList<AttendenceVO>();
-				
-		if (field != null & query !=null) {
-			
-			attendenceList = attendenceDAO.getAttendenceListSearch(field, query);
-		} else  {
-			attendenceList  =	attendenceDAO.getAttendenceList();
+		@RequestMapping(value = "/getAttendenceListSearch.do")
+		public String getAttendenceListSearch(
+				@RequestParam(value="field", defaultValue="", required=false) String field,
+				@RequestParam(value="query", defaultValue="", required=false) String query,
+				HttpServletRequest req,
+				AttendenceDAO attendenceDAO, Model model) {
+
+			System.out.println("getAttendenceList 진입");
+
+			HttpSession session = req.getSession();
+			EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
+
+			List<AttendenceVO> attendenceList = new ArrayList<>();
+
+			if (field != null & query !=null) {
+
+				attendenceList = attendenceDAO.getAttendenceListSearch(vo,field, query);
+			} else  {
+				attendenceList = attendenceDAO.getAttendenceList(vo);
+			}
+
+
+			model.addAttribute("AttendenceList", attendenceList);
+			return "attendenceList";
 		}
-		
-		
-		model.addAttribute("AttendenceList", attendenceList);
-		return "attendenceList";
+
+	// update - 퇴근
+	@RequestMapping(value = "/updateAttendence.do" , method = RequestMethod.POST)
+	public String updateAttendence(HttpServletRequest req, AttendenceDAO AttendenceDAO, Model model) {
+
+		System.out.println("updateAttendence 진입");
+
+		HttpSession session = req.getSession();
+		AttendenceVO vo = (AttendenceVO) session.getAttribute("attendence");
+
+		AttendenceDAO.updateAttendenceOff(vo);
+		model.addAttribute("attendence",vo);
+
+		return "redirect:/getAttendenceList.do";
 	}
 
 
+	// admin
+		// 사원 근태 조회
+		// 사원 근태 검색
+		// 사번, 년, 월, 일
+		// 사원 근태 수정
 
+	// List - admin
+		@RequestMapping("/getAttendenceListAdmin.do")
+		public String getAttendenceListAdmin(HttpServletRequest req,HttpServletResponse res,
+			AttendenceDAO attendenceDAO, Model model) throws IOException {
+
+			System.out.println("getAttendenceList 진입");
+
+			HttpSession session = req.getSession();
+			EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
+
+			if(vo.getEmp_admin()=="admin") {
+				List<AttendenceVO> attendenceList = attendenceDAO.getAttendenceListAdmin();
+				model.addAttribute("AttendenceList", attendenceList);
+			} else {
+				ScriptAlertUtils.alertAndBackPage(res, "관리자 권한이 필요합니다.");
+			}
+
+			return "attendenceListAdmin";
+		}
+
+	// ListSearch
+		@RequestMapping(value = "/getAttendenceListSearchAdmin.do")
+		public String getAttendenceListSearchAdmin(
+			@RequestParam(value="field", defaultValue="", required=false) String field,
+			@RequestParam(value="query", defaultValue="", required=false) String query,
+			HttpServletRequest req,HttpServletResponse res,
+			AttendenceDAO attendenceDAO, Model model) throws IOException {
+
+			System.out.println("getAttendenceList 진입");
+
+			HttpSession session = req.getSession();
+			EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
+
+			if(vo.getEmp_admin()=="admin") {
+				List<AttendenceVO> attendenceList = new ArrayList<>();
+
+				if (field != null & query !=null) {
+
+					attendenceList = attendenceDAO.getAttendenceListSearchAdmin(field, query);
+				} else  {
+					attendenceList = attendenceDAO.getAttendenceListAdmin();
+				}
+				model.addAttribute("AttendenceList", attendenceList);
+			} else {
+				ScriptAlertUtils.alertAndBackPage(res, "관리자 권한이 필요합니다.");
+			}
+
+				return "attendenceList";
+			}
+
+		// update - admin
+		@RequestMapping(value = "/updateAttendenceAdmin.do" , method = RequestMethod.POST)
+		public String updateAttendenceAdmin(HttpServletRequest req, HttpServletResponse res,
+				AttendenceVO attendenceVO ,AttendenceDAO AttendenceDAO, Model model) throws IOException {
+
+			System.out.println("updateAttendence 진입");
+
+			HttpSession session = req.getSession();
+			EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
+
+			if(vo.getEmp_admin()=="admin") {
+				AttendenceDAO.updateAttendenceAdmin(attendenceVO);
+
+			} else {
+				ScriptAlertUtils.alertAndBackPage(res, "관리자 권한이 필요합니다.");
+			}
+
+
+			return "redirect:/getAttendenceListAdmin.do";
+		}
 }
