@@ -11,25 +11,25 @@ import com.smartFarm.mes.vo.employee.EmployeeVO;
 
 @Repository("LoginDAO")
 public class LoginDAO {
-	
+
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	
-	
+
+
 	private final String EMPLOYEE_LOGIN ="select * from employee where emp_id =?";
 
-	
+
 	// 1. loginCheck
 		public void loginEmployee(EmployeeVO vo) {
-			
+
 			System.out.println("==> JDBC Employee login");
-			
+
 			try {
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(EMPLOYEE_LOGIN);
 				stmt.setString(1,vo.getEmp_id());
-				rs = stmt.executeQuery();	
+				rs = stmt.executeQuery();
 				if(rs.next()) {
 					vo.setEmp_no(rs.getInt("emp_no")+1);
 				} else {
@@ -47,9 +47,9 @@ public class LoginDAO {
 				e.printStackTrace();
 			} finally {
 				JDBCUtil.close(null, stmt, conn);
-			}		
+			}
 		}
-	
-	
-	
+
+
+
 }

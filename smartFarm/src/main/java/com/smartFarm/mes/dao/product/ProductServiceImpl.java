@@ -12,10 +12,10 @@ import com.smartFarm.mes.vo.product.ProductVO;
 
 @Service("productServie")
 public class ProductServiceImpl implements ProductService {
-	
+
 	@Autowired
 	private ProductDAO productDAO;
-	
+
 	@Override
 	public void insertProduct(ProductVO vo) {
 		productDAO.insertProduct(vo);
@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void updateProduct(ProductVO vo) {
-		productDAO.updateProduct(vo);	
+		productDAO.updateProduct(vo);
 	}
 
 	@Override

@@ -23,16 +23,16 @@ public class PipDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	
-	private final String PIP_INSERT ="insert into pip(pip_no, pip_name, pip_category, pip_period, pip_min_temp, pip_max_temp, pip_min_hum, pip_max_hum) " 
+
+	private final String PIP_INSERT ="insert into pip(pip_no, pip_name, pip_category, pip_period, pip_min_temp, pip_max_temp, pip_min_hum, pip_max_hum) "
 					+ " values(?,?,?,?,?,?,?,?)";
 	private final String PIP_UPDATE ="update pip set pip_category=?, pip_period=?, pip_min_temp=?, pip_max_temp=?, pip_min_hum=?, pip_max_hum=? where pip_name=?";
 	private final String PIP_DELETE ="delete form pip where pip_name=?";
 	private final String PIP_GET ="select * from pip where pip_name=?";
 	private final String PIP_LIST ="select * from pip order by pip_name desc";
 	private final String PIP_LIST_NO ="select * from Pip where pip_no like ? ";
-	private final String PIP_LIST_NA ="select * from Pip where pip_name like ? ";	
-	
+	private final String PIP_LIST_NA ="select * from Pip where pip_name like ? ";
+
 	// 등록
 	public void insertPip(PipVO vo) {
 		System.out.println("==>DAO ins");
@@ -63,15 +63,15 @@ public class PipDAO {
 			JDBCUtil.close(null, stmt, conn);
 		}
 	}
-	
+
 	// 수정
 	public void updatePip(PipVO vo) {
 		System.out.println("==>DAO upd");
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(PIP_UPDATE);
-			
+
 				stmt.setString(1, vo.getPip_name());
 				stmt.setString(2, vo.getPip_category());
 				stmt.setString(3, vo.getPip_period());
@@ -85,14 +85,14 @@ public class PipDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(null, stmt, conn);
-		}	
-		
+		}
+
 	}
-	
+
 	// 삭제
 	public void deletePip(PipVO vo) {
 		System.out.println("==>DAO del");
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(PIP_DELETE);
@@ -102,22 +102,22 @@ public class PipDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(null, stmt, conn);
-		}		
+		}
 	}
-	
+
 	//   작물상세정보
 	public PipVO getPip(String pip_name) {
-		
+
 		System.out.println("==>DAO g_list");
 		PipVO pip = new PipVO();
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(PIP_GET);
 			stmt.setString(2, pip_name);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-				
+
 				pip = new PipVO();
 				pip.setPip_no(rs.getInt("pip_no"));
 				pip.setPip_name(rs.getString("pip_name"));
@@ -132,18 +132,18 @@ public class PipDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(rs, stmt, conn);
-		}		
+		}
 		return pip;
 	}
 
-	
+
 	// 작물리스트 출력
 	public List<PipVO> getPipList() {
-		
+
 		System.out.println("==>DAO gp_list");
-		
-		List<PipVO> pipList = new ArrayList<PipVO>();	
-		
+
+		List<PipVO> pipList = new ArrayList<>();
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(PIP_LIST);
@@ -160,25 +160,29 @@ public class PipDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(rs, stmt, conn);
-		}		
+		}
 		return pipList;
 	}
-	
+
 	// Pip 검색기능
 	public List<PipVO> getPipListSearch(String field, String query) {
 
 		// field { pip_name, pip_no}
 
+<<<<<<< HEAD
 		
+=======
+>>>>>>> BKH
 		System.out.println("==>DAO pip_serch");
-		
-		
-		List<PipVO> pipList = new ArrayList<PipVO>();
-		
-		
+
+
+		List<PipVO> pipList = new ArrayList<>();
+
+
 		try {
 			conn = JDBCUtil.getConnection();
 			if(field =="pip_name"){
+<<<<<<< HEAD
 				stmt = conn.prepareStatement(PIP_LIST_NA);					
 
 			} else {
@@ -186,23 +190,28 @@ public class PipDAO {
 			} else if(field =="pip_no") {
 
 				stmt = conn.prepareStatement(PIP_LIST_NO);					
+=======
+				stmt = conn.prepareStatement(PIP_LIST_NA);
+			} else if(field =="pip_no") {
+				stmt = conn.prepareStatement(PIP_LIST_NO);
+>>>>>>> BKH
 			}
 			stmt.setString(1, "%"+query+"%");
-			rs = stmt.executeQuery();	
+			rs = stmt.executeQuery();
 			while(rs.next()) {
 				PipVO pip = new PipVO();
 				pip.setPip_no(rs.getInt("pip_no"));
 				pip.setPip_name(rs.getString("pip_name"));
 				pipList.add(pip);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(null, stmt, conn);
 		}
-		return pipList;		
+		return pipList;
 	}
 
-	
+
 }

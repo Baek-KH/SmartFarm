@@ -1,14 +1,14 @@
 package com.smartFarm.mes.vo.line;
 
 public class LineVO {
-	
-	
-	
+
+
+
 	private String line_id;
 	private String line_temp;
 	private String line_hum;
 	private String line_status;
-	
+
 
 
 	@Override
@@ -16,8 +16,8 @@ public class LineVO {
 		return "LineVO [line_id=" + line_id + ", line_temp=" + line_temp + ", line_hum=" + line_hum + ", line_status="
 				+ line_status + "]";
 	}
-	
-	
+
+
 	public String getLine_id() {
 		return line_id;
 	}
@@ -42,9 +42,9 @@ public class LineVO {
 	public void setLine_status(String line_status) {
 		this.line_status = line_status;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }

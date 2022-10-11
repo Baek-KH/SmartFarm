@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class JDBCUtil {
 
 	public static Connection getConnection() {
-		
+
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			return DriverManager.getConnection("jdbc:mariadb://localhost:3306/spring", "root", "12345");
@@ -17,7 +17,7 @@ public class JDBCUtil {
 		}
 		return null;
 	}
-	
+
 	public static void close(ResultSet rs, Statement stmt, Connection conn) {
 		try {
 			if(rs!=null) rs.close();
@@ -27,7 +27,7 @@ public class JDBCUtil {
 			// dummy
 		}
 	}
-	
+
 	public static void rollbact(Connection conn) {
 		try {
 			if(conn!=null) conn.rollback();
