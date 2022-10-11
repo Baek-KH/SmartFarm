@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.smartFarm.mes.commons.JDBCUtil;
@@ -169,10 +166,7 @@ public class PipDAO {
 
 		// field { pip_name, pip_no}
 
-<<<<<<< HEAD
-		
-=======
->>>>>>> BKH
+
 		System.out.println("==>DAO pip_serch");
 
 
@@ -182,19 +176,10 @@ public class PipDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			if(field =="pip_name"){
-<<<<<<< HEAD
-				stmt = conn.prepareStatement(PIP_LIST_NA);					
-
-			} else {
-
-			} else if(field =="pip_no") {
-
-				stmt = conn.prepareStatement(PIP_LIST_NO);					
-=======
 				stmt = conn.prepareStatement(PIP_LIST_NA);
 			} else if(field =="pip_no") {
 				stmt = conn.prepareStatement(PIP_LIST_NO);
->>>>>>> BKH
+
 			}
 			stmt.setString(1, "%"+query+"%");
 			rs = stmt.executeQuery();
