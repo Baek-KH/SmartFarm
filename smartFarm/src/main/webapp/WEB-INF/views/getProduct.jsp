@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div>
+
 		<h1>제품 상세</h1>
 		<hr>
 		<form action="updateProduct.do" method="post">
@@ -42,6 +45,8 @@
 		<a href="insertProduct.jsp">제품등록</a>&nbsp;&nbsp;&nbsp; 
 		<a href="deleteProduct.do?pro_no=${product.pro_id }">글삭제</a>&nbsp;&nbsp;&nbsp;
 		<a href="getProductList.do">글목록</a>
+
 	</div>
+
 </body>
 </html>

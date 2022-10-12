@@ -1,0 +1,44 @@
+package com.smartFarm.web.pip;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lec.web.board.pipSet;
+import com.lec.web.board.impl2.pipDAOSpring;
+import com.lec.web.board.pipVO;
+
+@Service("boardServie")
+public class pipSetImpl implements pipSet {
+	
+	@Autowired
+	private pipDAO pipDAO;
+	
+	@Override
+	public void insertpip(pipVO vo) {
+		pipDAO.insertBoard(vo);
+	}
+
+	@Override
+	public void deletepip(pipVO vo) {
+		pipDAO.deleteBoard(vo);
+	}
+
+	@Override
+	public void updatepip(pipVO vo) {
+		pipDAO.updateBoard(vo);	
+	}
+/*
+	@Override
+	public pipVO getpip(pipVO vo) {
+		return pipDAO.getXXX(vo);
+	}												<< �ӽ�
+
+	@Override
+	public List<pipVO> getXXXList(pipVO vo) {
+		return pipDAO.getXXXList(vo);
+	}
+*/
+}

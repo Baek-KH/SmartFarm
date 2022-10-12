@@ -163,7 +163,9 @@ public class PipDAO {
 
 	// Pip 검색기능
 	public List<PipVO> getPipListSearch(String field, String query) {
+
 		// field { pip_name, pip_no}
+
 
 		System.out.println("==>DAO pip_serch");
 
@@ -177,6 +179,7 @@ public class PipDAO {
 				stmt = conn.prepareStatement(PIP_LIST_NA);
 			} else if(field =="pip_no") {
 				stmt = conn.prepareStatement(PIP_LIST_NO);
+
 			}
 			stmt.setString(1, "%"+query+"%");
 			rs = stmt.executeQuery();

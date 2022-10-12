@@ -1,0 +1,14 @@
+package com.smartFarm.web.process.impl;
+
+import java.util.List;
+
+import com.smartFarm.mes.vo.process.pipVO;
+
+public interface pipService {
+
+	void insertpip(pipVO vo);
+	void deletepip(pipVO vo);
+	void updatepip(pipVO vo);
+//	pipVO getXXX(pipVO vo);
+//	List<pipVO> getXXXList (pipVO vo);		<< 임시
+}
