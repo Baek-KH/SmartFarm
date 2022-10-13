@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page import="java.text.SimpleDateFormat"%>
 
 <!DOCTYPE html>
 <html>
@@ -68,13 +68,12 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                     <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
+                        <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
                         <a class="collapse-item" href="getAttendenceList.do">마이페이지</a>
                         <c:if test="${signIn.getEmp_admin() == 'admin'}">
                         	<a class="collapse-item" href="getEmployeeList.do">사원관리</a>
                         	<a class="collapse-item" href="getAttendenceListAdmin.do">근태관리</a>
 						</c:if>
-
                     </div>
                 </div>
             </li>
@@ -178,52 +177,66 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">사원 등록</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
-                    <!-- Content Row -->
-
+                  
+					<!-- Content Row -->
+                    
                     <div class="container-fluid">
-     
-                               <form action="insertEmployee.do" method="post">
-                                <table  class="table table-bordered">
+                            <form action="insertEmployee.do" method="post">
+                                <table  class="table table-bordered col-4 ">
                                     <thead>
                                         <tr>
-                                            <th scope="col">아이디</th>
-                                            <th scope="col">이름</th>
-                                            <th scope="col">비밀번호</th>                                            
-                                            <th scope="col">이메일</th>
-                                            <th scope="col">권한</th>
-                                            <th scope="col">비고</th>
+                                             	<th scope="col">아이디</th>
+				                                <th scope="col">사원번호</th>
+				                               
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
 
-                                        <th scope="col"><input type="text" name="emp_id" size="10" value="아이디" /></th>
-                                                                                
-                                        <th scope="col"><input type="password" name="emp_no" size="10" value="비밀 번호" /></th>
-                                        
-                                        <th scope="col"><input type="text" name="emp_name" size="10" value="이름"/></th>
-                                        
-                                        <th scope="col"><input type="text" name="emp_email" size="10" value="이메일"/></th>
-                                        
-                                        <th scope="col"><input type="text" name="emp_admin" size="10" value="권한" /></th>
-                                        
-										<th scope="col">
-										
-											<input type="submit" class="btn btn-primary" value="등록하기">
-									
-										</th>
-  
-                                    </tr>
+                                            <tr>
+                                                <td>아이디</td>                                                
+                                                <td>
+                                                <input type="text" name="emp_id"  value="아이디">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>비밀번호</td>
+                                                <td>
+                                                	<input type="password" name="emp_pw" value="패스워드">
+                                                </td>
+                                            </tr>
+                                     
+                                            <tr>
+                                                <td>이름</td>
+                                                <td>
+                                                	<input type="text" name="emp_name" value="이름">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>이메일</td>
+                                                <td>
+                                                	<input type="text" name="emp_email" value="이메일">
+                                                </td>
+                                            </tr>
+                                          
                                 </tbody>
                                 </table>
-								</form>
                             
-                            
+                            <div>
+                                <tr>
+                                	
+                                    <td colspan="2" align="center">
+                                    <input type="hidden" name="emp_id" value="${employeeVO.getEmp_id()}">
+                                    <input type="hidden" name="emp_no" value="${employeeVO.getEmp_no()}">
+                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
+                                    </td>
+                                </tr>
+                            </div>
+                            </form>
                     </div>
                             
 
@@ -232,7 +245,7 @@
                     
 
                     <!-- Content Row -->
-
+					
                     
 
                     
@@ -264,7 +277,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-   
 
     <!-- Bootstrap core JavaScript-->
     <script src="/resources/vendor/jquery/jquery.min.js"></script>
@@ -285,4 +297,13 @@
 
 </body>
 
+<!-- <script>
+	function reload(){  
+	    location.reload();
+	}
+	function 함수이름(){  
+	      setTimeout(reload(),10000); 
+	}
+</script>
+ -->
 </html>

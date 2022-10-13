@@ -24,10 +24,12 @@ public class StockHistoryDAO {
 	
 	// 등록 조회 수정
 
-	private final String STOCKHISTORY_INSERT ="insert into stockHistory values (?,?,?,?,?,?,now())";
-	private final String STOCKHISTORY_GET ="select * from StockHistory where stock_id = ?";
-	private final String STOCKHISTORY_LIST ="select * from StockHistory ";
-	private final String STOCKHISTORY_LIST_ID ="select * from StockHistory where stock_id = ? ";
+	private final String STOCKHISTORY_INSERT ="insert into stock_history values (?,?,?,?,?,now())";
+	private final String STOCKHISTORY_GET ="select * from stock_history where stock_id = ?";
+	private final String STOCKHISTORY_LIST ="select * from stock_history ";
+	private final String STOCKHISTORY_LIST_I ="select * from stock_history where stock_out = 0";
+	private final String STOCKHISTORY_LIST_O ="select * from stock_history where stock_in = 0";
+	private final String STOCKHISTORY_LIST_ID ="select * from stock_history where stock_id = ? ";
 
 	// 1. insert
     public void insertStockHistory(StockHistoryVO vo) {
@@ -55,7 +57,6 @@ public class StockHistoryDAO {
             stmt.setInt(3, vo.getStock_in());
             stmt.setInt(4, vo.getStock_out());
             stmt.setInt(5, stockVO.getStock_qty());
-            stmt.setInt(4, 0);
             stmt.executeUpdate();
             
             stockDAO.updateStock(stockVO);
@@ -131,8 +132,65 @@ public class StockHistoryDAO {
         return stockHistoryList;
     }
 
+    // StockHistory List In 출력
+    public List<StockHistoryVO> getStockHistoryListIn() {
+        
+        System.out.println("==> JDBC getStockHistoryList");
+        
+        List<StockHistoryVO> stockHistoryList = new ArrayList<StockHistoryVO>();
+
+        try {
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(STOCKHISTORY_LIST_I);
+            rs = stmt.executeQuery();
+            while(rs.next()) {
+                StockHistoryVO stockHistoryVO = new StockHistoryVO();
+                stockHistoryVO.setStock_id(rs.getString("stock_id"));
+                stockHistoryVO.setStock_name(rs.getString("stock_name"));
+                stockHistoryVO.setStock_in(rs.getInt("stock_in"));
+                stockHistoryVO.setStock_out(rs.getInt("stock_out"));
+                stockHistoryVO.setStock_qty(rs.getInt("stock_qty"));
+                stockHistoryVO.setStock_date(rs.getTimestamp("stock_date"));
+                stockHistoryList.add(stockHistoryVO);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(rs, stmt, conn);
+        }
+        return stockHistoryList;
+    }    
     
-    
+    // StockHistory List Out 출력
+    public List<StockHistoryVO> getStockHistoryListOut() {
+        
+        System.out.println("==> JDBC getStockHistoryList");
+        
+        List<StockHistoryVO> stockHistoryList = new ArrayList<StockHistoryVO>();
+
+        try {
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(STOCKHISTORY_LIST_O);
+            rs = stmt.executeQuery();
+            while(rs.next()) {
+                StockHistoryVO stockHistoryVO = new StockHistoryVO();
+                stockHistoryVO.setStock_id(rs.getString("stock_id"));
+                stockHistoryVO.setStock_name(rs.getString("stock_name"));
+                stockHistoryVO.setStock_in(rs.getInt("stock_in"));
+                stockHistoryVO.setStock_out(rs.getInt("stock_out"));
+                stockHistoryVO.setStock_qty(rs.getInt("stock_qty"));
+                stockHistoryVO.setStock_date(rs.getTimestamp("stock_date"));
+                stockHistoryList.add(stockHistoryVO);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(rs, stmt, conn);
+        }
+        return stockHistoryList;
+    }    
     // StockListSearch
     public List<StockHistoryVO> getStockHistoryListSearch(String query) {
 

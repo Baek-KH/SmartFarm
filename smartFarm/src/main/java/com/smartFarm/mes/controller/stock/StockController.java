@@ -1,6 +1,5 @@
 package com.smartFarm.mes.controller.stock;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -66,29 +65,54 @@ public class StockController {
 		model.addAttribute("StockList", stockList);
 		return "stockStock";
 	}
+	
+	// List - in 
+		@RequestMapping(value = "/getStockList.do")
+		public String getStockList(StockDAO stockDAO, Model model) {
 
-	// ListSearch
-    @RequestMapping(value = "/getStockListSearch.do")
-    public String getStockListSearch(
-            @RequestParam(value="field", defaultValue="", required=false) String field,
-            @RequestParam(value="query", defaultValue="", required=false) String query,
-            StockDAO stockDAO, Model model) {
+			System.out.println("getStockList 진입");
 
-        System.out.println("getStockList 진입");
+			List<StockVO> inStockList = stockDAO.getStockList();
+			model.addAttribute("InStockList", inStockList);
+			return "InstockStock";
+		}
+	
+	// List - out
+		@RequestMapping(value = "/getStockList.do")
+		public String getStockList(StockDAO stockDAO, Model model) {
 
-        List<StockVO> stockList = new ArrayList<>();
+			System.out.println("getStockList 진입");
 
-        if (field != null & query !=null) {
-
-            stockList = stockDAO.getStockListSearch(field, query);
-        } else  {
-            stockList = stockDAO.getStockList();
-        }
-
-
-        model.addAttribute("StockList", stockList);
-        return "stockList";
-    }
+			List<StockVO> outStockList = stockDAO.getStockList();
+			model.addAttribute("OutStockList", outStockList);
+			return "OutstockStock";
+		}		
+	
+	
+	
+	
+//	// ListSearch
+//    @RequestMapping(value = "/getStockListSearch.do")
+//    public String getStockListSearch(
+//            @RequestParam(value="field", defaultValue="", required=false) String field,
+//            @RequestParam(value="query", defaultValue="", required=false) String query,
+//            StockDAO stockDAO, Model model) {
+//
+//        System.out.println("getStockList 진입");
+//
+//        List<StockVO> stockList = new ArrayList<>();
+//
+//        if (field != null & query !=null) {
+//
+//            stockList = stockDAO.getStockListSearch(field, query);
+//        } else  {
+//            stockList = stockDAO.getStockList();
+//        }
+//
+//
+//        model.addAttribute("StockList", stockList);
+//        return "stockList";
+//    }
 
 
 }
