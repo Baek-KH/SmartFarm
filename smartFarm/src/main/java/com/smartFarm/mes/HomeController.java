@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.smartFarm.mes.dao.stock.StockDAO;
 import com.smartFarm.mes.dao.stock.StockHistoryDAO;
 import com.smartFarm.mes.vo.stock.ProductRateVO;
+import com.smartFarm.mes.vo.stock.StockVO;
 
 /**
  * Handles requests for the application home page.
@@ -40,9 +42,14 @@ public class HomeController {
 	public String index(Model model) {
 		
 		StockHistoryDAO stockHistoryDAO = new StockHistoryDAO();
+		StockDAO stockDAO = new StockDAO();
+		
 		List<ProductRateVO> productRateList = stockHistoryDAO.productRateList();
 		ProductRateVO productRateVO = stockHistoryDAO.getProductRate();
-	
+		
+		List<StockVO> stockList = stockDAO.getStockList();
+		
+		model.addAttribute("StockList", stockList);
 		model.addAttribute("productRateVO", productRateVO);
 		model.addAttribute("productRateList", productRateList);
 		

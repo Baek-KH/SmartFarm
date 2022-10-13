@@ -25,12 +25,23 @@ public class StockController {
     public String insertStock(StockVO vo, StockDAO stockDAO , Model model) {
 
         System.out.println("insertStock 진입");
-        System.out.println(vo.toString());
 
         model.addAttribute("vo",vo);
         stockDAO.insertStock(vo);
         return "redirect:/getStockList.do";
 
+    }
+    
+    // delete
+    @RequestMapping(value = "/deleteStock.do", method = {RequestMethod.GET})
+    public String deleteStock(
+    		@RequestParam(value = "stock_id") String stock_id
+    		,StockDAO stockDAO , Model model) {
+    	
+    	System.out.println("deleteStock 진입");
+    	stockDAO.deleteStock(stock_id);
+    	return "redirect:/getStockList.do";
+    	
     }
     
 	// stock 아이디 최신값 조회
@@ -46,8 +57,8 @@ public class StockController {
 
 
 	// update
-	@RequestMapping(value = "/updateStock.do" , method = RequestMethod.POST)
-	public String updateStock(StockVO vo, StockDAO StockDAO, Model model) {
+	@RequestMapping(value = "/updateStock.do" , method = RequestMethod.GET)
+	public String updateStock( StockVO vo, StockDAO StockDAO, Model model) {
 
 		System.out.println("updateStock 진입");
 		StockDAO.updateStock(vo);
@@ -63,7 +74,7 @@ public class StockController {
 
 		List<StockVO> stockList = stockDAO.getStockList();
 		model.addAttribute("StockList", stockList);
-		return "stockStock";
+		return "stockList";
 	}
 	
 //	// List - in 

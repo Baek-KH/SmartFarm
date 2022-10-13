@@ -23,6 +23,7 @@ public class StockDAO {
 	private final String STOCK_INSERT ="insert into stock values (?,?,?,?)";
 	private final String STOCK_GET ="select * from Stock where stock_id=?";
 	private final String STOCK_UPDATE ="update Stock set stock_category=?, stock_name=?, stock_qty=? where stock_id = ?";
+	private final String STOCK_DELETE ="delete from Stock where stock_id = ?";
     private final String STOCK_QTY_UPDATE ="update Stock set stock_qty=? where stock_id = ?";
 	private final String STOCK_LIST ="select * from Stock ";
 	private final String STOCK_LIST_ID ="select * from Stock where stock_id like ? ";
@@ -46,6 +47,22 @@ public class StockDAO {
         } finally {
             JDBCUtil.close(null, stmt, conn);
         }
+    }
+    // 2. delete
+    public void deleteStock(String stock_id) {
+    	
+    	System.out.println("==> JDBC deleteStock");
+    	
+    	try {
+    		conn = JDBCUtil.getConnection();
+    		stmt = conn.prepareStatement(STOCK_DELETE);
+    		stmt.setString(1, stock_id);
+    		stmt.executeUpdate();
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	} finally {
+    		JDBCUtil.close(null, stmt, conn);
+    	}
     }
     
     // 2. get

@@ -83,57 +83,46 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>입/출</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">입출/등록</a>
-                        <a class="collapse-item" href="cards.html">재고</a>
-                    </div>
-                </div>
-            </li>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo"> <i
+					class="fas fa-fw fa-cog"></i> <span>입/출</span>
+			</a>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<%-- <h6 class="collapse-header">Custom Components:</h6> 여기다 글쓰면 위에 주석처럼 달림 --%>
+						<a class="collapse-item" href="getStockHistoryList.do">입출/등록</a> <a
+							class="collapse-item" href="getStockList.do">재고</a>
+					</div>
+				</div></li>
 
-              <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- 재배현황 -->
-            
-            <li class="nav-item">
-                <a class="nav-link" href="getLineList.do">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>재배현황</span></a>
-            </li>
 
-            <!-- Nav Item - Tables -->
-            <c:if test="${signIn.getEmp_admin() == 'admin'}">
-	        <li class="nav-item">
-	            <a class="nav-link" href="tables.html">
-	                <i class="fas fa-fw fa-table"></i>
-	                <span>재배관리</span></a>
-	        </li>
-	        <li class="nav-item">
-	            <a class="nav-link" href="tables.html">
-	                <i class="fas fa-fw fa-table"></i>
-	                <span>보고페이지</span></a>
-	        </li>
-            </c:if>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+			<!-- 재배현황 -->
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+			<li class="nav-item"><a class="nav-link" href="getLineList.do">
+					<i class="fas fa-fw fa-chart-area"></i> <span>재배현황</span>
+			</a></li>
+
+			<!-- Nav Item - Tables -->
+			<c:if test="${signIn.getEmp_admin() == 'admin'}">
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fas fa-fw fa-table"></i> <span>재배관리</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
+				</a></li>
+			</c:if>
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
 
             
 
