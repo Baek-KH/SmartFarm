@@ -51,7 +51,7 @@ public class StockHistoryController {
 	public String updateStockHistory(StockHistoryVO vo, StockHistoryDAO StockHistoryDAO, Model model) {
 
 		System.out.println("updateStockHistory 진입");
-		StockHistoryDAO.updateStockHistory(vo);
+//		StockHistoryDAO.updateStockHistory(vo);
 		model.addAttribute("vo",vo);
 		return "redirect:/getStockHistoryList.do";
 	}
@@ -72,26 +72,6 @@ public class StockHistoryController {
 		return "stockHistoryList";
 	}
 	
-//	// ListIn
-//		@RequestMapping(value = "/getStockHistoryList.do")
-//		public String getStockHistoryListIn(StockHistoryDAO stockHistoryDAO, Model model) {
-//
-//			System.out.println("getStockHistoryList 진입");
-//
-//			List<StockHistoryVO> stockHistoryListIn = stockHistoryDAO.getStockHistoryList();
-//			model.addAttribute("StockHistoryListIn", stockHistoryListIn);
-//			return "stockHistoryList";
-//		}
-//
-//	// ListOut
-//		@RequestMapping(value = "/getStockHistoryList.do")
-//		public String getStockHistoryListOut(StockHistoryDAO stockHistoryDAO, Model model) {
-//
-//			System.out.println("getStockHistoryList 진입");
-//
-//			List<StockHistoryVO> stockHistoryListOut = stockHistoryDAO.getStockHistoryList();
-//			model.addAttribute("StockHistoryListOut", stockHistoryListOut);
-//			return "stockHistoryList";
-//		}
+
 
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.smartFarm.mes.commons.JDBCUtil;
+import com.smartFarm.mes.vo.stock.ProductRateVO;
 import com.smartFarm.mes.vo.stock.StockHistoryVO;
 import com.smartFarm.mes.vo.stock.StockVO;
 
@@ -31,6 +32,16 @@ public class StockHistoryDAO {
 	private final String STOCKHISTORY_LIST_O ="select * from stock_history where stock_in = 0";
 	private final String STOCKHISTORY_LIST_ID ="select * from stock_history where stock_id = ? ";
 
+	
+	private final String PRODUCT_GET = "select sum(stock_in) \"stock_in_sum\" , sum(stock_out) \"stock_in_out\" "
+			+ "from stock_history "
+			+ "where stock_date > CURDATE()";
+	private final String PRODUCT_LIST = "select sum(stock_in) \"stock_in_sum\" , sum(stock_out) \"stock_out_sum\",Day(stock_date) \"stock_date\""
+			+ "from stock_history where stock_date BETWEEN DATE_ADD(NOW(),INTERVAL -1 WEEK ) AND NOW() GROUP BY Day(stock_date)";
+	
+	
+	
+	
 	// 1. insert
     public void insertStockHistory(StockHistoryVO vo) {
 
@@ -101,7 +112,60 @@ public class StockHistoryDAO {
 
     }
         
+ // getProductRate 출력
+    public ProductRateVO getProductRate() {
+    	
+    	System.out.println("==> JDBC getProductRate");
+    	
+    	ProductRateVO productRateVO = new ProductRateVO();
 
+    	
+    	try {
+    		conn = JDBCUtil.getConnection();
+    		stmt = conn.prepareStatement(PRODUCT_LIST);
+    		rs = stmt.executeQuery();
+    		while(rs.next()) {
+    			productRateVO.setStock_in_sum(rs.getInt("stock_in_sum"));
+    			productRateVO.setStock_out_sum(rs.getInt("stock_out_sum"));
+    	
+    
+    		}
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	} finally {
+    		JDBCUtil.close(rs, stmt, conn);
+    	}
+    	return productRateVO;
+    }
+
+    // productRateList 출력
+    public List<ProductRateVO> productRateList() {
+    	
+    	System.out.println("==> JDBC productRateList");
+    	
+    	List<ProductRateVO> productRateList = new ArrayList<ProductRateVO>();
+    	
+    	try {
+    		conn = JDBCUtil.getConnection();
+    		stmt = conn.prepareStatement(PRODUCT_LIST);
+    		rs = stmt.executeQuery();
+    		while(rs.next()) {
+    			ProductRateVO productRateVO = new ProductRateVO();
+    			productRateVO.setStock_in_sum(rs.getInt("stock_in_sum"));
+    			productRateVO.setStock_out_sum(rs.getInt("stock_out_sum"));
+    			productRateVO.setStock_date(rs.getInt("stock_date"));
+    
+    			productRateList.add(productRateVO);
+    		}
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	} finally {
+    		JDBCUtil.close(rs, stmt, conn);
+    	}
+    	return productRateList;
+    }
     // StockHistory List 출력
     public List<StockHistoryVO> getStockHistoryList() {
         
@@ -131,6 +195,10 @@ public class StockHistoryDAO {
         }
         return stockHistoryList;
     }
+    
+    
+    
+    
 
     // StockHistory List In 출력
     public List<StockHistoryVO> getStockHistoryListIn() {
@@ -225,5 +293,8 @@ public class StockHistoryDAO {
         }
         return stockHistoryList;
     }
+
+
+
 
 }

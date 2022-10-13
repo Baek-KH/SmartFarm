@@ -66,28 +66,28 @@ public class StockController {
 		return "stockStock";
 	}
 	
-	// List - in 
-		@RequestMapping(value = "/getStockList.do")
-		public String getStockList(StockDAO stockDAO, Model model) {
-
-			System.out.println("getStockList 진입");
-
-			List<StockVO> inStockList = stockDAO.getStockList();
-			model.addAttribute("InStockList", inStockList);
-			return "InstockStock";
-		}
-	
-	// List - out
-		@RequestMapping(value = "/getStockList.do")
-		public String getStockList(StockDAO stockDAO, Model model) {
-
-			System.out.println("getStockList 진입");
-
-			List<StockVO> outStockList = stockDAO.getStockList();
-			model.addAttribute("OutStockList", outStockList);
-			return "OutstockStock";
-		}		
-	
+//	// List - in 
+//		@RequestMapping(value = "/getStockList.do")
+//		public String getStockList(StockDAO stockDAO, Model model) {
+//
+//			System.out.println("getStockList 진입");
+//
+//			List<StockVO> inStockList = stockDAO.getStockList();
+//			model.addAttribute("InStockList", inStockList);
+//			return "InstockStock";
+//		}
+//	
+//	// List - out
+//		@RequestMapping(value = "/getStockList.do")
+//		public String getStockList(StockDAO stockDAO, Model model) {
+//
+//			System.out.println("getStockList 진입");
+//
+//			List<StockVO> outStockList = stockDAO.getStockList();
+//			model.addAttribute("OutStockList", outStockList);
+//			return "OutstockStock";
+//		}		
+//	
 	
 	
 	
