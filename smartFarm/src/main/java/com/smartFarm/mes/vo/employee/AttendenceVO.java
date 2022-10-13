@@ -1,5 +1,6 @@
 package com.smartFarm.mes.vo.employee;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AttendenceVO {
@@ -46,6 +47,13 @@ public class AttendenceVO {
     }
     public Date getAtt_work_date() {
         return att_work_date;
+    }
+    public String getAtt_work_date_str() {
+    	
+    	SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+    	String att_work_date_str = simple.format(att_work_date);
+
+    	return att_work_date_str;
     }
     public void setAtt_work_date(Date att_work_date) {
         this.att_work_date = att_work_date;

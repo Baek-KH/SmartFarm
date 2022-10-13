@@ -34,7 +34,10 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
-
+	@RequestMapping("/insertEmployee")
+	public String insertEmployee() {
+		return "insertEmployee";
+	}
 
 
 }

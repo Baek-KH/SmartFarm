@@ -40,7 +40,8 @@ public class LogController {
 		EmployeeVO employee = employeeDAO.getEmployee(vo.getEmp_id());
 		PrintWriter out = new PrintWriter(System.out);
 		session = req.getSession();
-		session.setMaxInactiveInterval(1800);
+//		session 제한 시간 잠금
+//		session.setMaxInactiveInterval(1800);
 		
 		
 		if(employee.getEmp_id()!=null) {

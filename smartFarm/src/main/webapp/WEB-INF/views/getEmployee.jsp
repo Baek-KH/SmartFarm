@@ -182,92 +182,63 @@
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
-                    <!-- Content Row -->
-                    <div class="container-fluid">
-
-                        <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">사원 마이페이지</h1>
-                        <p class="mb-4">여기는 직원 근태만 다나옴 <a target="_blank"
-                                href="https://datatables.net">여기링크도 걸꺼까요?</a>.</p>
-    
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">사원 마이페이지 테이블</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                         <thead>
-                                            <tr>
-                                                <th>이름</th>
-                                                <th>출근</th>
-                                                <th>퇴근</th>
-                                                <th>날짜</th>
-                                                <th>비고</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        
-		                                 <tbody>
-                                        <c:forEach items="${AttendenceList}" var="attendence">
-                                            <tr>
-                                                <td>${attendence.getEmp_name()}</td>
-                                                <td>${attendence.getAtt_work_on()}</td>
-                                                <td>${attendence.getAtt_work_off()}</td>
-                                                <td>${attendence.getAtt_work_date_str()}</td>
-                                                <td>${attendence.getAtt_dayoff()}</td>
-                                            </tr>
-            
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-    
-                    </div>
-
-                    <!-- Content Row -->
+                  
 					<!-- Content Row -->
                     
                     <div class="container-fluid">
-                            <form action="insertBoard.do" method="post">
-                                <table  class="table table-bordered">
+                            <form action="insertEmployee.do" method="post">
+                                <table  class="table table-bordered col-4 ">
                                     <thead>
                                         <tr>
                                              	<th scope="col">아이디</th>
 				                                <th scope="col">사원번호</th>
-				                                <th scope="col">이름</th>
-				                                <th scope="col">이메일</th>
-				                                <th scope="col">권한</th>
-				                                <th scope="col">비고</th>
+				                               
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        
-                                        <th scope="col"><input type="text" name="name" size="10" /></th>
-                                        
-                                        <th scope="col"><input type="text" name="writer" size="10" /></th>
-                                        
-                                        <th scope="col"><input type="text" name="writer" size="10" /></th>
-                                        
-                                        <th scope="col"><input type="text" name="writer" size="10" /></th>
-                                        
-                                        <th scope="col"><input type="text" name="writer" size="10" /></th>
-                                        
-                                        <th scope="col"><input type="text" name="writer" size="10" /></th>
-                                    </tr>
+
+                                            <tr>
+                                                <td>아이디</td>                                                
+                                                <td>
+                                                <input type="text" name="emp_id" disabled="disabled" value="${employeeVO.getEmp_id()}">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>사원번호</td>
+                                                <td>
+                                                	<input type="text" name="emp_no" disabled="disabled" value="${employeeVO.getEmp_no()}">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>이름</td>
+                                                <td>
+                                                	<input type="text" name="emp_name" value="${employeeVO.getEmp_name()}">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>이메일</td>
+                                                <td>
+                                                	<input type="text" name="emp_email" value="${employeeVO.getEmp_email()}">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>권한</td>
+                                                <td>
+                                                	<input type="text" name="emp_admin" value="${employeeVO.getEmp_admin()}">
+                                                </td>
+                                            </tr>
                                 </tbody>
                                 </table>
-                            </form>
+                            
                             <div>
                                 <tr>
-                                    <td colspan="2" align="center"><input type="submit"
-                                        value=" 새글 등록 " /></td>
+                                	
+                                    <td colspan="2" align="center">
+                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
+                                    </td>
                                 </tr>
                             </div>
+                            </form>
                     </div>
                             
 
