@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+<%-- ${productRateVO.getStock_in_sum}
+${productRateVO.getStock_out_sum} --%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,13 +217,13 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${productRateVO.getStock_rate()}%</div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                                            style="width: ${productRateVO.getStock_rate()}%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="200"></div>
                                                     </div>
                                                 </div>
                                             </div>

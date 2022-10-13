@@ -56,7 +56,7 @@ public class LogController {
 		} else {
 			ScriptAlertUtils.alertAndBackPage(res, "아이디가 없습니다.");
 		}
-		return "index";
+		return "redirect:/index";
 
 	}
 
