@@ -44,11 +44,11 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
+      <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -60,7 +60,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Main Home</span></a>
             </li>
@@ -83,11 +83,12 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
+                   <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
                         <a class="collapse-item" href="getAttendenceList.do">마이페이지</a>
-                        <a class="collapse-item" href="utilities-border.html">사원관리</a>
-                        <a class="collapse-item" href="utilities-border.html">근태</a>
-
+                        <c:if test="${signIn.getEmp_admin() == 'admin'}">
+                        	<a class="collapse-item" href="getEmployeeList.do">사원관리</a>
+                        	<a class="collapse-item" href="getAttendenceListAdmin.do">근태관리</a>
+						</c:if>
                     </div>
                 </div>
             </li>
@@ -115,7 +116,7 @@
             <!-- 재배현황 -->
             
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="getLineList.do">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>재배현황</span></a>
             </li>
@@ -160,62 +161,30 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                    <ul class="navbar-nav ml-auto col-3">
+	
+                        <div class="topbar-divider d-none d-lg-block"></div>
 
                         <!-- Log Out -->
+                        
                         <c:if test="${ signIn.getEmp_id() != NUll }">
                         
                         	<c:if test="${ attendence.getEmp_id() != NULL }">
-                        		<a class="btn btn-warning btn-sm" href="/updateAttendence.do">퇴근</a>
+                        		<small style="margin-left: 10px">${attendence.getAtt_work_on()}</small></br>
+                        		<a class="btn btn-warning btn-sm" style="margin-left: 10px" href="/updateAttendence.do">퇴근</a>
                         	</c:if>
                         	<c:if test="${ attendence.getEmp_id() == NULL }">                        		
-                        		<a class="btn btn-success btn-sm" href="/insertAttendence.do">출근</a>
+                        		<a class="btn btn-success btn-sm " style="margin-left: 10px" href="/insertAttendence.do">출근</a>
                         	</c:if>
                         	</br>
                         	
-                        	<a class="btn btn-success btn-sm" href="signOut.do">Log Out</a>
+                        	<a class="btn btn-success btn-sm "  style="margin-left: 10px" href="signOut.do">Log Out</a>
                         </c:if>
-						
+						<c:if test="${ signIn.getEmp_id() == NUll }">
+                        	<a class="btn btn-success btn-sm " style="margin-left: 10px"  href="/">Log In</a>					
+						</c:if>
                     </ul>
 
                 </nav>

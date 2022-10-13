@@ -15,7 +15,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping("/")
-	public String index() {
+	public String signIn() {
 		return "signIn";
 	}
 	@RequestMapping("/signUp")
@@ -30,7 +30,10 @@ public class HomeController {
 	public String statusList() {
 		return "statusList";
 	}
-
+	@RequestMapping("/index")
+	public String index() {
+		return "index";
+	}
 
 
 
