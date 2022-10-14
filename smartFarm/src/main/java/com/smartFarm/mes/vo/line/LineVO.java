@@ -8,7 +8,8 @@ public class LineVO {
 	private String line_temp;
 	private String line_hum;
 	private String line_status;
-
+	private String line_pip;
+	
 
 
 	@Override
@@ -17,7 +18,7 @@ public class LineVO {
 				+ line_status + "]";
 	}
 
-
+	
 	public String getLine_id() {
 		return line_id;
 	}
@@ -41,6 +42,16 @@ public class LineVO {
 	}
 	public void setLine_status(String line_status) {
 		this.line_status = line_status;
+	}
+
+
+	public String getLine_pip() {
+		return line_pip;
+	}
+
+
+	public void setLine_pip(String line_pip) {
+		this.line_pip = line_pip;
 	}
 
 

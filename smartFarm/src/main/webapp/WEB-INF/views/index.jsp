@@ -182,9 +182,30 @@ body {
 
 			<!-- Nav Item - Tables -->
 			<c:if test="${signIn.getEmp_admin() == 'admin'}">
-				<li class="nav-item"><a class="nav-link" href="tables.html">
-						<i class="fas fa-fw fa-table"></i> <span>재배관리</span>
-				</a></li>
+				
+                
+                <!-- 재배관리 사이드바 시작 -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiess"
+                        aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>재배관리</span>
+                    </a>
+                    <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilities"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
+                            <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
+                            <a class="collapse-item" href="getTrayList.do">TRAY</a>
+                            <a class="collapse-item" href="utilities-border.html">pip</a>
+
+                        </div>
+                    </div>
+                </li>
+                <!-- 재배관리 사이드바 끝 -->
+
+
+
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
 				</a></li>

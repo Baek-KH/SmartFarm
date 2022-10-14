@@ -105,17 +105,15 @@ public class PipDAO {
 	//   작물상세정보
 	public PipVO getPip(String pip_name) {
 
-		System.out.println("==>DAO g_list");
+		System.out.println("==>DAO getPip");
 		PipVO pip = new PipVO();
 
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(PIP_GET);
-			stmt.setString(2, pip_name);
+			stmt.setString(1, pip_name);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-
-				pip = new PipVO();
 				pip.setPip_no(rs.getInt("pip_no"));
 				pip.setPip_name(rs.getString("pip_name"));
 				pip.setPip_category(rs.getString("pip_category"));

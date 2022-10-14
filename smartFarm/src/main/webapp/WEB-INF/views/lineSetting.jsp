@@ -140,6 +140,7 @@
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
+
             
 
         </ul>
@@ -192,75 +193,78 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                  
-					<!-- Content Row -->
                     
+                    </div> -->
+
+                    <!-- Content Row -->
                     <div class="container-fluid">
-                            <form action="insertEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id"  value="아이디">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>비밀번호</td>
-                                                <td>
-                                                	<input type="password" name="emp_pw" value="패스워드">
-                                                </td>
-                                            </tr>
-                                     
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="이름">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="이메일">
-                                                </td>
-                                            </tr>
-                                          
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
                     
 
                     <!-- Content Row -->
-					
+                        <div class="row">
+                            <div class="card shadow mb-4 col">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">라인설정</h6>
+                                </div>
+                                
+                                <!-- 테이블 시작 -->
+                                <c:forEach items="${LineList}" var="LineVO">
+                               
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-3">Line${LineVO.getLine_id()}</th>
+                                                    <th class="col-3">온도</th>
+                                                    <th class="col-3">습도</th>
+                                                    <th class="col-3">PIP</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                                <tr>
+                                                    <td>현재값</td>
+                                                    <td>${LineVO.getLine_temp() }</td>
+                                                    <td>${LineVO.getLine_hum() }</td>
+                                                    <td>${LineVO.getLine_pip() }</td>
+                                                </tr>
+                                                <tr height=>
+                                                    <td>설정값</td>
+                                                    <td>
+                                                    	<form action="updateLineDetail.do">
+                                                    		<input type="hidden" name="line_id" value="${LineVO.getLine_id()}">
+                                                    		<input type="hidden" name="field" value="line_temp">
+ 	                                                       <input type="text" name="query" placeholder="목표'온도'을 입력해주세요"><input type="submit">
+                                                    	</form>
+                                                    </td>
+                                                    <td>
+                                                    	<form action="updateLineDetail.do">
+                                                    	<input type="hidden" name="line_id" value="${LineVO.getLine_id()}">
+                                                    	<input type="hidden" name="field" value="line_hum">
+                                                    	<input type="text" name="query" placeholder="목표'습도'을 입력해주세요"><input type="submit">
+                                                    	</form>
+                                                    </td>
+                                                    <td>
+                                                    	<form action="updateLineDetail.do">
+                                                    	<input type="hidden" name="line_id" value="${LineVO.getLine_id()}">
+                                                    	<input type="hidden" name="field" value="line_pip">
+                                                    	<input type="text" name="query" placeholder="목표'pip'을 입력해주세요"><input type="submit">
+                                                    	</form>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                </c:forEach>
+                              
+                            </div>
+                        </div>
                     
 
                     
@@ -280,7 +284,7 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-
+		
         </div>
         <!-- End of Content Wrapper -->
 

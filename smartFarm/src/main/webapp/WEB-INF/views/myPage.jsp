@@ -103,17 +103,36 @@
                     <span>재배현황</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>재배관리</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>보고페이지</span></a>
-            </li>
+           <!-- Nav Item - Tables -->
+			<c:if test="${signIn.getEmp_admin() == 'admin'}">
+				
+                
+                <!-- 재배관리 사이드바 시작 -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiess"
+                        aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>재배관리</span>
+                    </a>
+                    <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilities"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
+                            <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
+                            <a class="collapse-item" href="utilities-border.html">tray</a>
+                            <a class="collapse-item" href="utilities-border.html">pip</a>
+
+                        </div>
+                    </div>
+                </li>
+                <!-- 재배관리 사이드바 끝 -->
+
+
+
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
+				</a></li>
+			</c:if>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -219,39 +238,7 @@
                                                                 
                                         </c:forEach>
                                         </tbody>
-                                        <!-- <tfoot>
-                                            <tr>
-                                                <th>이름</th>
-                                                <th>직위</th>
-                                                <th>출근</th>
-                                                <th>퇴근</th>
-                                                <th>입사일</th>
-                                                <th>비고</th>
-                                                
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td>김씨</td>
-                                                <td>대리</td>
-                                                <td>09:10</td>
-                                                <td>18:18</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                                                                        
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>이씨</td>
-                                                <td>과장</td>
-                                                <td>13:00</td>
-                                                <td>18:00</td>
-                                                <td>2011/07/25</td>
-                                                <td>$170,750</td>
-                                                
-                                            </tr>
-                                            
-                                        </tbody> -->
+                                       
                                     </table>
                                 </div>
                             </div>

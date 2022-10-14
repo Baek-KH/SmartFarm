@@ -41,7 +41,22 @@ public class LineController {
 		model.addAttribute("vo",vo);
 		return "redirect:/getLineList.do";
 	}
+	
+	// update
+	@RequestMapping(value = "/updateLineDetail.do" , method = RequestMethod.GET)
+		public String updateLineDetail(
+				@RequestParam(value="field", defaultValue="", required=false) String field,
+				@RequestParam(value="query", defaultValue="", required=false) String query,
+				LineVO vo ,LineDAO LineDAO, Model model) {
 
+			System.out.println("updateLineDetail 진입");
+			LineDAO.updateLineDetail(vo, field, query);
+			model.addAttribute("vo",vo);
+			return "redirect:/getLineSettingList.do";
+		}
+	
+	
+	
 	// List
 	@RequestMapping(value = "/getLineList.do")
 	public String getLineList(LineDAO lineDAO, Model model) {
@@ -52,8 +67,17 @@ public class LineController {
 		model.addAttribute("LineList", lineList);
 		return "lineStatus";
 	}
+	// SettingList
+		@RequestMapping(value = "/getLineSettingList.do")
+		public String getLineSettingList(LineDAO lineDAO, Model model) {
 
+			System.out.println("getLineSettingList 진입");
 
+			List<LineVO> lineList = lineDAO.getLineList();
+			model.addAttribute("LineList", lineList);
+			return "lineSetting";
+		}
+	
 
 
 }
