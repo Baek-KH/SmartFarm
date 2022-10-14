@@ -115,7 +115,6 @@ public class AttendenceController {
 
 		HttpSession session = req.getSession();
 		AttendenceVO vo = (AttendenceVO) session.getAttribute("attendence");
-		System.out.println(vo.toString());
 		vo.setAtt_work_off(new Date());
 		AttendenceDAO.updateAttendenceOff(vo);
 		model.addAttribute("attendence",vo);

@@ -197,7 +197,7 @@ body {
                             <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
                             <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
                             <a class="collapse-item" href="getTrayList.do">TRAY</a>
-                            <a class="collapse-item" href="utilities-border.html">pip</a>
+                            <a class="collapse-item" href="getPipList.do">PIP</a>
 
                         </div>
                     </div>
