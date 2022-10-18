@@ -78,7 +78,7 @@
                 </div>
             </li>
 
-           <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
@@ -121,7 +121,7 @@
                             <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
                             <a class="collapse-item" href="utilities-border.html">tray</a>
                             <a class="collapse-item" href="utilities-border.html">pip</a>
-
+							
                         </div>
                     </div>
                 </li>
@@ -206,82 +206,59 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                  
-					<!-- Content Row -->
                     
+                    </div> -->
+
+                    <!-- Content Row -->
                     <div class="container-fluid">
-                            <form action="updateEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id" disabled="disabled" value="${employeeVO.getEmp_id()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>사원번호</td>
-                                                <td>
-                                                	<input type="text" name="emp_no" disabled="disabled" value="${employeeVO.getEmp_no()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="${employeeVO.getEmp_name()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="${employeeVO.getEmp_email()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>권한</td>
-                                                <td>
-                                                	<input type="text" name="emp_admin" value="${employeeVO.getEmp_admin()}">
-                                                </td>
-                                            </tr>
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    <input type="hidden" name="emp_id" value="${employeeVO.getEmp_id()}">
-                                    <input type="hidden" name="emp_no" value="${employeeVO.getEmp_no()}">
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
                     
 
                     <!-- Content Row -->
-					
-                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+                        </div>
 
+
+                        <div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+
+                                            <th>buyer_id</th>
+                                            <td>
+                                                <input class="col" type="text" placeholder="buyer_id 을 입력해주세요">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>업체명</th>
+                                            <td><input class="col" type="text" placeholder="업체명 을 입력해주세요"></td>
+                                        </tr>    
+                                            <th>pip이름</th>
+                                            <td><input class="col" type="text" placeholder="pip이름 을 입력해주세요"></td>
+                                        <tr>
+                                            <th>pip가격</th>
+                                            <td><input class="col" type="text" placeholder="pip가격 을 입력해주세요"></td>
+                                        </tr>
+                                        <tr>    
+                                            <th>pip수량</th>
+                                            <td><input class="col" type="text" placeholder="pip수량 을 입력해주세요"></td>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <input style="float:right;" class="btn btn-primary " type="submit" value="수정">
+                                <input style="float:right;" class="btn btn-danger " type="submit" value="삭제">
+                                
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                     
 
                 </div>
