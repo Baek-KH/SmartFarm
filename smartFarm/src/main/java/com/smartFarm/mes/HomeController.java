@@ -59,6 +59,9 @@ public class HomeController {
 	public String insertEmployee() {
 		return "insertEmployee";
 	}
-
+	@RequestMapping("/orders")
+	public String orders() {
+		return "orders";
+	}
 
 }

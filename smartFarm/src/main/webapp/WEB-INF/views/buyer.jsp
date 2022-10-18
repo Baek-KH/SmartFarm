@@ -127,6 +127,20 @@
                 </li>
                 <!-- 재배관리 사이드바 끝 -->
 
+                <!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
+                        aria-expanded="true" aria-controls="collapseTwo2">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>구매관리</span>
+                    </a>
+                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="buttons.html">Buyer</a>
+                            <a class="collapse-item" href="cards.html">Orders</a>
+                        </div>
+                    </div>
+                </li>
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
@@ -140,6 +154,7 @@
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
+
             
 
         </ul>
@@ -192,79 +207,114 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                  
-					<!-- Content Row -->
                     
+                    </div> -->
+
+                    <!-- Content Row -->
                     <div class="container-fluid">
-                            <form action="insertEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id"  value="아이디">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>비밀번호</td>
-                                                <td>
-                                                	<input type="password" name="emp_pw" value="패스워드">
-                                                </td>
-                                            </tr>
-                                     
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="이름">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="이메일">
-                                                </td>
-                                            </tr>
-                                          
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
                     
 
                     <!-- Content Row -->
-					
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Buyer</h6>
+                        </div>
+
+
+                        <div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>buyer_id</th>
+                                            <th>buyer_name</th>
+                                            <th>buyer_email</th>
+                                            <th>buyer_number</th>
+                                            <th>buyer_product</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td>
+                                                <input class="col" type="text" placeholder="buyer_id 을 입력해주세요">
+                                            </td>
+                                            <td><input class="col" type="text" placeholder="buyer_name 을 입력해주세요"></td>
+                                            <td><input class="col" type="text" placeholder="buyer_email 을 입력해주세요"></td>
+                                            <td><input class="col" type="text" placeholder="buyer_number 을 입력해주세요"></td>
+                                            <td><input class="col" type="text" placeholder="buyer_product 을 입력해주세요"></td>
+                                            
+                                        </tr>
+                                        
+                                    </tbody>
+
+                                    
+
+                                </table>
+                                <input style="float:right;" class="btn btn-primary " type="submit" value="등록">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+                <div class="container-fluid">
                     
 
+                    <!-- Content Row -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="">
+                                <label style="float:right">Search:
+                                    <input display="d-sm-inline-block" onkeyup="enterkey();" type="text"  placeholder="" width="200">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </label>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>buyer_id</th>
+                                            <th>buyer_name</th>
+                                            <th>buyer_email</th>
+                                            <th>buyer_number</th>
+                                            <th>buyer_product</th>
+                                            <th>buyer_date</th>
+                                            <th>비고</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>buyer_id 여기에 포이치</td>
+                                            <td>buyer_name</td>
+                                            <td>buyer_email</td>
+                                            <td>buyer_number</td>
+                                            <td>buyer_product</td>
+                                            <td>buyer_date</td>
+                                            <td class="col-2">
+                                                <input style="" class="btn btn-primary " type="submit" value="상세보기">
+                                                
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     
-
+                    
+                </div>
                 </div>
                 <!-- /.container-fluid -->
 

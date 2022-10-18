@@ -204,13 +204,86 @@
 
                         <!-- Page Heading -->
                         <h1 class="h3 mb-2 text-gray-800">사원 마이페이지</h1>
-                        <p class="mb-4">여기는 직원 근태만 다나옴 <a target="_blank"
-                                href="https://datatables.net">여기링크도 걸꺼까요?</a>.</p>
     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">사원 마이페이지 테이블</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">사원 정보</h6>
+                            </div>
+                            <div class="card-body">
+                            <div class="table-responsive">
+                            	<form action="" method="">
+                                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-3">아이디</th>
+                                            <th class="col-3">사원번호</th>
+                                            <th class="col-3">이름</th>
+                                            <th class="col-3">이메일</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td>
+                                            	<input class="" type="text" name="emp_id" placeholder="${signIn.getEmp_id()}" disabled="disabled">
+                                            	<input class="" type="hidden" name="emp_id" value="${signIn.getEmp_id()}">
+                                            </td>
+                                            <td>
+                                            	<input class="" type="text" name="emp_no" placeholder="${signIn.getEmp_no()}"  disabled="disabled">
+                                            	<input class="" type="hidden" name="emp_no" value="${signIn.getEmp_no()}"  >
+                                            </td>
+                                            <td>
+                                            	<input class="" type="text" name="emp_name" placeholder="${signIn.getEmp_name()}"  disabled="disabled">
+                                            	<input class="" type="hidden" name="emp_name" value="${signIn.getEmp_name()}"  >
+                                            </td>
+                                            <td>
+                                            	<input type="text" name="emp_email" placeholder="${signIn.getEmp_email()}" disabled="disabled">
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                    </tbody>
+
+                                    <thead>
+                                        <tr>
+                                            <th class="">패스워드</th>
+                                            <th class="">권한</th>
+                                            <th class=""></th>
+                                            <th class=""></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                        	<td>
+                                            <input class="" type="text" name="emp_pw" placeholder="${signIn.getEmp_pw()}" disabled="disabled" >
+                                        	</td>
+                                            <td>
+                                            <input class="" type="text" name="emp_admin()" placeholder="${signIn.getEmp_name()}"  disabled="disabled">
+                                            <input class="" type="hidden" name="emp_admin()" value="${signIn.getEmp_name()}"  >
+                                            </td>
+                                            
+                                        </tr>  
+                                        
+                                    </tbody>
+
+                                </table>
+                               		<small class="float-right">사원 정보 수정은 관리자에게 문의하세요</small>
+                            	</form>
+                            </div>
+                        </div>
+                        <!-- 사원 정보 -->
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">근태 기록</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -218,7 +291,6 @@
                                         <thead>
                                             <tr>
                                                 <th>이름</th>
-                                          
                                                 <th>출근</th>
                                                 <th>퇴근</th>
                                                 <th>비고</th>
@@ -234,8 +306,6 @@
                                                 <td>${attendence.getAtt_work_off()}</td>
                                                 <td>${attendence.getAtt_dayoff()}</td>
                                             </tr>
-                                        
-                                                                
                                         </c:forEach>
                                         </tbody>
                                        
@@ -262,7 +332,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; B팀 근데 팀명이 머였죠? 2022</span>
+                        <span>Copyright &copy; PROJECT B 2022</span>
                     </div>
                 </div>
             </footer>

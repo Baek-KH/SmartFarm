@@ -194,18 +194,15 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">사원 근태 관리</h1>
+                        
                     </div>
 
                     <!-- Content Row -->
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">사원 마이페이지</h1>
-                        <p class="mb-4">여기는 직원 근태만 다나옴 <a target="_blank"
-                                href="https://datatables.net">여기링크도 걸꺼까요?</a>.</p>
+                     
     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
@@ -261,7 +258,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; B팀 근데 팀명이 머였죠? 2022</span>
+                        <span>Copyright &copy; PROJECT B 2022</span>
                     </div>
                 </div>
             </footer>

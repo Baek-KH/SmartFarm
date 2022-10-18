@@ -264,7 +264,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; B팀 근데 팀명이 머였죠? 2022</span>
+                        <span>Copyright &copy; PROJECT B 2022</span>
                     </div>
                 </div>
             </footer>

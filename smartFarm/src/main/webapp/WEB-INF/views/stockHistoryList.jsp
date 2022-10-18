@@ -198,9 +198,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">입/출고 관리</h1>
+                        
                     </div>
 
                   
@@ -236,29 +235,25 @@
                                     </tr>
                                 </tbody>
                                 </table>
-                            <div>
-                                <tr>
-                                    <td colspan="2" align="center">
                                     	<input type="submit" value=" 재고 등록 " class="btn btn-primary" 
-                                    		id="btnSubmit"style="float: right;"/>
-                                    </td>
-                                </tr>
-                            </div>
+                                    		id="btnSubmit" style="float: right;"/>
+                           
                             </form>
                     </div>
+                  	
                   
                   
                   
                   
-                  
-                  
+                  <div class="container-fixed">
+                  </div>
                   
                   
 					<!-- Content Second -->
                     
                     <!-- 입고정보 출고정보 큰틀 -->
-                    <div class="row">
-
+                    <div class="container-fluid">
+					<div class="container">
                      <!-- 입고정보 -->
                      <div class="col-lg-6" style="width:100%; float:left;">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -364,6 +359,7 @@
                       
  					</div>
                 </div>
+                </div>
             </div>
                     <!-- Content Row -->
 					
@@ -381,7 +377,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; B팀 근데 팀명이 머였죠? 2022</span>
+                        <span>Copyright &copy; PROJECT B 2022</span>
                     </div>
                 </div>
             </footer>

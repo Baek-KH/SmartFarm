@@ -261,9 +261,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> ${ signIn.getEmp_admin() == 'admin' }..  </a>
+                        <h1 class="h3 mb-0 text-gray-800">라인 현황</h1>
+                    
                     </div>
 
                     <!-- Content Row -->
@@ -280,7 +279,7 @@
                                 <c:if test="${  box     }">background-color:red;</c:if>
                                 <c:if test="${  box     }">background-color:blue;</c:if>
                             " >
-                            <h1>${LineVO.getLine_id() }</h1>
+                            <h1>${LineVO.getLine_id() }번 라인</h1>
                             </div>
                             <div>
                             <ul class="gnb">
@@ -327,8 +326,27 @@
                                                 
                                             </tr>
                                             <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
+                                                <td>온도 제어 장치</td>
+                                                <td>                                                	
+	                                                <c:if test="${LineVO.getLine_status().length()>5}"
+		                                            >가동</c:if>
+		                                            <c:if test="${LineVO.getLine_status().length()<5 && LineVO.getLine_status().length()>1 }"
+		                                            >관리 중</c:if>
+	                                                <c:if test="${LineVO.getLine_status().length()==0}"
+	                                                >정지</c:if>
+                                                </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>습도 제어 장치</td>
+                                                <td>
+                                                	 <c:if test="${LineVO.getLine_status().length()>5}"
+		                                            >관리 중</c:if>
+		                                            <c:if test="${LineVO.getLine_status().length()<5 && LineVO.getLine_status().length()>1 }"
+		                                            >가동</c:if>
+	                                                <c:if test="${LineVO.getLine_status().length()==0}"
+	                                                >정지</c:if>
+                                                </td>
                                                 
                                             </tr>
                                             
@@ -341,181 +359,14 @@
                                 <c:if test="${  box     }">background-color:red;</c:if>
                                 <c:if test="${  box     }">background-color:blue;</c:if>
                             " >
-                            1라인 에러표시
+                          
                             </div>
                         </div>
                     	</c:forEach>
                     
                     
                     
-                    <%-- 
-                        <div class="col">
-                            <div class="line" style = "padding: 0px 0px 10px 0px;
-                                <c:if test="${  box     }">background-color:red;</c:if>
-                                <c:if test="${  box     }">background-color:blue;</c:if>
-                            " >
-                            <h1>2라인</h1>
-                            </div>
-                            <div>
-                            <ul class="gnb">
-                                <li><div><a href="#" class="tip" >1번<span>1줄 여기다가 머 넣으면 될려나?머야이건 <br>
-                                                                    2줄 여기다 호에엥 <br>
-                                                                    3줄 메차 <br>
-                                                                    4줄 쿠차    </span> </a></div></li>
-                                <li><a href="#" class="tip">2번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">3번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">4번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">5번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">6번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">7번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">8번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                            </ul>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>날짜</th>
-                                                <th>에러명</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div style = "padding: 0px 0px 0px 0px; text-align: center;
-                                <c:if test="${  box     }">background-color:red;</c:if>
-                                <c:if test="${  box     }">background-color:blue;</c:if>
-                            " >
-                            2라인 에러표시
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="line" style = "padding: 0px 0px 10px 0px;
-                                <c:if test="${  box     }">background-color:red;</c:if>
-                                <c:if test="${  box     }">background-color:blue;</c:if>
-                            " >
-                            <h1>3라인</h1>
-                            </div>
-                            <div>
-                            <ul class="gnb">
-                                <li><div><a href="#" class="tip" >1번<span>1줄 여기다가 머 넣으면 될려나?머야이건 <br>
-                                                                    2줄 여기다 호에엥 <br>
-                                                                    3줄 메차 <br>
-                                                                    4줄 쿠차    </span> </a></div></li>
-                                <li><a href="#" class="tip">2번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">3번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">4번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">5번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">6번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">7번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">8번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                            </ul>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>날짜</th>
-                                                <th>에러명</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div style = "padding: 0px 0px 0px 0px; text-align: center;
-                                <c:if test="${  box     }">background-color:red;</c:if>
-                                <c:if test="${  box     }">background-color:blue;</c:if>
-                            " >
-                            3라인 에러표시
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="line" style = "padding: 0px 0px 10px 0px;
-                                <c:if test="${  box     }">background-color:red;</c:if>
-                                <c:if test="${  box     }">background-color:blue;</c:if>
-                            " >
-                            <h1>4라인</h1>
-                            </div>
-                            <div>
-                            <ul class="gnb">
-                                <li><div><a href="#" class="tip" >1번<span>1줄 여기다가 머 넣으면 될려나?머야이건 <br>
-                                                                    2줄 여기다 호에엥 <br>
-                                                                    3줄 메차 <br>
-                                                                    4줄 쿠차    </span> </a></div></li>
-                                <li><a href="#" class="tip">2번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">3번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">4번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">5번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">6번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">7번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">8번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                            </ul>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>날짜</th>
-                                                <th>에러명</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div style = "padding: 0px 0px 0px 0px; text-align: center;
-                                <c:if test="${  box     }">background-color:red;</c:if>
-                                <c:if test="${  box   }">background-color:blue;</c:if>
-                            " >
-                            4라인 에러표시
-                            </div>
-                        </div> --%>
+                    
 
                     <!-- Content Row -->
                     <div class="row">
@@ -543,7 +394,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; B팀 근데 팀명이 머였죠? 2022</span>
+                        <span>Copyright &copy; PROJECT B 2022</span>
                     </div>
                 </div>
             </footer>

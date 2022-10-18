@@ -194,9 +194,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">사원 관리</h1>
+                        </br>
                     </div>
 
                   
@@ -229,7 +228,7 @@
 	                                                <form action="deleteEmployee.do">
 	                                                	<a class="btn btn-success" href="getEmployee.do?emp_id=${Employee.getEmp_id()}">상세보기</a>
 	                                                	<input type="hidden" name="emp_id" value="${Employee.getEmp_id()}">
-	                                                	<input type="submit" class="btn btn-danger">
+	                                                	<input type="submit" class="btn btn-danger" value="삭제 ">
 	                                                </form>
                                                 </td>
                                             </tr>
@@ -243,7 +242,7 @@
                                 <tr>
                                 	
                                     <td colspan="2" align="center">
-                                    <a href="/insertEmployee" class="btn btn-info">새글 등록</a>
+                                    <a href="/insertEmployee" class="btn btn-info">사원 등록</a>
                                     </td>
                                 </tr>
                             </div>
@@ -270,7 +269,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; B팀 근데 팀명이 머였죠? 2022</span>
+                        <span>Copyright &copy; PROJECT B 2022</span>
                     </div>
                 </div>
             </footer>

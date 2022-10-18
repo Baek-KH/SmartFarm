@@ -207,10 +207,8 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-						<a href="#"
-							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+						<h1 class="h3 mb-0 text-gray-800">재고 목록</h1>
+					
 					</div>
 
 
@@ -218,7 +216,13 @@
 
 					<div class="container-fluid">
 
+						<div class="card shadow mb-4">
+			
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">물품 등록</h6>
+						</div>
 
+						<div class="card-body">
 						<form action="insertStock.do" method="post">
 
 							<table class="table table-bordered" id="dataTable" width="50%"
@@ -261,16 +265,14 @@
 						</form>
 
 					</div>
-
 					<!-- Content Second -->
 
 					<!-- 입고정보 출고정보 큰틀 -->
-					<div class="row">
+					
 
 
-						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h6 class="m-0 font-weight-bold text-primary">맨아래요아래 관련</h6>
+								<h6 class="m-0 font-weight-bold text-primary">재고 리스트</h6>
 							</div>
 
 							<div class="card-body">
@@ -339,7 +341,8 @@
 	                               </form>
 								</div>
 							</div>
-						</div>
+						
+					</div>
 					</div>
 					<!-- Content Row -->
 
@@ -357,7 +360,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; B팀 근데 팀명이 머였죠? 2022</span>
+						<span>Copyright &copy; PROJECT B 2022</span>
 					</div>
 				</div>
 			</footer>

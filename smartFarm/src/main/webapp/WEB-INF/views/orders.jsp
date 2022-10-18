@@ -121,7 +121,7 @@
                             <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
                             <a class="collapse-item" href="utilities-border.html">tray</a>
                             <a class="collapse-item" href="utilities-border.html">pip</a>
-
+							
                         </div>
                     </div>
                 </li>
@@ -140,6 +140,7 @@
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
+
             
 
         </ul>
@@ -192,77 +193,100 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                  
-					<!-- Content Row -->
                     
+                    </div> -->
+
+                    <!-- Content Row -->
                     <div class="container-fluid">
-                            <form action="insertEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id"  value="아이디">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>비밀번호</td>
-                                                <td>
-                                                	<input type="password" name="emp_pw" value="패스워드">
-                                                </td>
-                                            </tr>
-                                     
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="이름">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="이메일">
-                                                </td>
-                                            </tr>
-                                          
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
                     
 
                     <!-- Content Row -->
-					
-                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+                        </div>
 
+
+                        <div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            	<form action="insertOrders.do" method="POST">
+                                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-3">주문 아이디</th>
+                                            <th class="col-3">구매처 아이디</th>
+                                            <th class="col-3">물품명</th>
+                                            <th class="col-3">물품아이디</th>
+                                         
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td>
+                                                <input name="" type="text" placeholder="자동 생성" disabled="disabled">
+                                            </td>
+                                            <td><input name="buyer_id" type="text" placeholder="거래처 아이디를 입력해 주세요"></td>
+                                            <td><input name="orders_product" type="text" placeholder="물품명을 입력해주세요"></td>
+                                            <td><input name="orders_qty"type="text" placeholder="수량을 입력해주세요"></td>
+                                            
+                                        </tr>
+                                        
+                                    </tbody>
+
+                                
+                                </table>
+                                <input style="float:right;" class="btn btn-primary " type="submit" value="등록">
+                            	</form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="card-body">
+                            <h4>pip list</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>발주 아이디</th>
+                                            <th>구매처 아이디</th>
+                                            <th>물품명</th>
+                                            <th>물품수량</th>
+                                            <th>주문일</th>
+                                            <th>도착예정일</th>
+                                            <th>비고</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <c:forEach items="${OrdersList}"  var="ordersVO">
+                                        <tr>
+                                            <th>${ordersVO.getOrders_id()}</th>
+                                            <th>${ordersVO.getBuyer_id()}</th>
+                                            <th>${ordersVO.getOrders_product()}</th>
+                                            <th>${ordersVO.getOrders_qty()}</th>
+                                            <th>${ordersVO.getOrders_date()}</th>
+                                            <th>${ordersVO.getOrders_arr_date()}</th>
+                                            <th class="col-2">
+                                                <input style="" class="btn btn-primary " type="submit" value="수정">
+                                                <input style="" class="btn btn-primary " type="submit" value="삭제">
+                                            </th>
+                                            
+                                        </tr>
+                                    </c:forEach>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                     
 
                 </div>
