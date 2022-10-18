@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>signIn</title>
 
    <!-- Custom fonts for this template-->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,73 +24,79 @@
     <!-- Custom styles for this template-->
     <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
+<!-- icon import -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+<!-- awesome icon -->
+<script src="https://kit.fontawesome.com/03a2ebe789.js" crossorigin="anonymous"></script>
+
     
 </head>
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+	<div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		<!-- Sidebar -->
+		<ul
+			class="navbar-nav  sidebar sidebar-dark accordion"
+			style="background-color:rgba(46,139,87)"
+			id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-text mx-1" style="font-size:2.0em;">SF <sup></sup></div>
+			<!-- Sidebar - Brand -->
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index">
+				<div class="sidebar-brand-text mx-1" style="font-size:2.0em;">SF <sup></sup></div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    
-                    <span>Main Home</span></a>
-            </li>
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active"><a class="nav-link" href="/index">
+					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
+			</a></li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+			
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            
-            </div>
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
 
-            
 
-        </ul>
-        <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+		</ul>
+		<!-- End of Sidebar -->
 
-            <!-- Main Content -->
-            <div id="content">
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+			<!-- Main Content -->
+			<div id="content">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow"
+					style="background-color:rgba(46,139,87)"
+					>
+					
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop"
+						class="btn btn-link d-md-none rounded-circle mr-3">
+						
+					</button>
+					<div>
+						<h1 class="h3 mb-0 text-800"  style="color:white;" align="left"></h1>
+					</div>
 
-                    <!-- Topbar Search -->
-                    
+					<!-- Topbar Navbar -->
+					
+					
+					
 
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        
-
-                        
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
+				</nav>
+				<!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -126,7 +132,7 @@
                                                                 Me</label>
                                                         </div>
                                                     </div>
-                                                    <input type="submit" value="SignIn" class="btn btn-primary btn-user btn-block">
+                                                    <input type="submit" value="SignIn" class="btn btn-user btn-block" style="background-color:rgba(46,139,87); color:white;">
                                              
                                                     <hr>
                                                     

@@ -18,7 +18,7 @@ ${productRateVO.getStock_out_sum} --%>
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Dashboard</title>
+<title>SF main page</title>
 
 <!-- Custom fonts for this template-->
 <link href="/resources/vendor/fontawesome-free/css/all.min.css"
@@ -29,6 +29,13 @@ ${productRateVO.getStock_out_sum} --%>
 
 <!-- Custom styles for this template-->
 <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
+
+<!-- icon import -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+<!-- awesome icon -->
+<script src="https://kit.fontawesome.com/03a2ebe789.js" crossorigin="anonymous"></script>
+
 
 <style>
 * {
@@ -108,27 +115,21 @@ body {
 
 		<!-- Sidebar -->
 		<ul
-			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			class="navbar-nav  sidebar sidebar-dark accordion"
+			style="background-color:rgba(46,139,87)"
 			id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a
-				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="/index">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-laugh-wink"></i>
-				</div>
-				<div class="sidebar-brand-text mx-3">
-					SF <sup></sup>
-				</div>
-			</a>
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index">
+				<div class="sidebar-brand-text mx-1" style="font-size:2.0em;">SF <sup></sup></div>
+            </a>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/index">
-					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Main Home</span>
+					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -140,17 +141,17 @@ body {
 			<!-- 사원관리 -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseUtilities"
-				aria-expanded="true" aria-controls="collapseUtilities"> <i
-					class="fas fa-fw fa-wrench"></i> <span>사원관리</span>
+				aria-expanded="true" aria-controls="collapseUtilities"> 
+				<i class="fa-solid fa-person"></i> <span>사원관리</span>
 			</a>
 				<div id="collapseUtilities" class="collapse"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
-						<a class="collapse-item" href="getAttendenceList.do">마이페이지</a>
+						<a class="collapse-item" href="getAttendenceList.do"><i class="fa-regular fa-id-card"></i> 마이페이지</a>
 						<c:if test="${signIn.getEmp_admin() == 'admin'}">
-							<a class="collapse-item" href="getEmployeeList.do">사원관리</a>
-							<a class="collapse-item" href="getAttendenceListAdmin.do">근태관리</a>
+							<a class="collapse-item" href="getEmployeeList.do"><i class="fa-solid fa-people-arrows"></i> 사원관리</a>
+							<a class="collapse-item" href="getAttendenceListAdmin.do"><i class="fa-solid fa-people-roof"></i> 근태관리</a>
 						</c:if>
 					</div>
 				</div></li>
@@ -158,15 +159,15 @@ body {
 			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>입/출</span>
+				aria-expanded="true" aria-controls="collapseTwo"> 
+				<i class="fa-solid fa-cart-flatbed"></i><span>입/출</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<%-- <h6 class="collapse-header">Custom Components:</h6> 여기다 글쓰면 위에 주석처럼 달림 --%>
-						<a class="collapse-item" href="getStockHistoryList.do">입출/등록</a> <a
-							class="collapse-item" href="getStockList.do">재고</a>
+						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> <a
+							class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
 					</div>
 				</div></li>
 
@@ -177,7 +178,7 @@ body {
 			<!-- 재배현황 -->
 
 			<li class="nav-item"><a class="nav-link" href="getLineList.do">
-					<i class="fas fa-fw fa-chart-area"></i> <span>재배현황</span>
+				<i class="fa-solid fa-leaf"></i> <span>재배현황</span>
 			</a></li>
 
 			<!-- Nav Item - Tables -->
@@ -188,17 +189,17 @@ body {
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiess"
                         aria-expanded="true" aria-controls="collapseUtilities">
-                        <i class="fas fa-fw fa-wrench"></i>
+                 	  <i class="fa-solid fa-seedling"></i>
                         <span>재배관리</span>
                     </a>
                     <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
-                            <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
-                            <a class="collapse-item" href="getTrayList.do">TRAY</a>
-                            <a class="collapse-item" href="getPipList.do">PIP</a>
-                            <a class="collapse-item" href="getOrdersList.do">TEST</a>
+                            <a class="collapse-item" href="getLineSettingList.do"><i class="fa-solid fa-gear"></i> 라인설정</a>
+                            <a class="collapse-item" href="getTrayList.do"><i class="fa-solid fa-plate-wheat"></i> TRAY</a>
+                            <a class="collapse-item" href="getPipList.do"><i class="fa-solid fa-mound"></i> PIP</a>
+                          
 
                         </div>
                     </div>
@@ -208,20 +209,20 @@ body {
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
                         aria-expanded="true" aria-controls="collapseTwo2">
-                        <i class="fas fa-fw fa-cog"></i>
+                        <i class="fa-solid fa-wallet"></i>
                         <span>구매관리</span>
                     </a>
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="getBuyerList.do">Buyer</a>
-                            <a class="collapse-item" href="getOrdersList.do">Orders</a>
+                            <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> Buyer</a>
+                            <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> Orders</a>
                         </div>
                     </div>
                 </li>
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
-						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
+						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
 			</c:if>
 			<!-- Divider -->
@@ -245,43 +246,52 @@ body {
 
 				<!-- Topbar -->
 				<nav
-					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+					class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow"
+					style="background-color:rgba(46,139,87)"
+					>
+					
 					<!-- Sidebar Toggle (Topbar) -->
 					<button id="sidebarToggleTop"
 						class="btn btn-link d-md-none rounded-circle mr-3">
-						<i class="fa fa-bars"></i>
+						
 					</button>
-
+					<div>
+						<h1 class="h3 mb-0 text-800"  style="color:white;" align="left"></h1>
+					</div>
 
 					<!-- Topbar Navbar -->
-					<ul class="navbar-nav ml-auto col-3">
-
+					
+					
+					<ul class="navbar-nav ml-auto col-5">
+						
 						<div class="topbar-divider d-none d-lg-block"></div>
 
 						<!-- Log Out -->
-
+						
 						<c:if test="${ signIn.getEmp_id() != NUll }">
 
 							<c:if test="${ attendence.getEmp_id() != NULL }">
-								<small style="margin-left: 10px">${attendence.getAtt_work_on()}</small>
-								</br>
-								<a class="btn btn-warning btn-sm" style="margin-left: 10px"
+								<small style="margin-left: 10px; color: white; text-align: center;">${attendence.getAtt_work_on()}</small>
+								
+								<a class="btn btn-warning btn-sm" style="margin-left: 10px; border-color:white; width: 40%; text-align: center;"
 									href="/updateAttendence.do">퇴근</a>
 							</c:if>
 							<c:if test="${ attendence.getEmp_id() == NULL }">
-								<a class="btn btn-success btn-sm " style="margin-left: 10px"
+								<a class="btn btn-success btn-sm " style="margin-left: 10px; border-color:white; width: 40%; text-align: center; "
 									href="/insertAttendence.do">출근</a>
 							</c:if>
-							</br>
+							
+							
 
-							<a class="btn btn-success btn-sm " style="margin-left: 10px"
+							<a class="btn btn-success btn-sm " style="margin-left: 10px; border-color:white; width: 40%; text-align: center;  "
 								href="signOut.do">Log Out</a>
 						</c:if>
 						<c:if test="${ signIn.getEmp_id() == NUll }">
-							<a class="btn btn-success btn-sm " style="margin-left: 10px"
+							<a class="btn btn-success btn-sm " style="margin-left: 10px; border-color:white; width: 40%; text-align: center;"
 								href="/">Log In</a>
 						</c:if>
+						
+						
 					</ul>
 
 				</nav>
@@ -293,11 +303,9 @@ body {
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-						<a href="#"
-							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							class="fas fa-download fa-sm text-white-50"></i> ${ signIn.getEmp_admin() == 'admin' }..
-						</a>
+						
+						<h1 class="h3 mb-0 text-gray-800"></h1>
+						
 					</div>
 
 					<!-- Content Row -->
@@ -326,7 +334,7 @@ body {
 											</div>
 										</div>
 										<div class="col-auto">
-											<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+											<i class="fa-solid fa-arrows-spin"></i>
 										</div>
 									</div>
 								</div>
