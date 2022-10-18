@@ -78,7 +78,7 @@
                 </div>
             </li>
 
-           <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
@@ -118,7 +118,7 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
-                            <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
+                            <a class="collapse-item" href="utilities-color.html">라인설정</a>
                             <a class="collapse-item" href="utilities-border.html">tray</a>
                             <a class="collapse-item" href="utilities-border.html">pip</a>
 
@@ -127,20 +127,7 @@
                 </li>
                 <!-- 재배관리 사이드바 끝 -->
 
-                <!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
-                        aria-expanded="true" aria-controls="collapseTwo2">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>구매관리</span>
-                    </a>
-                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="getBuyerList.do">Buyer</a>
-                            <a class="collapse-item" href="getOrdersList.do">Orders</a>
-                        </div>
-                    </div>
-                </li>
+
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
@@ -206,81 +193,64 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                  
-					<!-- Content Row -->
                     
+                    </div> -->
+
+                    <!-- Content Row -->
                     <div class="container-fluid">
-                            <form action="updateEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id" disabled="disabled" value="${employeeVO.getEmp_id()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>사원번호</td>
-                                                <td>
-                                                	<input type="text" name="emp_no" disabled="disabled" value="${employeeVO.getEmp_no()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="${employeeVO.getEmp_name()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="${employeeVO.getEmp_email()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>권한</td>
-                                                <td>
-                                                	<input type="text" name="emp_admin" value="${employeeVO.getEmp_admin()}">
-                                                </td>
-                                            </tr>
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    <input type="hidden" name="emp_id" value="${employeeVO.getEmp_id()}">
-                                    <input type="hidden" name="emp_no" value="${employeeVO.getEmp_no()}">
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
                     
 
                     <!-- Content Row -->
-					
-                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">tray</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="">
+                                <form action="getTrayListSearch.do">
+                                <label style="float:right">Search:
+                                    <input display="d-sm-inline-block" name="query" onkeyup="enterkey();" type="text"  placeholder="" width="200">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </label>
+                                </form>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>tray_id</th>
+                                            <th>line_id</th>
+                                            <th>pip_name</th>
+                                            <th>pip_qty</th>
+                                            <th>pip_period</th>
+                                            <th>tray_start_date</th>
+                                            <th>tray_end_date</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                    <c:forEach items="${TrayList}" var="trayVO" >
+                                        <tr>
+                                            <th>${trayVO.getTray_id()}</th>
+                                            <th>${trayVO.getLine_id()}</th>
+                                            <th>${trayVO.getPip_name()}</th>
+                                            <th>${trayVO.getPip_qty()}</th>
+                                            <th>${trayVO.getPip_period()}</th>
+                                            <th>${trayVO.getTray_start_date()}</th>
+                                            <th>${trayVO.getTray_end_date()}</th>
+                                        </tr>
+                                    </c:forEach>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
 
                     
 

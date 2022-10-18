@@ -78,7 +78,7 @@
                 </div>
             </li>
 
-           <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
@@ -127,20 +127,7 @@
                 </li>
                 <!-- 재배관리 사이드바 끝 -->
 
-                <!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
-                        aria-expanded="true" aria-controls="collapseTwo2">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>구매관리</span>
-                    </a>
-                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="getBuyerList.do">Buyer</a>
-                            <a class="collapse-item" href="getOrdersList.do">Orders</a>
-                        </div>
-                    </div>
-                </li>
+
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
@@ -153,7 +140,6 @@
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
-
             
 
         </ul>
@@ -165,6 +151,7 @@
             <!-- Main Content -->
             <div id="content">
 
+                <!-- Topbar -->
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -207,79 +194,56 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">사원 근태 관리</h1>
+                        
                     </div>
-
-                  
-					<!-- Content Row -->
-                    
-                    <div class="container-fluid">
-                            <form action="updateEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id" disabled="disabled" value="${employeeVO.getEmp_id()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>사원번호</td>
-                                                <td>
-                                                	<input type="text" name="emp_no" disabled="disabled" value="${employeeVO.getEmp_no()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="${employeeVO.getEmp_name()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="${employeeVO.getEmp_email()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>권한</td>
-                                                <td>
-                                                	<input type="text" name="emp_admin" value="${employeeVO.getEmp_admin()}">
-                                                </td>
-                                            </tr>
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    <input type="hidden" name="emp_id" value="${employeeVO.getEmp_id()}">
-                                    <input type="hidden" name="emp_no" value="${employeeVO.getEmp_no()}">
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
-                    
 
                     <!-- Content Row -->
-					
+                    <div class="container-fluid">
+
+                        <!-- Page Heading -->
+                     
+    
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">사원 마이페이지 테이블</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                         <thead>
+                                            <tr>
+                                                <th>이름</th>
+                                                <th>출근</th>
+                                                <th>퇴근</th>
+                                                <th>날짜</th>
+                                                <th>비고</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        
+		                                 <tbody>
+                                        <c:forEach items="${AttendenceList}" var="attendence">
+                                            <tr>
+                                                <td>${attendence.getEmp_name()}</td>
+                                                <td>${attendence.getAtt_work_on()}</td>
+                                                <td>${attendence.getAtt_work_off()}</td>
+                                                <td>${attendence.getAtt_work_date_str()}</td>
+                                                <td>${attendence.getAtt_dayoff()}</td>
+                                            </tr>
+            
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <!-- Content Row -->
+
                     
 
                     

@@ -32,53 +32,56 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+       <!-- Sidebar -->
+		<ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index">
-                <div class="sidebar-brand-text mx-1" style="font-size:2.0em;">SF <sup></sup></div>
-            </a>
+			<!-- Sidebar - Brand -->
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="/index">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-laugh-wink"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">
+					SF <sup></sup>
+				</div>
+			</a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/index">
-                    
-                    <span>Main Home</span></a>
-            </li>
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active"><a class="nav-link" href="/index">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Main Home</span>
+			</a></li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+			<!-- Divider -->
+			<hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            
-            </div>
+			<!-- Heading -->
+			<div class="sidebar-heading"></div>
 
-            <!-- 사원관리 -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>사원관리</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
-                        <a class="collapse-item" href="getAttendenceList.do">마이페이지</a>
-                        <c:if test="${signIn.getEmp_admin() == 'admin'}">
-                        	<a class="collapse-item" href="getEmployeeList.do">사원관리</a>
-                        	<a class="collapse-item" href="getAttendenceListAdmin.do">근태관리</a>
+			<!-- 사원관리 -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities"
+				aria-expanded="true" aria-controls="collapseUtilities"> <i
+					class="fas fa-fw fa-wrench"></i> <span>사원관리</span>
+			</a>
+				<div id="collapseUtilities" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
+						<a class="collapse-item" href="getAttendenceList.do">마이페이지</a>
+						<c:if test="${signIn.getEmp_admin() == 'admin'}">
+							<a class="collapse-item" href="getEmployeeList.do">사원관리</a>
+							<a class="collapse-item" href="getAttendenceListAdmin.do">근태관리</a>
 						</c:if>
-                    </div>
-                </div>
-            </li>
+					</div>
+				</div></li>
 
-           <!-- Nav Item - Utilities Collapse Menu -->
+			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
@@ -119,15 +122,15 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
                             <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
-                            <a class="collapse-item" href="utilities-border.html">tray</a>
-                            <a class="collapse-item" href="utilities-border.html">pip</a>
+                            <a class="collapse-item" href="getTrayList.do">TRAY</a>
+                            <a class="collapse-item" href="getPipList.do">PIP</a>
+                            <a class="collapse-item" href="getOrdersList.do">TEST</a>
 
                         </div>
                     </div>
                 </li>
                 <!-- 재배관리 사이드바 끝 -->
-
-                <!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
+	    		<!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
                         aria-expanded="true" aria-controls="collapseTwo2">
@@ -142,6 +145,7 @@
                     </div>
                 </li>
 
+
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
 				</a></li>
@@ -154,10 +158,10 @@
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
 
-            
 
-        </ul>
-        <!-- End of Sidebar -->
+
+		</ul>
+		<!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -206,82 +210,55 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                  
-					<!-- Content Row -->
                     
+                    </div> -->
+
+                    <!-- Content Row -->
                     <div class="container-fluid">
-                            <form action="updateEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id" disabled="disabled" value="${employeeVO.getEmp_id()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>사원번호</td>
-                                                <td>
-                                                	<input type="text" name="emp_no" disabled="disabled" value="${employeeVO.getEmp_no()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="${employeeVO.getEmp_name()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="${employeeVO.getEmp_email()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>권한</td>
-                                                <td>
-                                                	<input type="text" name="emp_admin" value="${employeeVO.getEmp_admin()}">
-                                                </td>
-                                            </tr>
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    <input type="hidden" name="emp_id" value="${employeeVO.getEmp_id()}">
-                                    <input type="hidden" name="emp_no" value="${employeeVO.getEmp_no()}">
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
                     
 
                     <!-- Content Row -->
-					
-                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+                        </div>
 
+
+                        <div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            <form action="updateOrders.do" method="post">
+                                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+
+                                            <th>거래처 아이디</th>
+                                            <td>
+                                                <input class="col" name="buyer_id" type="text" value="${ordersVO.getBuyer_id() }">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>물품명</th>
+                                            <td><input class="col" name="orders_product" type="text" value="${ordersVO.getOrders_product() }"></td>
+                                        </tr>    
+                                        
+                                            <th>물품수량</th>
+                                            <td><input class="col" name="orders_qty" type="text" value="${ordersVO.getOrders_qty() }"></td>
+                                     
+                                    </thead>
+                                </table>
+                                <input type="hidden" name="orders_id" value="${ordersVO.getOrders_id() }" >
+                                <input style="float:right;" class="btn btn-primary " type="submit" value="수정">
+                                <a href="deleteOrders.do?orders_id=${ordersVO.getOrders_id()}" style="float:right;" class="btn btn-danger " type="submit" value="삭제">삭제</a>
+	                            </form>
+                                
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                     
 
                 </div>

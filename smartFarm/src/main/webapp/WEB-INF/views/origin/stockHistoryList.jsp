@@ -3,6 +3,10 @@
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.text.SimpleDateFormat"%>
 
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +82,7 @@
                 </div>
             </li>
 
-           <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
@@ -127,20 +131,7 @@
                 </li>
                 <!-- 재배관리 사이드바 끝 -->
 
-                <!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
-                        aria-expanded="true" aria-controls="collapseTwo2">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>구매관리</span>
-                    </a>
-                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="getBuyerList.do">Buyer</a>
-                            <a class="collapse-item" href="getOrdersList.do">Orders</a>
-                        </div>
-                    </div>
-                </li>
+
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
@@ -207,77 +198,169 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">입/출고 관리</h1>
+                        
                     </div>
 
                   
-					<!-- Content Row -->
-                    
+                  <!-- 입출고 셋팅란 -->
+  
                     <div class="container-fluid">
-                            <form action="updateEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
+                            <form action="insertStockHistory.do" method="post">
+                             
+                                <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
+                                            <th scope="col" style="text-align:center;">물품 아이디</th>
+                                            <th scope="col" style="text-align:center;">입고 수량</th>
+                                            <th scope="col" style="text-align:center;">출고 수량</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <tr>
+                                    
+                                    	<th scope="col" style="text-align:center;">
+                                    		<select name="stock_id" >
+                                    		<c:forEach items="${StockList}" var="stockVO">
+											    <option value="${stockVO.getStock_id()}">${stockVO.getStock_id()}</option>
+                                    		</c:forEach>
+											</select>
+                                    	</th>
+                                    
+                                    
+                                        <th scope="col" style="text-align:center;"><input type="number" name="stock_in" size="10" value="0"/></th>
+                                        <th scope="col" style="text-align:center;"><input type="number" name="stock_out" size="10" value="0"/></th>
+                       
 
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id" disabled="disabled" value="${employeeVO.getEmp_id()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>사원번호</td>
-                                                <td>
-                                                	<input type="text" name="emp_no" disabled="disabled" value="${employeeVO.getEmp_no()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="${employeeVO.getEmp_name()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="${employeeVO.getEmp_email()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>권한</td>
-                                                <td>
-                                                	<input type="text" name="emp_admin" value="${employeeVO.getEmp_admin()}">
-                                                </td>
-                                            </tr>
+                                    </tr>
                                 </tbody>
                                 </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    <input type="hidden" name="emp_id" value="${employeeVO.getEmp_id()}">
-                                    <input type="hidden" name="emp_no" value="${employeeVO.getEmp_no()}">
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
+                                    	<input type="submit" value=" 재고 등록 " class="btn btn-primary" 
+                                    		id="btnSubmit" style="float: right;"/>
+                           
                             </form>
                     </div>
-                            
-
-
-                            
+                  	
+                  
+                  
+                  
+                  
+                  <div class="container-fixed">
+                  </div>
+                  
+                  
+					<!-- Content Second -->
                     
+                    <!-- 입고정보 출고정보 큰틀 -->
+                    <div class="container-fluid">
+					<div class="container">
+                     <!-- 입고정보 -->
+                     <div class="col-lg-6" style="width:100%; float:left;">
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
+                            <h1 class="h3 mb-2 text-gray-800"></h1>
 
+                            <div class="card position-relative">
+                                <div class="card-header py-3">
+						
+                                </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">입고 내역</h6>
+                        </div>
+                        
+
+                        <div class="card-body" >
+							
+                            <div class="table-responsive">
+                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> <!-- 테이블 몸뚱아리 -->
+                               
+                               
+                                    <thead>
+                                        <tr>
+                                            <th>작물이름</th>
+                                            <th>작물가격</th>
+                                            <th>작물수량</th>
+                                            <th>작물수량</th>
+                                            <th>출고일</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    	<c:forEach items="${StockHistoryListIn}" var="stockInVO">
+                                        <tr>
+                                        
+                                            <td>${stockInVO.getStock_id() }</td>
+                                            <td>${stockInVO.getStock_name() }</td>
+                                            <td>${stockInVO.getStock_in() }</td>
+                                            <td>${stockInVO.getStock_qty() }</td>
+                                            <td>${stockInVO.getStock_date() }</td>
+
+                                        </tr>
+                                    	</c:forEach>
+                  
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                       </div>
+                      
+ 					</div>
+                </div>
+
+                      <!-- 출고정보 -->
+                    <div class="col-lg-6" style="width:100%; float:right;">
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
+                            <h1 class="h3 mb-2 text-gray-800"></h1>
+
+                            <div class="card position-relative">
+                                <div class="card-header py-3">
+						
+                                </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">출고 내역</h6>
+                        </div>
+                        
+
+                        <div class="card-body" >
+							
+                            <div class="table-responsive">
+                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> <!-- 테이블 몸뚱아리 -->
+                               
+                               
+                                    <thead>
+                                        <tr>
+                                            <th>작물이름</th>
+                                            <th>작물가격</th>
+                                            <th>작물수량</th>
+                                            <th>작물수량</th>
+                                            <th>출고일</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    	<c:forEach items="${StockHistoryListOut}" var="stockOutVO">
+                                        <tr>
+                                        
+                                            <td>${stockOutVO.getStock_id() }</td>
+                                            <td>${stockOutVO.getStock_name() }</td>
+                                            <td>${stockOutVO.getStock_out() }</td>
+                                            <td>${stockOutVO.getStock_qty() }</td>
+                                            <td>${stockOutVO.getStock_date() }</td>
+
+                                        </tr>
+                                    	</c:forEach>
+                  
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                       </div>
+                      
+ 					</div>
+                </div>
+                </div>
+            </div>
                     <!-- Content Row -->
 					
                     

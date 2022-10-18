@@ -58,7 +58,7 @@ public class BuyerDAO {
 				stmt.setString(3, vo.getBuyer_email());
 				stmt.setString(4, vo.getBuyer_number());
 				stmt.setString(5, vo.getBuyer_product());
-				stmt.setString(5, vo.getBuyer_date());
+				stmt.setString(6, vo.getBuyer_date());
 				stmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();

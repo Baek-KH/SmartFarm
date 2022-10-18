@@ -182,9 +182,44 @@ body {
 
 			<!-- Nav Item - Tables -->
 			<c:if test="${signIn.getEmp_admin() == 'admin'}">
-				<li class="nav-item"><a class="nav-link" href="tables.html">
-						<i class="fas fa-fw fa-table"></i> <span>재배관리</span>
-				</a></li>
+				
+                
+                <!-- 재배관리 사이드바 시작 -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiess"
+                        aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>재배관리</span>
+                    </a>
+                    <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilities"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
+                            <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
+                            <a class="collapse-item" href="getTrayList.do">TRAY</a>
+                            <a class="collapse-item" href="getPipList.do">PIP</a>
+                            <a class="collapse-item" href="getOrdersList.do">TEST</a>
+
+                        </div>
+                    </div>
+                </li>
+                <!-- 재배관리 사이드바 끝 -->
+	    		<!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
+                        aria-expanded="true" aria-controls="collapseTwo2">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>구매관리</span>
+                    </a>
+                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="getBuyerList.do">Buyer</a>
+                            <a class="collapse-item" href="getOrdersList.do">Orders</a>
+                        </div>
+                    </div>
+                </li>
+
+
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
 				</a></li>
@@ -306,8 +341,8 @@ body {
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-												미정이</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">미정아</div>
+												수요 예측</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">예측</div>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -344,47 +379,41 @@ body {
 						</div>
 
 						<!-- Pie Chart -->
-						<div class="col-xl-4 col-lg-5">
-							<div class="card shadow mb-4">
-								<!-- Card Header - Dropdown -->
-								<div
-									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Revenue
-										Sources</h6>
-									<div class="dropdown no-arrow">
-										<a class="dropdown-toggle" href="#" role="button"
-											id="dropdownMenuLink" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false"> <i
-											class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-											aria-labelledby="dropdownMenuLink">
-											<div class="dropdown-header">Dropdown Header:</div>
-											<a class="dropdown-item" href="#">Action</a> <a
-												class="dropdown-item" href="#">Another action</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item" href="#">Something else here</a>
-										</div>
-									</div>
-								</div>
-								<!-- Card Body -->
-								<div class="card-body">
-									<div class="chart-pie pt-4 pb-2">
-										<canvas id="myPieChart"></canvas>
-									</div>
-									<div class="mt-4 text-center small">
-										<span class="mr-2"> <i
-											class="fas fa-circle text-primary"></i> Direct
-										</span> <span class="mr-2"> <i
-											class="fas fa-circle text-success"></i> Social
-										</span> <span class="mr-2"> <i class="fas fa-circle text-info"></i>
-											Referral
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="chart-pie pt-4 pb-2">
+                                            <div class="holdin">
+                                            <!-- 차트파이 캔버스 -->
+                                            <canvas id="myPichart"></canvas>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 text-center small">
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle" style="color:rgba(232, 81, 197)"></i> ${StockList[0].getStock_id()}
+                                            </span>
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle" style="color:rgba(78, 115, 223)"></i> ${StockList[1].getStock_id()}
+                                            </span>
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle" style="color:rgba(54, 185, 204)"></i> ${StockList[2].getStock_id()}
+                                            </span>
+                                            <span class="mr-2">
+                                                <i class="fas fa-circle" style="color:rgba(162, 70, 224)"></i> ${StockList[3].getStock_id()}
+                                            </span>
+                                        
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div>
+                        </div>
 
 
 					</div>
@@ -408,7 +437,7 @@ body {
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; B팀 근데 팀명이 머였죠? 2022</span>
+						<span>Copyright &copy; PROJECT B 2022</span>
 					</div>
 				</div>
 			</footer>
@@ -526,6 +555,40 @@ body {
 					}
 				});
 	</script>
+
+	<!-- 파이차트 스크립트 -->
+    <script>
+    var ctx = document.getElementById("myPichart");
+    var myPieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+    labels: ["${StockList[0].getStock_id()}","${StockList[1].getStock_id()}","${StockList[2].getStock_id()}","${StockList[3].getStock_id()}"],
+    datasets: [{
+        data: ["${StockList[0].getStock_qty()}","${StockList[1].getStock_qty()}","${StockList[2].getStock_qty()}","${StockList[3].getStock_qty()}"],
+        backgroundColor: ['rgba(232, 81, 197)', 'rgba(78, 115, 223)', 'rgba(54, 185, 204)', 'rgba(162, 70, 224)'],
+        hoverBackgroundColor: ['rgba(207, 39, 169)', 'rgba(51, 97, 232)', 'rgba(27, 162, 181)', 'rgba(137, 46, 217)'],
+        hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+    },
+    options: {
+        maintainAspectRatio: false,
+        tooltips: {
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        caretPadding: 10,
+        },
+        legend: {
+        display: false
+        },
+        cutoutPercentage: 80,
+    },
+    });
+</script>
 </body>
 
 </html>

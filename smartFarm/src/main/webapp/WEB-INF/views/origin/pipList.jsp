@@ -78,7 +78,7 @@
                 </div>
             </li>
 
-           <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
@@ -118,7 +118,7 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
-                            <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
+                            <a class="collapse-item" href="utilities-color.html">라인설정</a>
                             <a class="collapse-item" href="utilities-border.html">tray</a>
                             <a class="collapse-item" href="utilities-border.html">pip</a>
 
@@ -127,20 +127,7 @@
                 </li>
                 <!-- 재배관리 사이드바 끝 -->
 
-                <!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
-                        aria-expanded="true" aria-controls="collapseTwo2">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>구매관리</span>
-                    </a>
-                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="getBuyerList.do">Buyer</a>
-                            <a class="collapse-item" href="getOrdersList.do">Orders</a>
-                        </div>
-                    </div>
-                </li>
+
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>
@@ -206,82 +193,125 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
-                  
-					<!-- Content Row -->
                     
+                    </div> -->
+
+                    <!-- Content Row -->
                     <div class="container-fluid">
-                            <form action="updateEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id" disabled="disabled" value="${employeeVO.getEmp_id()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>사원번호</td>
-                                                <td>
-                                                	<input type="text" name="emp_no" disabled="disabled" value="${employeeVO.getEmp_no()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="${employeeVO.getEmp_name()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="${employeeVO.getEmp_email()}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>권한</td>
-                                                <td>
-                                                	<input type="text" name="emp_admin" value="${employeeVO.getEmp_admin()}">
-                                                </td>
-                                            </tr>
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    <input type="hidden" name="emp_id" value="${employeeVO.getEmp_id()}">
-                                    <input type="hidden" name="emp_no" value="${employeeVO.getEmp_no()}">
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
                     
 
                     <!-- Content Row -->
-					
-                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">tray</h6>
+                        </div>
 
+
+                        <div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            	<form action="insertPip.do" method="post">
+                                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-3">PIP 번호</th>
+                                            <th class="col-3">PIP 이름</th>
+                                            <th class="col-3">PIP 카테고리</th>
+                                            <th class="col-3">PIP 생육기간</th>
+                                            
+
+                                            
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td>
+                                            	<input class="" type="text" name="" placeholder="자동 입력" disabled="disabled">
+                                            </td>
+                                            <td>
+                                            	<input type="text" name="pip_name" placeholder="pip_name 을 입력해주세요">
+                                            </td>
+                                            <td>
+                                           	 	<input type="text" name="pip_category" placeholder="pip_category 을 입력해주세요">
+                                            </td>
+                                            <td>
+                                            	<input type="text" name="pip_period" placeholder="pip_period 을 입력해주세요">
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                    </tbody>
+
+                                    <thead>
+                                        <tr>
+                                            <th class="">생육 최저 온도</th>
+                                            <th class="">생육 최고 온도</th>
+                                            <th class="">생육 최저 습도</th>
+                                            <th class="">생육 최고 습도</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="text" name="pip_min_temp" placeholder="pip_min_temp 을 입력해주세요"></td>
+                                            <td><input type="text" name="pip_max_temp" placeholder="pip_max_temp 을 입력해주세요"></td>
+                                            <td><input type="text" name="pip_min_hum" placeholder="pip_min_hum 을 입력해주세요"></td>
+                                            <td><input type="text" name="pip_max_hum" placeholder="pip_max_hum 을 입력해주세요"></td>
+                                        </tr>  
+                                        
+                                    </tbody>
+
+                                </table>
+                                <input style="float:right;" class="btn btn-primary " type="submit">
+                            	</form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="card-body">
+                            <h4>pip list</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>pip_no</th>
+                                            <th>pip_name</th>
+                                            <th>pip_category</th>
+                                            <th>pip_period</th>
+                                            <th>pip_min_temp</th>
+                                            <th>pip_max_temp</th>
+                                            <th>pip_min_hum</th>
+                                            <th>pip_max_hum</th>
+
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                    <c:forEach items="${PipList}" var="pipVO">
+                                        <tr>
+                                            <th>${pipVO.getPip_no() }</th>
+                                            <th>${pipVO.getPip_name() }</th>
+                                            <th>${pipVO.getPip_category() }</th>
+                                            <th>${pipVO.getPip_period() }</th>
+                                            <th>${pipVO.getPip_min_temp()}</th>
+                                            <th>${pipVO.getPip_max_temp()}</th>
+                                            <th>${pipVO.getPip_min_hum()}</th>
+                                            <th>${pipVO.getPip_max_hum()}</th>
+                                        </tr>
+                                    </c:forEach>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                     
 
                 </div>
