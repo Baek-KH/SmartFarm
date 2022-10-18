@@ -26,7 +26,7 @@ public class PipDAO {
 	private final String PIP_UPDATE ="update pip set pip_category=?, pip_period=?, pip_min_temp=?, pip_max_temp=?, pip_min_hum=?, pip_max_hum=? where pip_name=?";
 	private final String PIP_DELETE ="delete form pip where pip_name=?";
 	private final String PIP_GET ="select * from pip where pip_name=?";
-	private final String PIP_LIST ="select * from pip order by pip_name desc";
+	private final String PIP_LIST ="select * from pip order by pip_no desc";
 	private final String PIP_LIST_NO ="select * from Pip where pip_no like ? ";
 	private final String PIP_LIST_NA ="select * from Pip where pip_name like ? ";
 
@@ -105,17 +105,15 @@ public class PipDAO {
 	//   작물상세정보
 	public PipVO getPip(String pip_name) {
 
-		System.out.println("==>DAO g_list");
+		System.out.println("==>DAO getPip");
 		PipVO pip = new PipVO();
 
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(PIP_GET);
-			stmt.setString(2, pip_name);
+			stmt.setString(1, pip_name);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-
-				pip = new PipVO();
 				pip.setPip_no(rs.getInt("pip_no"));
 				pip.setPip_name(rs.getString("pip_name"));
 				pip.setPip_category(rs.getString("pip_category"));
@@ -151,6 +149,11 @@ public class PipDAO {
 				pip.setPip_name(rs.getString("pip_name"));
 				pip.setPip_category(rs.getString("pip_category"));
 				pip.setPip_period(rs.getString("pip_period"));
+				pip.setPip_min_temp(rs.getString("pip_min_temp"));
+				pip.setPip_max_temp(rs.getString("pip_max_temp"));
+				pip.setPip_min_hum(rs.getString("pip_min_hum"));
+				pip.setPip_max_hum(rs.getString("pip_max_hum"));
+			
 				pipList.add(pip);
 			}
 		} catch (Exception e) {

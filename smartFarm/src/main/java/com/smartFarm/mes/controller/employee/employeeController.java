@@ -26,7 +26,7 @@ public class EmployeeController {
 		System.out.println("getEmployee 진입");
 		EmployeeVO employeeVO = employeeDAO.getEmployee(emp_id);
 		model.addAttribute("employeeVO",employeeVO );
-		return "employee";
+		return "getEmployee";
 	}
 
 	// insert
@@ -56,7 +56,7 @@ public class EmployeeController {
 		System.out.println("deleteEmployee 진입");
 		System.out.println(vo.toString());
 
-		EmployeeDAO.deleteEmployee(vo);
+//		EmployeeDAO.deleteEmployee(vo);
 		return "redirect:/getEmployeeList.do";
 	}
 
