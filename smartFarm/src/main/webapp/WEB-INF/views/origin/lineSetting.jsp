@@ -128,7 +128,20 @@
 					</div></li>
 				<!-- 재배관리 사이드바 끝 -->
 
-
+				<!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
+                        aria-expanded="true" aria-controls="collapseTwo2">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>구매관리</span>
+                    </a>
+                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="getBuyerList.do">Buyer</a>
+                            <a class="collapse-item" href="getOrdersList.do">Orders</a>
+                        </div>
+                    </div>
+                </li>
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fas fa-fw fa-table"></i> <span>보고페이지</span>

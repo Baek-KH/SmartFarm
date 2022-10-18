@@ -33,52 +33,55 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		<ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index">
-                <div class="sidebar-brand-text mx-1" style="font-size:2.0em;">SF <sup></sup></div>
-            </a>
+			<!-- Sidebar - Brand -->
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="/index">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-laugh-wink"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">
+					SF <sup></sup>
+				</div>
+			</a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/index">
-                    
-                    <span>Main Home</span></a>
-            </li>
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active"><a class="nav-link" href="/index">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Main Home</span>
+			</a></li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+			<!-- Divider -->
+			<hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            
-            </div>
+			<!-- Heading -->
+			<div class="sidebar-heading"></div>
 
-            <!-- 사원관리 -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>사원관리</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
-                        <a class="collapse-item" href="getAttendenceList.do">마이페이지</a>
-                        <c:if test="${signIn.getEmp_admin() == 'admin'}">
-                        	<a class="collapse-item" href="getEmployeeList.do">사원관리</a>
-                        	<a class="collapse-item" href="getAttendenceListAdmin.do">근태관리</a>
+			<!-- 사원관리 -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities"
+				aria-expanded="true" aria-controls="collapseUtilities"> <i
+					class="fas fa-fw fa-wrench"></i> <span>사원관리</span>
+			</a>
+				<div id="collapseUtilities" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
+						<a class="collapse-item" href="getAttendenceList.do">마이페이지</a>
+						<c:if test="${signIn.getEmp_admin() == 'admin'}">
+							<a class="collapse-item" href="getEmployeeList.do">사원관리</a>
+							<a class="collapse-item" href="getAttendenceListAdmin.do">근태관리</a>
 						</c:if>
-                    </div>
-                </div>
-            </li>
+					</div>
+				</div></li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
@@ -119,15 +122,15 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <!-- <h6 class="collapse-header">Custom Utilities:</h6>  여기다 글 쓰면 위에 주석처럼 달림 -->
                             <a class="collapse-item" href="getLineSettingList.do">라인설정</a>
-                            <a class="collapse-item" href="utilities-border.html">tray</a>
-                            <a class="collapse-item" href="utilities-border.html">pip</a>
+                            <a class="collapse-item" href="getTrayList.do">TRAY</a>
+                            <a class="collapse-item" href="getPipList.do">PIP</a>
+                            <a class="collapse-item" href="getOrdersList.do">TEST</a>
 
                         </div>
                     </div>
                 </li>
                 <!-- 재배관리 사이드바 끝 -->
-
-                <!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
+	    		<!-- 구매관리 사이드바 보고페이지와 재배관리 li 사이 -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
                         aria-expanded="true" aria-controls="collapseTwo2">
@@ -136,8 +139,8 @@
                     </a>
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="buttons.html">Buyer</a>
-                            <a class="collapse-item" href="cards.html">Orders</a>
+                            <a class="collapse-item" href="getBuyerList.do">Buyer</a>
+                            <a class="collapse-item" href="getOrdersList.do">Orders</a>
                         </div>
                     </div>
                 </li>
@@ -155,11 +158,10 @@
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
 
-            
 
-        </ul>
-        <!-- End of Sidebar -->
 
+		</ul>
+		<!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -216,7 +218,7 @@
                     <div class="container-fluid">
                     
 
-                    <!-- Content Row -->
+                     <!-- Content Row -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Buyer</h6>
