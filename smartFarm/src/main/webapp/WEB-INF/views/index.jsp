@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-<%-- ${productRateVO.getStock_in_sum}
-${productRateVO.getStock_out_sum} --%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -114,8 +110,7 @@ body {
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul
-			class="navbar-nav  sidebar sidebar-dark accordion"
+		<ul class="navbar-nav  sidebar sidebar-dark accordion"
 			style="background-color:rgba(46,139,87)"
 			id="accordionSidebar">
 
@@ -129,7 +124,7 @@ body {
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/index">
-					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
+					<i class="fa-solid fa-house"></i> <span>Main Home</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -160,14 +155,14 @@ body {
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> 
-				<i class="fa-solid fa-cart-flatbed"></i><span>입/출</span>
+				<i class="fa-solid fa-cart-flatbed"></i><span>재고관리</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<%-- <h6 class="collapse-header">Custom Components:</h6> 여기다 글쓰면 위에 주석처럼 달림 --%>
-						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> <a
-							class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
+						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> 
+						<a class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
 					</div>
 				</div></li>
 
@@ -219,6 +214,19 @@ body {
                         </div>
                     </div>
                 </li>
+				<!-- 구매관리 사이드바 끝 -->
+				<!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
+						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
+				</a></li>
+				
+				
+				
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
@@ -322,12 +330,12 @@ body {
 											</div>
 											<div class="row no-gutters align-items-center">
 												<div class="col-auto">
-													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${productRateVO.getStock_rate()}%</div>
+													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><fmt:formatNumber value="${productRateVO.getStock_rate()}"  maxFractionDigits="2"/>%</div>
 												</div>
 												<div class="col">
 													<div class="progress progress-sm mr-2">
 														<div class="progress-bar bg-info" role="progressbar"
-															style="width: ${productRateVO.getStock_rate()}%"
+															style="width: <fmt:formatNumber value="${productRateVO.getStock_rate()}"  maxFractionDigits="2"/>%"
 															aria-valuenow="50" aria-valuemin="0" aria-valuemax="200"></div>
 													</div>
 												</div>

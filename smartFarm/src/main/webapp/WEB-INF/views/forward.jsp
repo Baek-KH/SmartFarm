@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>orders</title>
+    <title>FORWARD</title>
 
     <!-- Custom fonts for this template-->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -250,21 +250,21 @@
                     <!-- Content Row -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">출하관리</h6>
                         </div>
 
 					<div>
                         <div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            	<form action="insertOrders.do" method="POST">
+                            	<form action="insertForward.do" method="POST">
                                 <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class="col-3">주문 아이디</th>
-                                            <th class="col-3">구매처 아이디</th>
-                                            <th class="col-3">물품명</th>
-                                            <th class="col-3">물품아이디</th>
+                                            <th class="col-3">출하아이디</th>
+                                            <th class="col-3">출하가능 물품명(가능수량)</th>
+                                            <th class="col-3">출하량</th>
+                                            <th class="col-3">비고</th>
                                          
                                         </tr>
                                     </thead>
@@ -272,12 +272,16 @@
                                     <tbody>
                                         <tr>
                                             
+                                            <td><input name="forward_id" type="text" value="아이디 자동생성" disabled="disabled"></td>
                                             <td>
-                                                <input name="" type="text" placeholder="자동 생성" disabled="disabled">
-                                            </td>
-                                            <td><input name="buyer_id" type="text" placeholder="거래처 아이디를 입력해 주세요"></td>
-                                            <td><input name="orders_product" type="text" placeholder="물품명을 입력해주세요"></td>
-                                            <td><input name="orders_qty"type="text" placeholder="수량을 입력해주세요"></td>
+	                                            <select name="pip_name" >
+													<c:forEach items="${StockList}" var="stockVO">
+														<option value="${stockVO.getStock_id()}">${stockVO.getStock_id()}(${stockVO.getStock_qty()})</option>
+													</c:forEach>
+												</select>
+											</td>
+                                            <td><input name="forward_qty" type="text" placeholder="출하수량"></td>
+                                            <td><input name="forward_content"type="text" placeholder="비고"></td>
                                             
                                         </tr>
                                         
@@ -285,7 +289,7 @@
 
                                 
                                 </table>
-                                <input style="float:right; background-color:rgba(46,139,87); color:white;" class="btn btn-primary " type="submit" value="등록">
+                                	<input style="float:right; background-color:rgba(46,139,87); color:white;" class="btn  " type="submit" value="출하코드생성">
                             	</form>
                             </div>
                         </div>
@@ -293,33 +297,35 @@
 
                     <div>
                         <div class="card-body">
-                            <h4>pip list</h4>
+                            <h4>무슨 LIST</h4>
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>발주 아이디</th>
-                                            <th>구매처 아이디</th>
-                                            <th>물품명</th>
-                                            <th>물품수량</th>
-                                            <th>주문일</th>
-                                            <th>도착예정일</th>
+                                            <th>출하아이디</th>
+                                            <th>출하 물품명</th>
+                                            <th>출하량</th>
+                                            <th>출하 내용</th>
+                                            <th>출하일</th>
+                                            <th>출하확인</th>
                                             <th>비고</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                    <c:forEach items="${OrdersList}"  var="ordersVO">
+                                    <c:forEach items="${ForwardList}"  var="forwardVO">
                                         <tr>
-                                            <th>${ordersVO.getOrders_id()}</th>
-                                            <th>${ordersVO.getBuyer_id()}</th>
-                                            <th>${ordersVO.getOrders_product()}</th>
-                                            <th>${ordersVO.getOrders_qty()}</th>
-                                            <th>${ordersVO.getOrders_date()}</th>
-                                            <th>${ordersVO.getOrders_arr_date()}</th>
+                                            <td>${forwardVO.getForward_id()}</td>
+                                            <td>${forwardVO.getPip_name()}</td>
+                                            <td>${forwardVO.getForward_qty()}</td>
+                                            <td>${forwardVO.getForward_content()}</td>
+                                            <td>${forwardVO.getForward_date()}</td>
+                                            <td>${forwardVO.getForward_check()}</td>
                                             <th class="col-2">
-                                                <input style="" class="btn btn-primary " type="submit" value="수정">
-                                                <input style="" class="btn btn-primary " type="submit" value="삭제">
+                                                <a href="updateForward.do?forward_id=${forwardVO.getForward_id()}&forward_check=checked" style="background-color:rgba(46,139,87); color:white;" 
+                                                class="btn btn-primary" type="submit" >체크</a>
+                                                <a href="deleteForward.do?forward_id=${forwardVO.getForward_id()}" style="background-color:rgba(46,139,87); color:white;" 
+                                                class="btn btn-primary " type="submit" >삭제</a>
                                             </th>
                                             
                                         </tr>
@@ -333,12 +339,8 @@
                     </div>
                 </div>
                 </div>
-                    
-
-               
                 <!-- /.container-fluid -->
 
-            </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->

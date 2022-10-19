@@ -70,8 +70,8 @@ public class LineController {
 		return "lineStatus";
 	}
 	// SettingList
-		@RequestMapping(value = "/getLineSettingList.do")
-		public String getLineSettingList(LineDAO lineDAO, Model model) {
+	@RequestMapping(value = "/getLineSettingList.do")
+	public String getLineSettingList(LineDAO lineDAO, Model model) {
 			PipDAO pipDAO = new PipDAO();
 			
 			System.out.println("getLineSettingList 진입");
@@ -82,7 +82,7 @@ public class LineController {
 			model.addAttribute("PipList", pipList);
 			model.addAttribute("LineList", lineList);
 			return "lineSetting";
-		}
+	}
 	
 
 

@@ -54,7 +54,7 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/index">
-					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
+					<i class="fa-solid fa-house"></i> <span>Main Home</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -145,6 +145,18 @@
                     </div>
                 </li>
 
+				<!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
+				</a></li>
+				
+				
+				
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+				
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
@@ -274,7 +286,7 @@
                                     
 
                                 </table>
-                                <input style="float:right;" class="btn btn-primary " type="submit" value="등록">
+                                <input style="float:right; background-color:rgba(46,139,87); color:white; " class="btn " type="submit" value="등록">
                             </div>
                         </div>
                     </div>
@@ -293,7 +305,7 @@
                             <div class="">
                                 <label style="float:right">Search:
                                     <input display="d-sm-inline-block" onkeyup="enterkey();" type="text"  placeholder="" width="200">
-                                    <button class="btn btn-primary" type="button">
+                                    <button class="btn " type="button" style="background-color:rgba(46,139,87); color:white;" >
                                         <i class="fas fa-search fa-sm"></i>
                                     </button>
                                 </label>
@@ -321,7 +333,7 @@
                                             <td>buyer_product</td>
                                             <td>buyer_date</td>
                                             <td class="col-2">
-                                                <input style="" class="btn btn-primary " type="submit" value="상세보기">
+                                                <input style="background-color:rgba(46,139,87); color:white;"  class="btn btn-primary " type="submit" value="상세보기">
                                                 
                                             </td>
                                         </tr>

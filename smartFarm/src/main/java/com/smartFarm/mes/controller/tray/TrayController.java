@@ -72,5 +72,18 @@ public class TrayController {
 		model.addAttribute("TrayList", trayList);
 		return "trayList";
 	}
+	
+	
+	// ListControl
+		@RequestMapping(value = "/TrayControlList.do")
+		public String getTrayControlList(TrayVO vo, TrayDAO trayDAO, Model model) {
+
+			System.out.println("getTrayControlList 진입");
+			List<TrayVO> trayList = trayDAO.getTrayListByLine(vo);
+			model.addAttribute("TrayList", trayList);
+			return "process";
+		}
+	
+	
 
 }

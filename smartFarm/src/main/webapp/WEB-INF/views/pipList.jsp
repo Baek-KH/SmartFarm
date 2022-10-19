@@ -54,7 +54,7 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/index">
-					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
+					<i class="fa-solid fa-house"></i> <span>Main Home</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -144,6 +144,19 @@
                         </div>
                     </div>
                 </li>
+                
+                <!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
+				</a></li>
+				
+				
+				
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+                
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
@@ -238,7 +251,7 @@
                     <!-- Content Row -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">tray</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">TRAY</h6>
                         </div>
 
 
@@ -299,15 +312,19 @@
                                     </tbody>
 
                                 </table>
-                                <input style="float:right;" class="btn btn-primary " type="submit">
+                                <input style="float:right; background-color:rgba(46,139,87); color:white;" class="btn " type="submit" >
                             	</form>
                             </div>
                         </div>
                     </div>
 
                     <div>
+                    <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">PIP LIST</h6>
+                        	</div>
                         <div class="card-body">
-                            <h4>pip list</h4>
+                        	
+                            
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>

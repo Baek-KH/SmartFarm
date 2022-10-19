@@ -54,7 +54,7 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/index">
-					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
+					<i class="fa-solid fa-house"></i> <span>Main Home</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -144,6 +144,18 @@
                         </div>
                     </div>
                 </li>
+                <!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
+				</a></li>
+				
+				
+				
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+                
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
