@@ -129,7 +129,7 @@ body {
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/index">
-					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
+					<i class="fa-solid fa-house"></i> <span>Main Home</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -160,7 +160,7 @@ body {
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> 
-				<i class="fa-solid fa-cart-flatbed"></i><span>입/출</span>
+				<i class="fa-solid fa-cart-flatbed"></i><span>재고관리</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
@@ -219,6 +219,19 @@ body {
                         </div>
                     </div>
                 </li>
+				<!-- 구매관리 사이드바 끝 -->
+				<!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
+				</a></li>
+				
+				
+				
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">

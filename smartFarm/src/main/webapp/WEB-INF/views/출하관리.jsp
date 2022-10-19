@@ -250,7 +250,7 @@
                     <!-- Content Row -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">출하관리</h6>
                         </div>
 
 					<div>
@@ -285,7 +285,7 @@
 
                                 
                                 </table>
-                                <input style="float:right; background-color:rgba(46,139,87); color:white;" class="btn btn-primary " type="submit" value="등록">
+                                <input style="float:right; background-color:rgba(46,139,87); color:white;" class="btn  " type="submit" value="출하코드생성">
                             	</form>
                             </div>
                         </div>
@@ -293,17 +293,17 @@
 
                     <div>
                         <div class="card-body">
-                            <h4>pip list</h4>
+                            <h4>무슨 LIST</h4>
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>발주 아이디</th>
-                                            <th>구매처 아이디</th>
-                                            <th>물품명</th>
-                                            <th>물품수량</th>
-                                            <th>주문일</th>
-                                            <th>도착예정일</th>
+                                            <th>forward_id</th>
+                                            <th>pip_name</th>
+                                            <th>forward_qty</th>
+                                            <th>forward_content</th>
+                                            <th>forward_date</th>
+                                            <th>forward_check</th>
                                             <th>비고</th>
                                         </tr>
                                     </thead>
@@ -311,15 +311,15 @@
                                     <tbody>
                                     <c:forEach items="${OrdersList}"  var="ordersVO">
                                         <tr>
-                                            <th>${ordersVO.getOrders_id()}</th>
-                                            <th>${ordersVO.getBuyer_id()}</th>
-                                            <th>${ordersVO.getOrders_product()}</th>
-                                            <th>${ordersVO.getOrders_qty()}</th>
-                                            <th>${ordersVO.getOrders_date()}</th>
-                                            <th>${ordersVO.getOrders_arr_date()}</th>
+                                            <td>forward_id</td>
+                                            <td>pip_name</td>
+                                            <td>forward_qty</td>
+                                            <td>forward_content</td>
+                                            <td>forward_date</td>
+                                            <td>$forward_check</td>
                                             <th class="col-2">
-                                                <input style="background-color:rgba(46,139,87); color:white;" class="btn  " type="submit" value="수정">
-                                                <input style="background-color:rgba(46,139,87); color:white;" class="btn  " type="submit" value="삭제">
+                                                <input style="background-color:rgba(46,139,87); color:white;" class="btn btn-primary " type="submit" value="수정">
+                                                <input style="background-color:rgba(46,139,87); color:white;" class="btn btn-primary " type="submit" value="삭제">
                                             </th>
                                             
                                         </tr>
@@ -333,9 +333,6 @@
                     </div>
                 </div>
                 </div>
-                    
-
-               
                 <!-- /.container-fluid -->
 
             </div>

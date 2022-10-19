@@ -60,7 +60,7 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/index">
-					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
+					<i class="fa-solid fa-house"></i> <span>Main Home</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -150,6 +150,19 @@
                         </div>
                     </div>
                 </li>
+                
+                
+                <!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
+				</a></li>
+				
+				
+				
+				<li class="nav-item"><a class="nav-link" href="tables.html">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
@@ -282,7 +295,7 @@
 						<div>
 							<tr>
 								<td colspan="2"><input type="submit" value=" 재고 등록 "
-									class="btn btn-primary" id="btnSubmit" style="float: right;" />
+									class="btn " id="btnSubmit" style="float: right; background-color:rgba(46,139,87); color:white;" />
 								</td>
 							</tr>
 

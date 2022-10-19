@@ -54,7 +54,7 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/index">
-					<i class="fa-solid fa-crown"></i> <span>Main Home</span>
+					<i class="fa-solid fa-house"></i> <span>Main Home</span>
 			</a></li>
 
 			
