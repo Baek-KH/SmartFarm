@@ -7,9 +7,6 @@
 ${productRateVO.getStock_out_sum} --%>
 
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
