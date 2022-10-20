@@ -300,7 +300,7 @@
                                     <td colspan="2" align="center">
                                     <input type="hidden" name="emp_id" value="${employeeVO.getEmp_id()}">
                                     <input type="hidden" name="emp_no" value="${employeeVO.getEmp_no()}">
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
+                                    <input type="submit" style="background-color:rgba(46,139,87); color:white;" class="btn" value="사원 수정"/>
                                     </td>
                                 </tr>
                             </div>

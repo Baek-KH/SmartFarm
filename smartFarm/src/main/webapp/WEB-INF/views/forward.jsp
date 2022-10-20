@@ -145,18 +145,18 @@
                     </div>
                 </li>
                 
-                <!-- 출하관리 공정관리 -->
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+               <!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
 				<!-- 출하관리 공정관리 -->
-                
+
 
 
 				<li class="nav-item"><a class="nav-link" href="report.do">

@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.text.SimpleDateFormat"%>
@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>employeeList</title>
+    <title>buyer</title>
 
     <!-- Custom fonts for this template-->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -144,8 +144,8 @@
                         </div>
                     </div>
                 </li>
-                
-               <!-- 출하관리 공정관리 -->
+
+				<!-- 출하관리 공정관리 -->
 				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
@@ -239,70 +239,55 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">사원 관리</h1>
-                        </br>
-                    </div>
-
-                  
-					<!-- Content Row -->
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     
+                    </div> -->
+
+                    <!-- Content Row -->
                     <div class="container-fluid">
-                            
-                                <table  class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                                <th scope="col">이름</th>
-				                                <th scope="col">이메일</th>
-				                                <th scope="col">권한</th>
-				                                <th scope="col">비고</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        
-                                 		 <c:forEach items="${EmployeeList}" var="Employee">
-                                            <tr>
-                                                <td>${Employee.getEmp_id()}</td>
-                                                <td>${Employee.getEmp_no()}</td>
-                                                <td>${Employee.getEmp_name()}</td>
-                                                <td>${Employee.getEmp_email()}</td>
-                                                <td>${Employee.getEmp_admin()}</td>
-                                                <td>
-	                                                <form action="deleteEmployee.do">
-	                                                	<a class="btn "  style="background-color:rgba(46,139,87); color:white;"  href="getEmployee.do?emp_id=${Employee.getEmp_id()}">상세보기</a>
-	                                                	<input type="hidden" name="emp_id" value="${Employee.getEmp_id()}">
-	                                                	<input type="submit" class="btn btn-danger" value="삭제 ">
-	                                                </form>
-                                                </td>
-                                            </tr>
-            
-                                        </c:forEach>
-                                    </tr>
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    <a href="/insertEmployee" class="btn " style="background-color:rgba(46,139,87); color:white;" >사원 등록</a>
-                                    </td>
-                                </tr>
-                            </div>
-                    </div>
-                            
-
-
-                            
                     
 
                     <!-- Content Row -->
-					
-                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+                        </div>
 
+
+                        <div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            <form action="updateOrders.do" method="post">
+                                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+
+                                            <th>거래처 아이디</th>
+                                            <td>
+                                                <input class="col" name="buyer_id" type="text" value="${ordersVO.getBuyer_id() }">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>물품명</th>
+                                            <td><input class="col" name="orders_product" type="text" value="${ordersVO.getOrders_product() }"></td>
+                                        </tr>    
+                                        
+                                            <th>물품수량</th>
+                                            <td><input class="col" name="orders_qty" type="text" value="${ordersVO.getOrders_qty() }"></td>
+                                     
+                                    </thead>
+                                </table>
+                                <input type="hidden" name="orders_id" value="${ordersVO.getOrders_id() }" >
+                                <input style="float:right; background-color:rgba(46,139,87); color:white;" class="btn " type="submit" value="수정">
+                                <a href="deleteOrders.do?orders_id=${ordersVO.getOrders_id()}" style="float:right; background-color:rgba(46,139,87); color:white;" class="btn" type="submit" value="삭제">삭제</a>
+	                            </form>
+                                
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                     
 
                 </div>

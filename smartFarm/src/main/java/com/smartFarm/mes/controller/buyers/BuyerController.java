@@ -20,10 +20,10 @@ public class BuyerController {
 
 	// getBuyer
 	@RequestMapping(value = "/getBuyer.do" , method = {RequestMethod.GET, RequestMethod.POST})
-	public String getBuyer(@RequestParam(value = "buyer_id") String buyer_id,BuyerDAO buyerDAO, Model model) {
+	public String getBuyer(BuyerVO vo, BuyerDAO buyerDAO, Model model) {
 
 		System.out.println("getBuyer 진입");
-		BuyerVO buyerVO = buyerDAO.getBuyer(buyer_id);
+		BuyerVO buyerVO = buyerDAO.getBuyer(vo.getBuyer_id());
 		model.addAttribute("buyerVO",buyerVO );
 		return "buyerDetail";
 	}

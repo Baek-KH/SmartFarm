@@ -115,7 +115,7 @@
                                                 <div class="text-center">
                                                     <h1 class="h4 text-gray-900 mb-4">Welcome Smart Farm!</h1>
                                                 </div>
-                                                <form action="signin.do" class="user" method="post">
+                                                <form action="signIn.do" class="user" method="post">
                                                     <div class="form-group">
                                                         <input type="test" class="form-control form-control-user" name="emp_id"
                                                             id="exampleInputEmail" aria-describedby="emailHelp"

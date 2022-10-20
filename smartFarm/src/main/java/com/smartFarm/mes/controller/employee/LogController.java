@@ -30,7 +30,7 @@ public class LogController {
 	private AttendenceDAO attendenceDAO;
 
 	// signIn
-	@RequestMapping(value = "/signin.do", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/signIn.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String signInCheck(HttpServletResponse res, HttpServletRequest req, EmployeeVO vo, Model model) throws Exception {
 
 		System.out.println("==> signIn check");

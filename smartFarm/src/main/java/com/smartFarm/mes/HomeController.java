@@ -35,10 +35,7 @@ public class HomeController {
 	public String signUp() {
 		return "signUp";
 	}
-	@RequestMapping("/signIn")
-	public String login() {
-		return "signIn";
-	}
+	
 	@RequestMapping("/statusList")
 	public String statusList() {
 		return "statusList";

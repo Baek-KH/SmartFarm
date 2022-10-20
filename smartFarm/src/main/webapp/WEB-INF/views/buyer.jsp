@@ -146,17 +146,18 @@
                 </li>
 
 				<!-- 출하관리 공정관리 -->
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
 				<!-- 출하관리 공정관리 -->
-				
+
+
 
 				<li class="nav-item"><a class="nav-link" href="report.do">
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
@@ -247,7 +248,7 @@
                     <div class="container-fluid">
                     
 
-                    <!-- Content Row -->
+                     <!-- Content Row -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Buyer</h6>
@@ -257,14 +258,15 @@
                         <div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <form action="/insertBuyer.do" method="post">
                                 <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>buyer_id</th>
-                                            <th>buyer_name</th>
-                                            <th>buyer_email</th>
-                                            <th>buyer_number</th>
-                                            <th>buyer_product</th>
+                                            <th>구매처 명</th>
+                                            <th>이메일</th>
+                                            <th>연락처</th>
+                                            <th>거래 물품</th>
+                                            <th>배송 소요일</th>
                                         </tr>
                                     </thead>
                                     
@@ -272,21 +274,19 @@
                                         <tr>
                                             
                                             <td>
-                                                <input class="col" type="text" placeholder="buyer_id 을 입력해주세요">
+                                                <input class="col" name="buyer_name" type="text" placeholder="구매처 명">
                                             </td>
-                                            <td><input class="col" type="text" placeholder="buyer_name 을 입력해주세요"></td>
-                                            <td><input class="col" type="text" placeholder="buyer_email 을 입력해주세요"></td>
-                                            <td><input class="col" type="text" placeholder="buyer_number 을 입력해주세요"></td>
-                                            <td><input class="col" type="text" placeholder="buyer_product 을 입력해주세요"></td>
+                                            <td><input class="col" name="buyer_email" type="text" placeholder="buyer_name 을 입력해주세요"></td>
+                                            <td><input class="col" name="buyer_number" type="text" placeholder="buyer_email 을 입력해주세요"></td>
+                                            <td><input class="col" name="buyer_product" type="text" placeholder="buyer_number 을 입력해주세요"></td>
+                                            <td><input class="col" name="buyer_date" type="text" placeholder="buyer_product 을 입력해주세요"></td>
                                             
                                         </tr>
                                         
                                     </tbody>
-
-                                    
-
                                 </table>
                                 <input style="float:right; background-color:rgba(46,139,87); color:white; " class="btn " type="submit" value="등록">
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -314,29 +314,30 @@
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>buyer_id</th>
-                                            <th>buyer_name</th>
-                                            <th>buyer_email</th>
-                                            <th>buyer_number</th>
-                                            <th>buyer_product</th>
-                                            <th>buyer_date</th>
+                                            <th>구매처 아이디</th>
+                                            <th>거래업체명</th>
+                                            <th>이메일</th>
+                                            <th>연락처</th>
+                                            <th>거래물품</th>
+                                            <th>배송 소요일</th>
                                             <th>비고</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
+                                   	<c:forEach items="${BuyerList}" var="buyerVO">
                                         <tr>
-                                            <td>buyer_id 여기에 포이치</td>
-                                            <td>buyer_name</td>
-                                            <td>buyer_email</td>
-                                            <td>buyer_number</td>
-                                            <td>buyer_product</td>
-                                            <td>buyer_date</td>
+                                            <td>${buyerVO.getBuyer_id()}</td>
+                                            <td>${buyerVO.getBuyer_name()}</td>
+                                            <td>${buyerVO.getBuyer_email()}</td>
+                                            <td>${buyerVO.getBuyer_number()}</td>
+                                            <td>${buyerVO.getBuyer_product()}</td>
+                                            <td>${buyerVO.getBuyer_date()}</td>
                                             <td class="col-2">
-                                                <input style="background-color:rgba(46,139,87); color:white;"  class="btn btn-primary " type="submit" value="상세보기">
-                                                
+                                                <a href="getBuyer.do?buyer_id=${buyerVO.getBuyer_id()}" style="background-color:rgba(46,139,87); color:white;"  class="btn" type="submit" >상세보기</a>
                                             </td>
                                         </tr>
+                                   	</c:forEach>
                                         
                                     </tbody>
                                 </table>

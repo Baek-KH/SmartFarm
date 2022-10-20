@@ -152,22 +152,24 @@
                 </li>
                 
                 
-                <!-- 출하관리 공정관리 -->
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+               <!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
 				<!-- 출하관리 공정관리 -->
 
 
+
 				<li class="nav-item"><a class="nav-link" href="report.do">
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
+				
 			</c:if>
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
@@ -356,7 +358,7 @@
 													<input type="hidden" name="stock_qty" value="${stockVO.getStock_qty() }" >
 												</td>
 												<td>
-	                                                	<a class="btn btn-success" href="deleteStock.do?stock_id=${stockVO.getStock_id()}">삭제</a>
+	                                                	<a class="btn " style="background-color:rgba(46,139,87); color:white;" href="deleteStock.do?stock_id=${stockVO.getStock_id()}">삭제</a>
 	                                                	<input type="submit" class="btn btn-danger" value="수정">
 												</td>
 

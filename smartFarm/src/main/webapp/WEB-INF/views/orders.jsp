@@ -146,17 +146,17 @@
                 </li>
                 
                 <!-- 출하관리 공정관리 -->
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
 				<!-- 출하관리 공정관리 -->
-                
+
 
 
 				<li class="nav-item"><a class="nav-link" href="report.do">
@@ -293,7 +293,7 @@
 
                     <div>
                         <div class="card-body">
-                            <h4>pip list</h4>
+                            <h4>발주 리스트</h4>
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
@@ -318,8 +318,7 @@
                                             <th>${ordersVO.getOrders_date()}</th>
                                             <th>${ordersVO.getOrders_arr_date()}</th>
                                             <th class="col-2">
-                                                <input style="" class="btn btn-primary " type="submit" value="수정">
-                                                <input style="" class="btn btn-primary " type="submit" value="삭제">
+                                                <a href="getOrders.do?orders_id=${ordersVO.getOrders_id()}" style="background-color:rgba(46,139,87); color:white;" class="btn" type="submit" value="상세보기">상세보기</a>
                                             </th>
                                             
                                         </tr>
