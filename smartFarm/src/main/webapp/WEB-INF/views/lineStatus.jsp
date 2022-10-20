@@ -34,31 +34,7 @@
 <script src="https://kit.fontawesome.com/03a2ebe789.js" crossorigin="anonymous"></script>
 
    <style>
-		a.tip {
-		    text-align: center;
-		    text-decoration: none;
-		}
-		a.tip:hover{
-		    
-		    position: relative;
-		}
-		a.tip span{
-		    display: inline-flex;
-		    width: 100%;
-		}
-		a.tip:hover span{
-		    border : #000000 2px ;
-		    padding: 5px 5px 5px 5px;
-		    display: block;
-		    z-index: 100;
-		    background: blanchedalmond;
-		    left: 0px;
-		    margin: 10px;
-		    width: 250px;    
-		    position: absolute;
-		    top: 10px;
-		    text-decoration: none;
-		}
+		
 		.gnb li {list-style-type: none; 
 			display: inline-block;
 			padding: 20px;
@@ -224,7 +200,7 @@
                 
 
 
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="report.do">
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
 			</c:if>
@@ -327,17 +303,14 @@
                             </div>
                             <div>
                             <ul class="gnb">
-                                <li><div><a href="#" class="tip" >1번<span>1줄 여기다가 머 넣으면 될려나?머야이건 <br>
-                                                                    2줄 여기다 호에엥 <br>
-                                                                    3줄 메차 <br>
-                                                                    4줄 쿠차    </span> </a></div></li>
-                                <li><a href="#" class="tip">2번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">3번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">4번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">5번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">6번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">7번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">8번<span>여기다가 머 넣으면 될려나?</span> </a></li>
+                                <li><div><a href="#" class="tip" >1번 </a></div></li>
+                                <li><a href="#" class="tip">2번</a></li>
+                                <li><a href="#" class="tip">3번</a></li>
+                                <li><a href="#" class="tip">4번</a></li>
+                                <li><a href="#" class="tip">5번</a></li>
+                                <li><a href="#" class="tip">6번</a></li>
+                                <li><a href="#" class="tip">7번</a></li>
+                                <li><a href="#" class="tip">8번</a></li>
                             </ul>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -353,19 +326,16 @@
                                             <tr>
                                                 <td>라인 상태 </td>
                                                 <td style="
-                                                
-                                                
-	                                           
 	                                            <c:if test="${LineVO.getLine_status().length()>5}"
-	                                            >background-color:red;</c:if>
+	                                            >border-color:red;</c:if>
 	                                            <c:if test="${LineVO.getLine_status().length()<5 && LineVO.getLine_status().length()>1 }"
-	                                            >background-color:yellow;</c:if>
+	                                            >border-color:yellow;</c:if>
                                                
                                                 <c:if test="${LineVO.getLine_status().length()==0}"
-                                                >background-color:green;</c:if>
+                                                >border-color:green;</c:if>
                                                 
                                                 
-                                                ">
+                                                border-width:medium; ">
                                                 ${LineVO.getLine_status()}</td>
                                                 
                                             </tr>
@@ -400,8 +370,8 @@
                             </div>
                         </div>
                         <div style = "padding: 0px 0px 0px 0px; text-align: center;
-                                <c:if test="${  box     }">background-color:red;</c:if>
-                                <c:if test="${  box     }">background-color:blue;</c:if>
+                                <c:if test="${box}">background-color:red;</c:if>
+                                <c:if test="${box}">background-color:blue;</c:if>
                             " >
                           
                             </div>

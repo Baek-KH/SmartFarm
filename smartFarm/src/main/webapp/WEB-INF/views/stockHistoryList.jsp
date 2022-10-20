@@ -165,7 +165,7 @@
 				</a></li>
 				<!-- 출하관리 공정관리 -->
 
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="report.do">
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
 			</c:if>

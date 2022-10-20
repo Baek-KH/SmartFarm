@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.text.SimpleDateFormat"%>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>insertEmployee</title>
+    <title>orders</title>
 
     <!-- Custom fonts for this template-->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -239,79 +240,73 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800"></h1>
-                        
-                    </div>
-
-                  
-					<!-- Content Row -->
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     
-                    <div class="container-fluid">
-                            <form action="insertEmployee.do" method="post">
-                                <table  class="table table-bordered col-4 ">
-                                    <thead>
-                                        <tr>
-                                             	<th scope="col">아이디</th>
-				                                <th scope="col">사원번호</th>
-				                               
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                            <tr>
-                                                <td>아이디</td>                                                
-                                                <td>
-                                                <input type="text" name="emp_id"  value="아이디">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>비밀번호</td>
-                                                <td>
-                                                	<input type="password" name="emp_pw" value="패스워드">
-                                                </td>
-                                            </tr>
-                                     
-                                            <tr>
-                                                <td>이름</td>
-                                                <td>
-                                                	<input type="text" name="emp_name" value="이름">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>이메일</td>
-                                                <td>
-                                                	<input type="text" name="emp_email" value="이메일">
-                                                </td>
-                                            </tr>
-                                          
-                                </tbody>
-                                </table>
-                            
-                            <div>
-                                <tr>
-                                	
-                                    <td colspan="2" align="center">
-                                    
-                                    <input type="submit" class="btn btn-info" value="사원 등록"/>
-                                    </td>
-                                </tr>
-                            </div>
-                            </form>
-                    </div>
-                            
-
-
-                            
-                    
-
+                    </div> -->
+					<div class="container">
                     <!-- Content Row -->
+						<div class="row">
+							<div><h4>예측 대비 출고량</h4></div>
+							<canvas id="myChart" width="100%" height="50%">
+								</canvas>
+
+
+						</div>
+					</div>
+
+					<div class="container">
+                    <!-- Content Row -->
+						<div class="row">
+							<div class="card-body">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">오류 LIST</h6>
+								</div>
+								<div class="table-responsive">
+									<table class="table table-bordered" id="dataTable5" width="100%" cellspacing="0">
+
+										<thead>
+											<tr>
+												<th>발생 라인</th>
+												<th>오류 기록</th>
+												<th>오류 일자</th>
+												<th>처리 기록</th>
+											</tr>
+										</thead>
+
+										<tbody>
+										<c:forEach items="${StatusList}" var="statusVO">
+											<tr>
+												<td>${statusVO.getStatus_line_id()}</td>
+												<td>
+													${statusVO.getStatus_error_code()}
+												</td>
+												<td>
+													${statusVO.getStatus_time() }
+												</td>
+												<td>
+														<c:if test="${fn:contains(statusVO.getStatus_error_code(),'T_')}"> 온도조정 </c:if>
+														<c:if test="${fn:contains(statusVO.getStatus_error_code(),'H_')}"> 습도조정 </c:if>
+												</td>
+											</tr>
+										</c:forEach>
+											
+
+										</tbody>
+
+									</table>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+
+					</div>
+				</div>
 					
-                    
-
-                    
-
-                </div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -355,6 +350,8 @@
     <!-- Page level custom scripts -->
     <script src="/resources/js/demo/chart-area-demo.js"></script>
     <script src="/resources/js/demo/chart-pie-demo.js"></script>
+    <script src="/resources/js/chart-bar.js"></script>
+    
 
 </body>
 
