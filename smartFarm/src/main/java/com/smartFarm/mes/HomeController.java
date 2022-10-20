@@ -70,4 +70,10 @@ public class HomeController {
 		return "orders";
 	}
 
+	@RequestMapping("/orders2")
+    public String orders2() {
+        return "orders2";
+    }
+	
+	
 }
