@@ -1,0 +1,9 @@
+diff a/Servers/Tomcat v9.0 Server at localhost-config/server.xml b/Servers/Tomcat v9.0 Server at localhost-config/server.xml	(rejected hunks)
+@@ -154,7 +154,6 @@
+              Note: The pattern used is equivalent to using pattern="common" -->
+         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
+ 
+-      <Context docBase="TTEESSTT" path="/mes" reloadable="true" source="org.eclipse.jst.jee.server:TTEESSTT"/></Host>
+       <Context docBase="smartFarm" path="/" reloadable="true" source="org.eclipse.jst.jee.server:smartFarm"/></Host>
+     </Engine>
+   </Service>
