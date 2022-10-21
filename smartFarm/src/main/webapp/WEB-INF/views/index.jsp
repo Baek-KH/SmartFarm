@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-<%-- ${productRateVO.getStock_in_sum}
-${productRateVO.getStock_out_sum} --%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -114,8 +110,7 @@ body {
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul
-			class="navbar-nav  sidebar sidebar-dark accordion"
+		<ul class="navbar-nav  sidebar sidebar-dark accordion"
 			style="background-color:rgba(46,139,87)"
 			id="accordionSidebar">
 
@@ -166,8 +161,8 @@ body {
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<%-- <h6 class="collapse-header">Custom Components:</h6> 여기다 글쓰면 위에 주석처럼 달림 --%>
-						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> <a
-							class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
+						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> 
+						<a class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
 					</div>
 				</div></li>
 
@@ -221,20 +216,20 @@ body {
                 </li>
 				<!-- 구매관리 사이드바 끝 -->
 				<!-- 출하관리 공정관리 -->
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
-				<li class="nav-item"><a class="nav-link" href="tables.html">
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
 				<!-- 출하관리 공정관리 -->
 
 
 
-				<li class="nav-item"><a class="nav-link" href="/orders2">
+				<li class="nav-item"><a class="nav-link" href="report.do">
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
 			</c:if>
@@ -325,9 +320,11 @@ body {
 					<div class="row">
 
 						<!-- 생산율 -->
-						<div class="col-xl-3 col-md-6 mb-4">
+						
+						<div class="col-xl-6 col-md-6 mb-4">
 							<div class="card border-left-info shadow h-100 py-2">
 								<div class="card-body">
+								<div class="container">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
@@ -335,40 +332,43 @@ body {
 											</div>
 											<div class="row no-gutters align-items-center">
 												<div class="col-auto">
-													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${productRateVO.getStock_rate()}%</div>
+													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><fmt:formatNumber value="${productRateVO.getStock_rate()}"  maxFractionDigits="2"/>%</div>
 												</div>
 												<div class="col">
 													<div class="progress progress-sm mr-2">
 														<div class="progress-bar bg-info" role="progressbar"
-															style="width: ${productRateVO.getStock_rate()}%"
+															style="width: <fmt:formatNumber value="${productRateVO.getStock_rate()}"  maxFractionDigits="2"/>%"
 															aria-valuenow="50" aria-valuemin="0" aria-valuemax="200"></div>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="col-auto">
-											<i class="fa-solid fa-arrows-spin"></i>
+											<i class="fa-solid fa-arrows-spin"  style="font-size:2em;"></i>
 										</div>
+									</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<!-- 미정 -->
-						<div class="col-xl-3 col-md-6 mb-4">
+						<!-- 예측 -->
+						<div class="col-xl-6 col-md-6 mb-4">
 							<div class="card border-left-warning shadow h-100 py-2">
 								<div class="card-body">
+								<div class="container">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-												수요 예측</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">예측</div>
+												생산 예측</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">Lettuce 생산 예측 목표량 : ${predictionVO.getPre_col()} (KG)</div>
 										</div>
 										<div class="col-auto">
-											<i class="fas fa-comments fa-2x text-gray-300"></i>
+											<i class="fa fa-share-from-square " style="font-size:2em;"></i>
 										</div>
 									</div>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -384,16 +384,16 @@ body {
 								<!-- Card Header - Dropdown -->
 								<div
 									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Earnings
-										Overview</h6>
+									<h6 class="m-0 font-weight-bold text-primary"> 입고 / 출고</h6>
 
 								</div>
 								<!-- Card Body -->
 								<div class="card-body">
+								<div class="container">
 									<div class="chart-area">
 										<canvas class="holdin" id="myChart"></canvas>
 									</div>
-
+								</div>
 									<div></div>
 								</div>
 							</div>
@@ -404,7 +404,7 @@ body {
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">재고량</h6>
                                 </div>
                                     <!-- Card Body -->
                                     <div class="card-body">
@@ -511,9 +511,7 @@ body {
 	<!-- Page level plugins -->
 	<script src="/resources/vendor/chart.js/Chart.min.js"></script>
 
-	<!-- Page level custom scripts -->
-	<script src="/resources/js/demo/chart-area-demo.js"></script>
-	<script src="/resources/js/demo/chart-pie-demo.js"></script>
+
 
 	<!-- 선그래프 스크립트 -->
 	<script>
@@ -534,7 +532,7 @@ body {
 								'${productRateList[6].getStock_date()}' ],
 						datasets : [
 								{
-									label : 'My First dataset',
+									label : '입고',
 									backgroundColor : 'rgba(75, 192, 192, 1)',
 									borderColor : 'rgba(75, 192, 192, 1)',
 									fill : false,
@@ -550,7 +548,7 @@ body {
 									],
 								},
 								{
-									label : 'My Second dataset',
+									label : '출고',
 									backgroundColor : 'rgba(255, 99, 132, 1)',
 									borderColor : 'rgba(255, 99, 132, 1)',
 									fill : false,
