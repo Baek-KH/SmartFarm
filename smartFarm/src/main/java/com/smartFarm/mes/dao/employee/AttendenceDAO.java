@@ -22,7 +22,7 @@ public class AttendenceDAO {
 
 	private final String ATTENDENCE_INSERT ="insert into attendence(emp_id, emp_name, att_work_on, att_work_date, att_dayoff ) values (?,?,?,?,?)";
 	private final String ATTENDENCE_GET ="select * from attendence where emp_id like ? and att_work_date = CURDATE() order by att_work_date desc limit 1";
-	private final String ATTENDENCE_UPDATE_OFF ="update attendence set att_work_off=? where emp_id = ?";
+	private final String ATTENDENCE_UPDATE_OFF ="update attendence set att_work_off=? where emp_id = ? order by att_work_on desc limit 1";
 
 	private final String ATTENDENCE_LIST ="select * from attendence where emp_id like ? order by att_work_date desc";
 	private final String ATTENDENCE_LIST_DY ="select * from attendence where emp_id like ? year(att_work_date) like ? order by att_work_date desc";

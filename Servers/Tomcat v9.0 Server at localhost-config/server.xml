@@ -91,7 +91,7 @@
          configuration is used below.
     -->
     <!--
-    <Connector port="8443" protocol="org.apache.coyote.http11.Http11AprProtocol"
+    <Connector port="8088" protocol="org.apache.coyote.http11.Http11AprProtocol"
                maxThreads="150" SSLEnabled="true" >
         <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
         <SSLHostConfig>
@@ -140,6 +140,8 @@
       </Realm>
 
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
+            
+
 
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
@@ -152,7 +154,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="TTEESSTT" path="/mes" reloadable="true" source="org.eclipse.jst.jee.server:TTEESSTT"/></Host>
+      <Context docBase="smartFarm" path="/" reloadable="true" source="org.eclipse.jst.jee.server:smartFarm"/></Host>
     </Engine>
   </Service>
 </Server>

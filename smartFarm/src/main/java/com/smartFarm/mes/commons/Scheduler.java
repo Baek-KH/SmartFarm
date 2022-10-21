@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 
 import com.smartFarm.mes.dao.line.LineDAO;
 import com.smartFarm.mes.dao.line.StatusDAO;
+import com.smartFarm.mes.dao.pip.PipDAO;
+import com.smartFarm.mes.dao.tray.TrayDAO;
 
 @EnableScheduling
 @Component
@@ -12,6 +14,8 @@ public class Scheduler {
 
 	StatusDAO statusDAO = new StatusDAO();
 	LineDAO lineDAO = new LineDAO();
+	TrayDAO trayDAO = new TrayDAO();
+	PipDAO pipDAO = new PipDAO();
 
 //	@Scheduled(fixedRate = 5000)
 //	public void setStatusData() {
@@ -51,7 +55,35 @@ public class Scheduler {
 //		}
 //
 //	}
-
+//	@Scheduled(cron = "0 0 06 * * *") // 매일 06시 수행
+//	@Scheduled(fixedRate = 60000)	// 테스트용 1분에 한번씩	
+//	public void trayInsertPerDay() {
+//		
+//		// 라인 설정정보를 바탕으로 pip가 세팅된 tary를 라인에 insert
+//		
+//		List<LineVO> lineList = new ArrayList<>();
+//		lineList = lineDAO.getLineList();
+//		
+//		for(LineVO vo : lineList) {
+//			TrayVO trayVO = new TrayVO();
+//			String line_id = vo.getLine_id();
+//			String line_pip = vo.getLine_pip();
+//			PipVO pipVO = pipDAO.getPip(line_pip);
+//			trayVO.setLine_id(line_id);
+//			trayVO.setPip_name(line_pip);
+//			trayVO.setPip_qty("50");
+//			trayVO.setPip_period(pipVO.getPip_period());
+//			
+//			
+//			trayDAO.insertTray(trayVO);
+//		}
+//		
+		
+		
+		
+		
+		
+//	}
 
 
 
