@@ -30,7 +30,7 @@ public class LogController {
 	private AttendenceDAO attendenceDAO;
 
 	// signIn
-	@RequestMapping(value = "/signin.do", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/signIn.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public String signInCheck(HttpServletResponse res, HttpServletRequest req, EmployeeVO vo, Model model) throws Exception {
 
 		System.out.println("==> signIn check");
@@ -40,7 +40,8 @@ public class LogController {
 		EmployeeVO employee = employeeDAO.getEmployee(vo.getEmp_id());
 		PrintWriter out = new PrintWriter(System.out);
 		session = req.getSession();
-		session.setMaxInactiveInterval(1800);
+//		session 제한 시간 잠금
+//		session.setMaxInactiveInterval(1800);
 		
 		
 		if(employee.getEmp_id()!=null) {
@@ -55,7 +56,7 @@ public class LogController {
 		} else {
 			ScriptAlertUtils.alertAndBackPage(res, "아이디가 없습니다.");
 		}
-		return "index";
+		return "redirect:/index";
 
 	}
 

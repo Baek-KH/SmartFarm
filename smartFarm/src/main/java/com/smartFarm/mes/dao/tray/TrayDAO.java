@@ -20,11 +20,14 @@ public class TrayDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	private final String TRAY_INSERT ="insert into tray values (?,?,?,?,?, now(),DATE_ADD(now(), INTERVAL ? DAY))";
-	private final String TRAY_GET ="select * from tray where tray_id=?";
+	private final String TRAY_INSERT ="insert into tray values (?,?,?,?,?, now(),DATE_ADD(now(), INTERVAL ? DAY),?)";
+	private final String TRAY_GET ="select * from tray where tray_id=?";	
+	private final String TRAY_UPDATE ="update TRAY set tray_growth=? where tray_id=?";
 	private final String TRAY_DELETE ="delete from tray where tray_id=?";
 	private final String TRAY_LIST ="select * from tray order by tray_start_date desc";
+	private final String TRAY_LIST_UN ="select * from tray where tray_end_date > CURDATE() order by tray_start_date desc";
 
+	private final String TRAY_LIST_I_IN ="select * from tray where line_id like ? order by tray_start_date desc limit 8";
 	private final String TRAY_LIST_I ="select * from tray where line_id like ? order by tray_start_date desc";
 	private final String TRAY_LIST_DY ="select * from tray where year(tray_start_date) like ? order by tray_start_date desc";
 	private final String TRAY_LIST_DM ="select * from tray where month(tray_start_date) like ? order by tray_start_date desc";
@@ -35,22 +38,22 @@ public class TrayDAO {
 	public void insertTray(TrayVO vo) {
 
 		System.out.println("==> JDBC Tray insert");
-
 		PipDAO pipDAO = new PipDAO();
 		PipVO pipVO = pipDAO.getPip(vo.getPip_name());
 		vo.setPip_period(pipVO.getPip_period());
-		String getTray_NO = "select tray_id from tray ORDER BY tray_id DESC LIMIT 1";
+		String getTray_NO = "select tray_id from tray ORDER BY CAST(tray_id AS SIGNED) DESC LIMIT 1";
 
 		try {
 			conn = JDBCUtil.getConnection();
-
-			rs = stmt.executeQuery();
 			stmt = conn.prepareStatement(getTray_NO);
+			rs = stmt.executeQuery();
 			if(rs.next()) {
 				vo.setTray_id((Integer.parseInt(rs.getString("tray_id"))+1)+"");
 			} else {
 				vo.setTray_id("1");
 			}
+				vo.setTray_growth("0");
+
 			stmt = conn.prepareStatement(TRAY_INSERT);
 			stmt.setString(1, vo.getTray_id());
 			stmt.setString(2, vo.getLine_id());
@@ -58,6 +61,7 @@ public class TrayDAO {
 			stmt.setString(4, vo.getPip_qty());
 			stmt.setString(5, vo.getPip_period());
 			stmt.setInt(6, Integer.parseInt(vo.getPip_period()));
+			stmt.setString(7, vo.getTray_growth());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,6 +86,7 @@ public class TrayDAO {
 				tray.setLine_id(rs.getString("line_id"));
 				tray.setPip_name(rs.getString("pip_name"));
 				tray.setPip_qty(rs.getString("pip_qty"));
+				tray.setTray_growth(rs.getString("tray_growth"));				
 				tray.setPip_period(rs.getString("pip_period"));
 				tray.setTray_start_date(rs.getTimestamp("tray_start_date"));
 				tray.setTray_end_date(rs.getTimestamp("tray_end_date"));
@@ -97,7 +102,24 @@ public class TrayDAO {
 	}
 
 	// 3. update
-	// BANNED
+	public void updateTray(TrayVO vo) {
+
+		System.out.println("==> JDBC Tray update");
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(TRAY_UPDATE);			
+			stmt.setString(1, vo.getTray_growth());
+			stmt.setString(2, vo.getTray_id());
+			stmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(null, stmt, conn);
+		}
+	}
+	
 
 	// 4. delete
 	public void deleteTray(TrayVO vo) {
@@ -133,6 +155,7 @@ public class TrayDAO {
 				tray.setLine_id(rs.getString("line_id"));
 				tray.setPip_name(rs.getString("pip_name"));
 				tray.setPip_qty(rs.getString("pip_qty"));
+				tray.setTray_growth(rs.getString("tray_growth"));				
 				tray.setPip_period(rs.getString("pip_period"));
 				tray.setTray_start_date(rs.getTimestamp("tray_start_date"));
 				tray.setTray_end_date(rs.getTimestamp("tray_end_date"));
@@ -147,6 +170,35 @@ public class TrayDAO {
 		return trayList;
 	}
 
+	// Tray List 미완tray 출력 
+		public List<TrayVO> getTrayListUnfinished() {
+			System.out.println("==> JDBC getTrayListUnfinished");
+			List<TrayVO> trayList = new ArrayList<>();
+
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(TRAY_LIST_UN);
+				rs = stmt.executeQuery();
+				while(rs.next()) {
+					TrayVO tray = new TrayVO();
+					tray.setTray_id(rs.getString("tray_id"));
+					tray.setLine_id(rs.getString("line_id"));
+					tray.setPip_name(rs.getString("pip_name"));
+					tray.setPip_qty(rs.getString("pip_qty"));
+					tray.setTray_growth(rs.getString("tray_growth"));				
+					tray.setPip_period(rs.getString("pip_period"));
+					tray.setTray_start_date(rs.getTimestamp("tray_start_date"));
+					tray.setTray_end_date(rs.getTimestamp("tray_end_date"));
+					trayList.add(tray);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(rs, stmt, conn);
+			}
+			return trayList;
+		}
 
 	// Tray List Search
 	public List<TrayVO> getTrayListSearch(String field, String query) {
@@ -181,6 +233,7 @@ public class TrayDAO {
 				tray.setLine_id(rs.getString("line_id"));
 				tray.setPip_name(rs.getString("pip_name"));
 				tray.setPip_qty(rs.getString("pip_qty"));
+				tray.setTray_growth(rs.getString("tray_growth"));				
 				tray.setPip_period(rs.getString("pip_period"));
 				tray.setTray_start_date(rs.getTimestamp("tray_start_date"));
 				tray.setTray_end_date(rs.getTimestamp("tray_end_date"));
@@ -194,7 +247,44 @@ public class TrayDAO {
 		}
 		return trayList;
 	}
+	
+	// Tray List by line
+		public List<TrayVO> getTrayListByLine(TrayVO vo) {
 
+
+			System.out.println("==> JDBC getTrayListSearch");
+
+			List<TrayVO> trayList = new ArrayList<>();
+
+
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(TRAY_LIST_I_IN);
+				stmt.setString(1, vo.getLine_id());
+				rs = stmt.executeQuery();
+				while(rs.next()) {
+					TrayVO tray = new TrayVO();
+					tray.setTray_id(rs.getString("tray_id"));
+					tray.setLine_id(rs.getString("line_id"));
+					tray.setPip_name(rs.getString("pip_name"));
+					tray.setPip_qty(rs.getString("pip_qty"));
+					tray.setTray_growth(rs.getString("tray_growth"));				
+					tray.setPip_period(rs.getString("pip_period"));
+					tray.setTray_start_date(rs.getTimestamp("tray_start_date"));
+					tray.setTray_end_date(rs.getTimestamp("tray_end_date"));
+					trayList.add(tray);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(rs, stmt, conn);
+			}
+			return trayList;
+		}
+	
+	
+	
 
 
 

@@ -54,7 +54,7 @@ public class TrayController {
 
 	// ListSearch
 	@RequestMapping(value = "/getTrayListSearch.do")
-	public String getTrayListSearch(@RequestParam(value = "field", defaultValue = "", required = false) String field,
+	public String getTrayListSearch(
 			@RequestParam(value = "query", defaultValue = "", required = false) String query, TrayDAO trayDAO,
 			Model model) {
 
@@ -62,9 +62,9 @@ public class TrayController {
 
 		List<TrayVO> trayList = new ArrayList<>();
 
-		if (field != null & query != null) {
+		if (query != null) {
 
-			trayList = trayDAO.getTrayListSearch(field, query);
+			trayList = trayDAO.getTrayListSearch("line_id", query);
 		} else {
 			trayList = trayDAO.getTrayList();
 		}
@@ -72,5 +72,18 @@ public class TrayController {
 		model.addAttribute("TrayList", trayList);
 		return "trayList";
 	}
+	
+	
+	// ListControl
+		@RequestMapping(value = "/TrayControlList.do")
+		public String getTrayControlList(TrayVO vo, TrayDAO trayDAO, Model model) {
+
+			System.out.println("getTrayControlList 진입");
+			List<TrayVO> trayList = trayDAO.getTrayListByLine(vo);
+			model.addAttribute("TrayList", trayList);
+			return "process";
+		}
+	
+	
 
 }

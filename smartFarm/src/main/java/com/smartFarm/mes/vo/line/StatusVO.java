@@ -11,6 +11,7 @@ public class StatusVO {
 	private String status_line_temp;
 	private String status_hum;
 	private String status_line_hum;
+	private String status_error_code;
 	private Date status_time;
 
 
@@ -63,6 +64,12 @@ public class StatusVO {
 		return "StatusVO [status_id=" + status_id + ", status_line_id=" + status_line_id + ", status_temp="
 				+ status_temp + ", status_line_temp=" + status_line_temp + ", status_hum=" + status_hum
 				+ ", status_line_hum=" + status_line_hum + ", status_time=" + status_time + "]";
+	}
+	public String getStatus_error_code() {
+		return status_error_code;
+	}
+	public void setStatus_error_code(String status_error_code) {
+		this.status_error_code = status_error_code;
 	}
 
 

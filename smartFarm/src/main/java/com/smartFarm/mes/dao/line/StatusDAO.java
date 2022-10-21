@@ -27,10 +27,11 @@ public class StatusDAO {
 //	private String status_line_hum;
 //	private String status_time;
 
-	private final String STATUS_INSERT ="insert into line_Status values (?,?,?,?,?,?, now())";
+	private final String STATUS_INSERT ="insert into line_Status values (?,?,?,?,?,?,?, now())";
 	private final String STATUS_GET ="select * from line_Status where status_line_id like ? order by status_time desc limit 1";
 	private final String STATUS_LIST ="select * from line_Status order by status_time desc";
-	private final String STATUS_LIST_L ="select * from line_Status where line_id like ? order by status_time desc";
+	private final String STATUS_LIST_LI ="select * from line_Status order by status_time desc limit 15";
+	private final String STATUS_LIST_L ="select * from line_Status where status_line_id like ? order by status_time desc";
 	private final String STATUS_LIST_DY ="select * from line_Status where year(status_time) like ? order by status_time desc";
 	private final String STATUS_LIST_DM ="select * from line_Status where month(status_time) like ? order by status_time desc";
 	private final String STATUS_LIST_DD ="select * from line_Status where day(status_time) like ? order by status_time desc";
@@ -41,10 +42,13 @@ public class StatusDAO {
 	public void insertStatus(StatusVO vo) {
 
 		System.out.println("==> JDBC Status insert");
-
+		
+		
+		StatusDAO statusDAO = new StatusDAO();
 		LineDAO lineDAO = new LineDAO();
 		LineVO lineVO = lineDAO.getLine(vo.getStatus_line_id());
-
+		
+		String line_status = "";
 		String getStatus_id = "select status_id from line_Status ORDER BY length(status_id) DESC , status_id DESC limit 1";
 
 
@@ -59,7 +63,30 @@ public class StatusDAO {
 			}
 			vo.setStatus_line_temp(lineVO.getLine_temp());
 			vo.setStatus_line_hum(lineVO.getLine_hum());
+			
+			int status_temp = Integer.parseInt(vo.getStatus_temp());
+			int line_temp = Integer.parseInt(vo.getStatus_line_temp());
+			int status_hum = Integer.parseInt(vo.getStatus_hum());
+			int line_hum = Integer.parseInt(vo.getStatus_line_hum());
 
+			if (status_temp > line_temp + 2) {
+				line_status = line_status + "T_H ";
+			}
+			;
+			if (status_temp < line_temp - 2) {
+				line_status = line_status + "T_L ";
+			}
+			;
+			if (status_hum > line_hum + 10) {
+				line_status = line_status + "H_H";
+			}
+			;
+			if (status_hum < line_hum + 10) {
+				line_status = line_status + "H_L";
+			}
+			
+			vo.setStatus_error_code(line_status);
+			
 			stmt = conn.prepareStatement(STATUS_INSERT);
 			stmt.setString(1, vo.getStatus_id());
 			stmt.setString(2, vo.getStatus_line_id());
@@ -67,6 +94,8 @@ public class StatusDAO {
 			stmt.setString(4, vo.getStatus_line_temp());
 			stmt.setString(5, vo.getStatus_hum());
 			stmt.setString(6, vo.getStatus_line_hum());
+			stmt.setString(7, vo.getStatus_error_code());
+			
 
 			stmt.executeUpdate();
 		} catch (Exception e) {
@@ -95,6 +124,7 @@ public class StatusDAO {
 				statusVO.setStatus_hum(rs.getString("status_hum"));
 				statusVO.setStatus_line_hum(rs.getString("status_line_hum"));
 				statusVO.setStatus_time(rs.getTimestamp("status_time"));
+				statusVO.setStatus_error_code(rs.getString("status_error_code"));
 			}
 
 		} catch (Exception e) {
@@ -130,6 +160,7 @@ public class StatusDAO {
 					statusVO.setStatus_hum(rs.getString("status_hum"));
 					statusVO.setStatus_line_hum(rs.getString("status_line_hum"));
 					statusVO.setStatus_time(rs.getTimestamp("status_time"));
+					statusVO.setStatus_error_code(rs.getString("status_error_code"));
 					statusList.add(statusVO);
 
 				}
@@ -142,6 +173,41 @@ public class StatusDAO {
 			return statusList;
 		}
 
+		// Status List Limit
+		public List<StatusVO> getStatusListLimit() {
+
+			System.out.println("==> JDBC getStatusListLimit");
+
+
+			List<StatusVO> statusList = new ArrayList<>();
+
+
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(STATUS_LIST_LI);
+				rs = stmt.executeQuery();
+				while(rs.next()) {
+					StatusVO statusVO = new StatusVO();
+					statusVO.setStatus_id(rs.getString("status_id"));
+					statusVO.setStatus_line_id(rs.getString("status_line_id"));
+					statusVO.setStatus_temp(rs.getString("status_temp"));
+					statusVO.setStatus_line_temp(rs.getString("status_line_temp"));
+					statusVO.setStatus_hum(rs.getString("status_hum"));
+					statusVO.setStatus_line_hum(rs.getString("status_line_hum"));
+					statusVO.setStatus_time(rs.getTimestamp("status_time"));
+					statusVO.setStatus_error_code(rs.getString("status_error_code"));
+					statusList.add(statusVO);
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(rs, stmt, conn);
+			}
+			return statusList;
+		}
+		
 //		private final String STATUS_LIST_L ="select * from Status where line_id like ? order by status_time desc";
 //		private final String STATUS_LIST_DY ="select * from Status where year(status_time) like ? order by status_time desc";
 //		private final String STATUS_LIST_DM ="select * from Status where month(status_time) like ? order by status_time desc";
@@ -181,6 +247,7 @@ public class StatusDAO {
 					statusVO.setStatus_hum(rs.getString("status_hum"));
 					statusVO.setStatus_line_hum(rs.getString("status_line_hum"));
 					statusVO.setStatus_time(rs.getTimestamp("status_time"));
+					statusVO.setStatus_error_code(rs.getString("status_error_code"));
 					statusList.add(statusVO);
 
 				}
