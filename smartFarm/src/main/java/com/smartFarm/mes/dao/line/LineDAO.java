@@ -19,14 +19,10 @@ public class LineDAO {
 	private ResultSet rs = null;
 
 	private final String LINE_STATUS_UPDATE ="update Line set line_status=? where line_id = ?";
-	private final String LINE_UPDATE ="update Line set line_temp=?, line_hum=?, line_status=? , line_pip=? where line_id = ?";
+	private final String LINE_UPDATE ="update Line set line_temp=?, line_hum=?, line_status=? where line_id = ?";
 	private final String LINE_GET ="select * from Line where line_id=?";
 	private final String LINE_LIST ="select * from Line ";
-	
-	private final String LINE_UPDATE_T = "update Line set line_temp=? where line_id = ?";
-	private final String LINE_UPDATE_H = "update Line set line_hum=? where line_id = ?";
-	private final String LINE_UPDATE_P = "update Line set line_pip=? where line_id = ?";
-	
+
 
 	// 1. update
 			public void updateLine(LineVO vo) {
@@ -38,8 +34,7 @@ public class LineDAO {
 					stmt.setString(1, vo.getLine_temp());
 					stmt.setString(2, vo.getLine_hum());
 					stmt.setString(3, vo.getLine_status());
-					stmt.setString(4, vo.getLine_pip());					
-					stmt.setString(5, vo.getLine_id());
+					stmt.setString(4, vo.getLine_id());
 					stmt.executeUpdate();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +42,6 @@ public class LineDAO {
 					JDBCUtil.close(null, stmt, conn);
 				}
 			}
-			
 			// 1-1 update line_status
 			public void updateLineStatus(String line_id,String Status) {
 
@@ -57,30 +51,6 @@ public class LineDAO {
 					stmt = conn.prepareStatement(LINE_STATUS_UPDATE);
 					stmt.setString(1, Status);
 					stmt.setString(2, line_id);
-					stmt.executeUpdate();
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					JDBCUtil.close(null, stmt, conn);
-				}
-			}
-			
-			// 1-2 update line_Detail
-			public void updateLineDetail(LineVO vo,String field,String query) {
-				
-				System.out.println("==> JDBC updateLineDetail ");
-				
-				try {
-					conn = JDBCUtil.getConnection();
-					if(field.equals("line_temp")) {
-						stmt = conn.prepareStatement(LINE_UPDATE_T);	
-					} else if(field.equals("line_hum")) {
-						stmt = conn.prepareStatement(LINE_UPDATE_H);						
-					} else if(field.equals("line_pip")) {
-						stmt = conn.prepareStatement(LINE_UPDATE_P);						
-					}
-					stmt.setString(1, query);
-					stmt.setString(2, vo.getLine_id());
 					stmt.executeUpdate();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -106,7 +76,6 @@ public class LineDAO {
 				lineVO.setLine_temp(rs.getString("line_temp"));
 				lineVO.setLine_hum(rs.getString("line_hum"));
 				lineVO.setLine_status(rs.getString("line_status"));
-				lineVO.setLine_pip(rs.getString("line_pip"));
 
 			}
 
@@ -135,7 +104,6 @@ public class LineDAO {
 				lineVO.setLine_temp(rs.getString("line_temp"));
 				lineVO.setLine_hum(rs.getString("line_hum"));
 				lineVO.setLine_status(rs.getString("line_status"));
-				lineVO.setLine_pip(rs.getString("line_pip"));
 				lineList.add(lineVO);
 			}
 

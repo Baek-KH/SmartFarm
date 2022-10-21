@@ -115,6 +115,7 @@ public class AttendenceController {
 
 		HttpSession session = req.getSession();
 		AttendenceVO vo = (AttendenceVO) session.getAttribute("attendence");
+		System.out.println(vo.toString());
 		vo.setAtt_work_off(new Date());
 		AttendenceDAO.updateAttendenceOff(vo);
 		model.addAttribute("attendence",vo);
@@ -139,7 +140,7 @@ public class AttendenceController {
 			HttpSession session = req.getSession();
 			EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
 
-			if(vo.getEmp_admin().equals("admin")) {
+			if(vo.getEmp_admin()=="admin") {
 				List<AttendenceVO> attendenceList = attendenceDAO.getAttendenceListAdmin();
 				model.addAttribute("AttendenceList", attendenceList);
 			} else {
@@ -162,7 +163,7 @@ public class AttendenceController {
 			HttpSession session = req.getSession();
 			EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
 
-			if(vo.getEmp_admin().equals("admin")) {
+			if(vo.getEmp_admin()=="admin") {
 				List<AttendenceVO> attendenceList = new ArrayList<>();
 
 				if (field != null & query !=null) {
@@ -189,7 +190,7 @@ public class AttendenceController {
 			HttpSession session = req.getSession();
 			EmployeeVO vo = (EmployeeVO) session.getAttribute("signIn");
 
-			if(vo.getEmp_admin().equals("admin")) {
+			if(vo.getEmp_admin()=="admin") {
 				AttendenceDAO.updateAttendenceAdmin(attendenceVO);
 
 			} else {

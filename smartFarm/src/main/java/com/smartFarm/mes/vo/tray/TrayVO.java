@@ -10,7 +10,6 @@ public class TrayVO {
 	private String pip_name;
 	private String pip_qty;
 	private String pip_period;
-	private String tray_growth;
 	private Date tray_start_date;
 	private Date tray_end_date;
 
@@ -59,11 +58,6 @@ public class TrayVO {
 	public void setTray_end_date(Date tray_end_date) {
 		this.tray_end_date = tray_end_date;
 	}
-	public double getTray_growthPer() {
-		
-		
-		return Double.parseDouble(tray_growth);
-	}
 
 
 	@Override
@@ -71,12 +65,6 @@ public class TrayVO {
 		return "TrayVO [tray_id=" + tray_id + ", line_id=" + line_id + ", pip_name=" + pip_name + ", pip_qty=" + pip_qty
 				+ ", pip_period=" + pip_period + ", tray_start_date=" + tray_start_date + ", tray_end_date="
 				+ tray_end_date + "]";
-	}
-	public String getTray_growth() {
-		return tray_growth;
-	}
-	public void setTray_growth(String tray_growth) {
-		this.tray_growth = tray_growth;
 	}
 
 

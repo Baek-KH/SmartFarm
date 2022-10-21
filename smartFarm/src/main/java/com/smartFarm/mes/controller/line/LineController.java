@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.smartFarm.mes.dao.line.LineDAO;
-import com.smartFarm.mes.dao.pip.PipDAO;
 import com.smartFarm.mes.vo.line.LineVO;
-import com.smartFarm.mes.vo.pip.PipVO;
 
 
 @Controller
@@ -43,22 +41,7 @@ public class LineController {
 		model.addAttribute("vo",vo);
 		return "redirect:/getLineList.do";
 	}
-	
-	// update
-	@RequestMapping(value = "/updateLineDetail.do" , method = RequestMethod.GET)
-		public String updateLineDetail(
-				@RequestParam(value="field", defaultValue="", required=false) String field,
-				@RequestParam(value="query", defaultValue="", required=false) String query,
-				LineVO vo ,LineDAO LineDAO, Model model) {
 
-			System.out.println("updateLineDetail 진입");
-			LineDAO.updateLineDetail(vo, field, query);
-			model.addAttribute("vo",vo);
-			return "redirect:/getLineSettingList.do";
-		}
-	
-	
-	
 	// List
 	@RequestMapping(value = "/getLineList.do")
 	public String getLineList(LineDAO lineDAO, Model model) {
@@ -69,21 +52,8 @@ public class LineController {
 		model.addAttribute("LineList", lineList);
 		return "lineStatus";
 	}
-	// SettingList
-	@RequestMapping(value = "/getLineSettingList.do")
-	public String getLineSettingList(LineDAO lineDAO, Model model) {
-			PipDAO pipDAO = new PipDAO();
-			
-			System.out.println("getLineSettingList 진입");
 
-			List<PipVO> pipList = pipDAO.getPipList();
-			List<LineVO> lineList = lineDAO.getLineList();
-			
-			model.addAttribute("PipList", pipList);
-			model.addAttribute("LineList", lineList);
-			return "lineSetting";
-	}
-	
+
 
 
 }

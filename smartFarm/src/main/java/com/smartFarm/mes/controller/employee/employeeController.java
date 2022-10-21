@@ -26,7 +26,7 @@ public class EmployeeController {
 		System.out.println("getEmployee 진입");
 		EmployeeVO employeeVO = employeeDAO.getEmployee(emp_id);
 		model.addAttribute("employeeVO",employeeVO );
-		return "getEmployee";
+		return "employee";
 	}
 
 	// insert

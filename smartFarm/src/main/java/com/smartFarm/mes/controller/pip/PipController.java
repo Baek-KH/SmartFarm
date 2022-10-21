@@ -19,7 +19,7 @@ import com.smartFarm.mes.vo.pip.PipVO;
 public class PipController {
 
 	// 1. get
-	@RequestMapping(value = "/getPip.do" , method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/getPipList.do" , method = {RequestMethod.GET, RequestMethod.POST})
 	public String getPip(@RequestParam(value = "pip_name") String pip_name, PipDAO pipDAO, Model model) {
 
 		System.out.println("> 1컨트롤");
@@ -33,10 +33,8 @@ public class PipController {
 	@RequestMapping(value = "/insertPip.do", method = RequestMethod.POST)
 	public String insertPip(PipVO vo, PipDAO pipDAO , Model model) {
 
-		System.out.println("> insertPip");
-		
-		System.out.println(vo.toString());
-		
+		System.out.println("> 2컨트롤");
+
 		model.addAttribute("vo",vo);
 		pipDAO.insertPip(vo);
 		return "redirect:/getPipList.do";
