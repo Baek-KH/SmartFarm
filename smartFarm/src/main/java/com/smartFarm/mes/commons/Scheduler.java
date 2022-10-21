@@ -25,12 +25,12 @@ public class Scheduler {
 	TrayDAO trayDAO = new TrayDAO();
 	PipDAO pipDAO = new PipDAO();
 
-	@Scheduled(fixedRate = 30000)
+	@Scheduled(fixedRate = 60000) // 1분
 	public void setStatusData() {
 
 		int randLineNum = (int) ((Math.random() * 4) + 1);
-		int randLineTemp = (int) ((Math.random() * 20) + 10);
-		int randLineHum = (int) ((Math.random() * 70) + 10);
+		int randLineTemp = (int) ((Math.random() * 11) + 20);
+		int randLineHum = (int) ((Math.random() * 51) + 20);
 
 		StatusVO statusVO = new StatusVO();
 		statusVO.setStatus_line_id(Integer.toString(randLineNum));
@@ -40,7 +40,7 @@ public class Scheduler {
 
 	}
 
-	@Scheduled(fixedRate = 30000)
+	@Scheduled(fixedRate = 60000) // 1분
 	public void lineCheck() {
 
 		for (int i = 1; i <= 4; i++) {
@@ -53,7 +53,7 @@ public class Scheduler {
 	}
 
 //	@Scheduled(cron = "0 0 06 * * *") // 매일 06시 수행
-	@Scheduled(fixedRate = 600000)	// 테스트용 1분에 한번씩	
+	@Scheduled(fixedRate = 600000)	// 테스트용 10분에 한번씩	
 	public void trayInsertPerDay() {
 		
 		// 라인 설정정보를 바탕으로 pip가 세팅된 tary를 라인에 insert
@@ -76,7 +76,7 @@ public class Scheduler {
 		}
 
 	}
-	@Scheduled(fixedRate = 600000)	// 테스트용 1분에 한번씩	
+	@Scheduled(fixedRate = 60000)	// 테스트용 10분에 한번씩	
 	public void trayUpdatePerDay() {
 		// end_date 가 현재날짜보다 뒤에있는 생육중인 Tray를 random 값으로 매일 성장
 	

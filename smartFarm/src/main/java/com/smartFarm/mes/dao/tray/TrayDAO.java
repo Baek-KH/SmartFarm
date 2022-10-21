@@ -60,7 +60,7 @@ public class TrayDAO {
 			stmt.setString(3, vo.getPip_name());
 			stmt.setString(4, vo.getPip_qty());
 			stmt.setString(5, vo.getPip_period());
-			stmt.setInt(6, Integer.parseInt(vo.getPip_period()));
+			stmt.setInt(6, Integer.parseInt(pipVO.getPip_period()));
 			stmt.setString(7, vo.getTray_growth());
 			stmt.executeUpdate();
 		} catch (Exception e) {

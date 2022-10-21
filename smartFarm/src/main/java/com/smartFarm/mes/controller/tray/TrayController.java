@@ -81,6 +81,7 @@ public class TrayController {
 			System.out.println("getTrayControlList 진입");
 			List<TrayVO> trayList = trayDAO.getTrayListByLine(vo);
 			model.addAttribute("TrayList", trayList);
+			model.addAttribute("line_id", vo.getLine_id());
 			return "process";
 		}
 	
