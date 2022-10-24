@@ -7,4 +7,4 @@
 - Java, Spring, Python, Jsp
 
 
-[백광호_포트폴리오_이력서.pdf](https://github.com/Baek-KH/SmartFarm/files/9847977/_._.pdf)
+![슬라이드45](https://user-images.githubusercontent.com/112849090/197427559-c2e96a01-40ba-47ac-81dc-acaf97d68dae.JPG)
