@@ -25,7 +25,7 @@ public class OrdersController {
 		System.out.println("getOrders 진입");
 		OrdersVO ordersVO = ordersDAO.getOrders(orders_id);
 		model.addAttribute("ordersVO",ordersVO );
-		return "orders";
+		return "ordersDetail";
 	}
 
 	// insert
@@ -37,10 +37,19 @@ public class OrdersController {
 		ordersDAO.insertOrders(vo);
 		return "redirect:/getOrdersList.do";
 	}
+	
+	// delete
+		@RequestMapping(value = "/deleteOrders.do")
+		public String deleteOrders(OrdersVO vo, OrdersDAO ordersDAO , Model model) {
+
+			System.out.println("deleteOrders 진입");
+			System.out.println(vo.toString());
+			ordersDAO.deleteOrders(vo);
+			return "redirect:/getOrdersList.do";
+		}
 
 	// update
 	@RequestMapping(value = "/updateOrders.do" , method = RequestMethod.POST)
-//	public String updateOrders(@ModelAttribute("ordersVO") OrdersVO vo, OrdersDAO OrdersDAO, Model model) {
 	public String updateOrders(OrdersVO vo, OrdersDAO OrdersDAO, Model model) {
 
 		System.out.println("updateOrders 진입");

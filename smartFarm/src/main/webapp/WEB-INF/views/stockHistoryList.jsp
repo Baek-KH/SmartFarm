@@ -88,17 +88,29 @@
 					</div>
 				</div></li>
 
+<<<<<<< HEAD
 			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> 
 				<i class="fa-solid fa-cart-flatbed"></i><span>입/출</span>
+=======
+				<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo"> 
+				<i class="fa-solid fa-cart-flatbed"></i><span>재고관리</span>
+>>>>>>> BKH
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<%-- <h6 class="collapse-header">Custom Components:</h6> 여기다 글쓰면 위에 주석처럼 달림 --%>
+<<<<<<< HEAD
 						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> <a
+=======
+						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입고/출고</a><a
+>>>>>>> BKH
 							class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
 					</div>
 				</div></li>
@@ -146,14 +158,20 @@
                     </a>
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
                             <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> Buyer</a>
                             <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> Orders</a>
+=======
+                           <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> 거래처 관리</a>
+                            <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> 발주 관리</a>
+>>>>>>> BKH
                         </div>
                     </div>
                 </li>
 				
 				
 				<!-- 출하관리 공정관리 -->
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
@@ -167,7 +185,25 @@
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
+=======
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
+						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
+>>>>>>> BKH
 				</a></li>
+				
+				
+				
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+
+
+
+				<li class="nav-item"><a class="nav-link" href="report.do">
+						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
+				</a></li>
+				
 			</c:if>
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
@@ -245,16 +281,31 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
+<<<<<<< HEAD
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">입/출고 관리</h1>
 
 					</div>
+=======
+				
+>>>>>>> BKH
 
 
 					<!-- 입출고 셋팅란 -->
 
 					<div class="container-fluid">
+<<<<<<< HEAD
+=======
+						<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">입/출고 관리</h6>
+                        </div>
+					
+					
+					
+					
+>>>>>>> BKH
 						<form action="insertStockHistory.do" method="post">
 
 							<table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
@@ -267,6 +318,7 @@
 								</thead>
 								<tbody>
 									<tr>
+<<<<<<< HEAD
 
 										<th scope="col" style="text-align: center;"><select
 											name="stock_id">
@@ -479,6 +531,215 @@
 	<!-- Page level custom scripts -->
 	<script src="/resources/js/demo/chart-area-demo.js"></script>
 	<script src="/resources/js/demo/chart-pie-demo.js"></script>
+=======
+
+										<th scope="col" style="text-align: center;"><select
+											name="stock_id">
+												<c:forEach items="${StockList}" var="stockVO">
+													<option value="${stockVO.getStock_id()}">${stockVO.getStock_id()}</option>
+												</c:forEach>
+										</select></th>
+
+
+										<th scope="col" style="text-align: center;"><input
+											type="number" name="stock_in" size="10" value="0" /></th>
+										<th scope="col" style="text-align: center;"><input
+											type="number" name="stock_out" size="10" value="0" /></th>
+
+
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td>
+											<input type="submit" value=" 재고 등록 " class="btn "    id="btnSubmit" style="float:right; background-color:rgba(46,139,87); color:white;" />
+										</td>
+									
+									</tr>
+								</tbody>
+							</table>
+
+						</form>
+					</div>
+				</div>
+
+
+
+
+		
+
+
+					<!-- Content Second -->
+
+					<!-- 입고정보 출고정보 큰틀 -->
+					<div class="container-fluid">
+						<div class="row">
+						
+							<!-- 입고정보 -->
+							<div class="col-lg-6">
+								<h6 class="m-0 font-weight-bold text-primary"></h6>
+								<h1 class="h3 mb-2 text-gray-800"></h1>
+
+								
+									<div class="card shadow mb-6">
+									<div class="card-header py-3">
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">입고 내역</h6>
+										</div>
+									</div>
+
+									<div class="card-body">
+
+											<div class="table-responsive">
+												<table class="table table-bordered" id="dataTable"
+													width="100%" cellspacing="0">
+													<!-- 테이블 몸뚱아리 -->
+
+
+													<thead>
+														<tr>
+															<th>작물이름</th>
+															<th>작물가격</th>
+															<th>작물수량</th>
+															<th>작물수량</th>
+															<th>출고일</th>
+														</tr>
+													</thead>
+
+													<tbody>
+														<c:forEach items="${StockHistoryListIn}" var="stockInVO">
+															<tr>
+
+																<td>${stockInVO.getStock_id() }</td>
+																<td>${stockInVO.getStock_name() }</td>
+																<td>${stockInVO.getStock_in() }</td>
+																<td>${stockInVO.getStock_qty() }</td>
+																<td>${stockInVO.getStock_date() }</td>
+
+															</tr>
+														</c:forEach>
+
+													</tbody>
+														
+													
+													
+												</table>
+												
+											</div>
+											
+										</div>
+									</div>
+									
+								
+							</div>
+
+							<!-- 출고정보 -->
+								<div class="col-lg-6" >
+									<h6 class="m-0 font-weight-bold text-primary"></h6>
+									<h1 class="h3 mb-2 text-gray-800"></h1>
+	
+									
+										<div class="card shadow mb-6">
+											<div class="card-header py-3">
+										
+												<div class="card-header py-3">
+													<h6 class="m-0 font-weight-bold text-primary">출고 내역</h6>
+												</div>
+	
+	
+											</div>
+											<div class="card-body">
+	
+												<div class="table-responsive">
+													<table class="table table-bordered" id="dataTable"
+														width="100%" cellspacing="0">
+														<!-- 테이블 몸뚱아리 -->
+	
+	
+														<thead>
+															<tr>
+																<th>작물이름</th>
+																<th>작물가격</th>
+																<th>작물수량</th>
+																<th>작물수량</th>
+																<th>출고일</th>
+															</tr>
+														</thead>
+	
+														<tbody>
+															<c:forEach items="${StockHistoryListOut}" var="stockOutVO">
+																<tr>
+	
+																	<td>${stockOutVO.getStock_id() }</td>
+																	<td>${stockOutVO.getStock_name() }</td>
+																	<td>${stockOutVO.getStock_out() }</td>
+																	<td>${stockOutVO.getStock_qty() }</td>
+																	<td>${stockOutVO.getStock_date() }</td>
+	
+																</tr>
+															</c:forEach>
+	
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									
+								</div>
+							
+							
+							
+							
+							
+						
+						</div>
+					<!-- Content Row -->
+					
+
+
+
+					</div>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; PROJECT B 2022</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="/resources/js/sb-admin-2.min.js"></script>
+
+
+>>>>>>> BKH
 
 </body>
 

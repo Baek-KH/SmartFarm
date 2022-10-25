@@ -139,6 +139,7 @@
                     </a>
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
                             <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> Buyer</a>
                             <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> Orders</a>
                         </div>
@@ -146,11 +147,21 @@
                 </li>
                 <!-- 출하관리 공정관리 -->
 				<li class="nav-item"><a class="nav-link" href="tables.html">
+=======
+                            <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> 거래처 관리</a>
+                            <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> 발주 관리</a>
+                        </div>
+                    </div>
+                </li>
+               <!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
+>>>>>>> BKH
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
@@ -159,6 +170,16 @@
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
+=======
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+
+
+
+				<li class="nav-item"><a class="nav-link" href="report.do">
+>>>>>>> BKH
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
 			</c:if>
@@ -247,12 +268,10 @@
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">사원 마이페이지</h1>
-    
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">사원 정보</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">사원 마이페이지</h6>
                             </div>
                             <div class="card-body">
                             <div class="table-responsive">

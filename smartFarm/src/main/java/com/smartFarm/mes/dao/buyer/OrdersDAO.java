@@ -25,7 +25,7 @@ public class OrdersDAO {
 	private final String ORDERS_INSERT ="insert into Orders values (?,?,?,?, now() , DATE_ADD(now(), INTERVAL ? DAY))";
 	private final String ORDERS_GET ="select * from Orders where orders_id = ? ";
 	private final String ORDERS_UPDATE ="update Orders set  buyer_id = ? , orders_product=? ,orders_qty=?  where orders_id= ?";
-
+	private final String ORDERS_DELETE = "delete from orders where orders_id = ? ";
 	private final String ORDERS_LIST ="select * from Orders ORDER BY orders_date desc";
 	private final String ORDERS_LIST_N ="select * from Orders where buyer_id like ? ORDER BY orders_date desc";
 
@@ -69,7 +69,22 @@ public class OrdersDAO {
 		}
 	}
 
+	// 4. delete
+			public void deleteOrders(OrdersVO vo) {
 
+				System.out.println("==> JDBC deleteOrders");
+				
+				try {
+					conn = JDBCUtil.getConnection();
+					stmt = conn.prepareStatement(ORDERS_DELETE);
+					stmt.setString(1, vo.getOrders_id());
+					stmt.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					JDBCUtil.close(null, stmt, conn);
+				}
+			}
 	
 	// 2. getOrders
 	public OrdersVO getOrders(String orders_id) {

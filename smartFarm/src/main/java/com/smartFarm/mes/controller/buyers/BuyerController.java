@@ -20,12 +20,12 @@ public class BuyerController {
 
 	// getBuyer
 	@RequestMapping(value = "/getBuyer.do" , method = {RequestMethod.GET, RequestMethod.POST})
-	public String getBuyer(@RequestParam(value = "buyer_id") String buyer_id,BuyerDAO buyerDAO, Model model) {
+	public String getBuyer(BuyerVO vo, BuyerDAO buyerDAO, Model model) {
 
 		System.out.println("getBuyer 진입");
-		BuyerVO buyerVO = buyerDAO.getBuyer(buyer_id);
+		BuyerVO buyerVO = buyerDAO.getBuyer(vo.getBuyer_id());
 		model.addAttribute("buyerVO",buyerVO );
-		return "getBuyer";
+		return "buyerDetail";
 	}
 	
 	// getBuyerName
@@ -48,6 +48,9 @@ public class BuyerController {
 		return "redirect:/getBuyerList.do";
 	}
 
+	
+	
+	
 	// update
 	@RequestMapping(value = "/updateBuyer.do" , method = RequestMethod.POST)
 	public String updateBuyer(BuyerVO vo, BuyerDAO BuyerDAO, Model model) {
@@ -62,8 +65,6 @@ public class BuyerController {
 	@RequestMapping("/deleteBuyer.do")
 	public String deleteBuyer(BuyerVO vo, BuyerDAO BuyerDAO) {
 		System.out.println("deleteBuyer 진입");
-		System.out.println(vo.toString());
-
 		BuyerDAO.deleteBuyer(vo);
 		return "redirect:/getBuyerList.do";
 	}

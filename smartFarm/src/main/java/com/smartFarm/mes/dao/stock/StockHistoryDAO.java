@@ -28,8 +28,8 @@ public class StockHistoryDAO {
 	private final String STOCKHISTORY_INSERT ="insert into stock_history values (?,?,?,?,?,now())";
 	private final String STOCKHISTORY_GET ="select * from stock_history where stock_id = ?";
 	private final String STOCKHISTORY_LIST ="select * from stock_history ";
-	private final String STOCKHISTORY_LIST_I ="select * from stock_history where stock_out = 0";
-	private final String STOCKHISTORY_LIST_O ="select * from stock_history where stock_in = 0";
+	private final String STOCKHISTORY_LIST_I ="select * from stock_history where stock_out = 0 order by stock_date desc";
+	private final String STOCKHISTORY_LIST_O ="select * from stock_history where stock_in = 0 order by stock_date desc";
 	private final String STOCKHISTORY_LIST_ID ="select * from stock_history where stock_id = ? ";
 
 	

@@ -9,8 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.smartFarm.mes.dao.line.LineDAO;
+import com.smartFarm.mes.dao.line.StatusDAO;
+import com.smartFarm.mes.dao.python.PredictionDAO;
 import com.smartFarm.mes.dao.stock.StockDAO;
 import com.smartFarm.mes.dao.stock.StockHistoryDAO;
+import com.smartFarm.mes.vo.line.StatusVO;
+import com.smartFarm.mes.vo.python.PredictionVO;
 import com.smartFarm.mes.vo.stock.ProductRateVO;
 import com.smartFarm.mes.vo.stock.StockVO;
 
@@ -21,6 +26,7 @@ import com.smartFarm.mes.vo.stock.StockVO;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+<<<<<<< HEAD
 
 
 	@RequestMapping("/signUp")
@@ -32,32 +38,45 @@ public class HomeController {
         return "insertProduct";
     }
 
+=======
+	
+	
+	
+>>>>>>> BKH
 	@RequestMapping("/")
 	public String signIn() {
 		return "signIn";
 	}
+<<<<<<< HEAD
 	@RequestMapping("/signIn")
 	public String login() {
 		return "signIn";
 	}
+=======
+	@RequestMapping("/signUp")
+	public String signUp() {
+		return "signUp";
+	}
+	
+>>>>>>> BKH
 	@RequestMapping("/statusList")
 	public String statusList() {
 		return "statusList";
 	}
 	@RequestMapping("/index")
-	public String index(Model model) {
-		
-		StockHistoryDAO stockHistoryDAO = new StockHistoryDAO();
-		StockDAO stockDAO = new StockDAO();
+	public String index(StockHistoryDAO stockHistoryDAO, StockDAO stockDAO, PredictionDAO predictionDAO,  Model model) {
 		
 		List<ProductRateVO> productRateList = stockHistoryDAO.productRateList();
 		ProductRateVO productRateVO = stockHistoryDAO.getProductRate();
-		
 		List<StockVO> stockList = stockDAO.getStockList();
+		
+		PredictionVO predictionVO = predictionDAO.getPredictionNow();
+		
 		
 		model.addAttribute("StockList", stockList);
 		model.addAttribute("productRateVO", productRateVO);
 		model.addAttribute("productRateList", productRateList);
+		model.addAttribute("predictionVO", predictionVO);
 		
 		return "index";
 	}
@@ -70,10 +89,24 @@ public class HomeController {
 		return "orders";
 	}
 
+<<<<<<< HEAD
 	@RequestMapping("/orders2")
     public String orders2() {
         return "orders2";
     }
 	
+=======
+	@RequestMapping(value = "/report.do")
+	public String getReport(LineDAO lineDAO,StatusDAO statusDAO, Model model) {
+
+		System.out.println("getReport 진입");
+		
+		List<StatusVO> statusList = statusDAO.getStatusListLimit();
+		model.addAttribute("StatusList", statusList);
+		return "report";
+		
+		
+	}
+>>>>>>> BKH
 	
 }

@@ -34,31 +34,7 @@
 <script src="https://kit.fontawesome.com/03a2ebe789.js" crossorigin="anonymous"></script>
 
    <style>
-		a.tip {
-		    text-align: center;
-		    text-decoration: none;
-		}
-		a.tip:hover{
-		    
-		    position: relative;
-		}
-		a.tip span{
-		    display: inline-flex;
-		    width: 100%;
-		}
-		a.tip:hover span{
-		    border : #000000 2px ;
-		    padding: 5px 5px 5px 5px;
-		    display: block;
-		    z-index: 100;
-		    background: blanchedalmond;
-		    left: 0px;
-		    margin: 10px;
-		    width: 250px;    
-		    position: absolute;
-		    top: 10px;
-		    text-decoration: none;
-		}
+		
 		.gnb li {list-style-type: none; 
 			display: inline-block;
 			padding: 20px;
@@ -150,17 +126,25 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> 
+<<<<<<< HEAD
 				<i class="fa-solid fa-cart-flatbed"></i><span>입/출</span>
+=======
+				<i class="fa-solid fa-cart-flatbed"></i><span>재고관리</span>
+>>>>>>> BKH
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<%-- <h6 class="collapse-header">Custom Components:</h6> 여기다 글쓰면 위에 주석처럼 달림 --%>
+<<<<<<< HEAD
 						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> <a
+=======
+						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입고/출고</a><a
+>>>>>>> BKH
 							class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
 					</div>
 				</div></li>
-
+				
 
 
 			<!-- Divider -->
@@ -204,19 +188,29 @@
                     </a>
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
                             <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> Buyer</a>
                             <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> Orders</a>
+=======
+                           <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> 거래처 관리</a>
+                            <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> 발주 관리</a>
+>>>>>>> BKH
                         </div>
                     </div>
                 </li>
                 
                 <!-- 출하관리 공정관리 -->
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="tables.html">
+=======
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
+>>>>>>> BKH
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
@@ -225,6 +219,16 @@
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
+=======
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+
+
+
+				<li class="nav-item"><a class="nav-link" href="report.do">
+>>>>>>> BKH
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
 			</c:if>
@@ -327,17 +331,14 @@
                             </div>
                             <div>
                             <ul class="gnb">
-                                <li><div><a href="#" class="tip" >1번<span>1줄 여기다가 머 넣으면 될려나?머야이건 <br>
-                                                                    2줄 여기다 호에엥 <br>
-                                                                    3줄 메차 <br>
-                                                                    4줄 쿠차    </span> </a></div></li>
-                                <li><a href="#" class="tip">2번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">3번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">4번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">5번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">6번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">7번<span>여기다가 머 넣으면 될려나?</span> </a></li>
-                                <li><a href="#" class="tip">8번<span>여기다가 머 넣으면 될려나?</span> </a></li>
+                                <li><div><a href="#" class="tip" >1번 </a></div></li>
+                                <li><a href="#" class="tip">2번</a></li>
+                                <li><a href="#" class="tip">3번</a></li>
+                                <li><a href="#" class="tip">4번</a></li>
+                                <li><a href="#" class="tip">5번</a></li>
+                                <li><a href="#" class="tip">6번</a></li>
+                                <li><a href="#" class="tip">7번</a></li>
+                                <li><a href="#" class="tip">8번</a></li>
                             </ul>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -353,19 +354,16 @@
                                             <tr>
                                                 <td>라인 상태 </td>
                                                 <td style="
-                                                
-                                                
-	                                           
 	                                            <c:if test="${LineVO.getLine_status().length()>5}"
-	                                            >background-color:red;</c:if>
+	                                            >border-color:red;</c:if>
 	                                            <c:if test="${LineVO.getLine_status().length()<5 && LineVO.getLine_status().length()>1 }"
-	                                            >background-color:yellow;</c:if>
+	                                            >border-color:yellow;</c:if>
                                                
                                                 <c:if test="${LineVO.getLine_status().length()==0}"
-                                                >background-color:green;</c:if>
+                                                >border-color:green;</c:if>
                                                 
                                                 
-                                                ">
+                                                border-width:medium; ">
                                                 ${LineVO.getLine_status()}</td>
                                                 
                                             </tr>
@@ -400,8 +398,8 @@
                             </div>
                         </div>
                         <div style = "padding: 0px 0px 0px 0px; text-align: center;
-                                <c:if test="${  box     }">background-color:red;</c:if>
-                                <c:if test="${  box     }">background-color:blue;</c:if>
+                                <c:if test="${box}">background-color:red;</c:if>
+                                <c:if test="${box}">background-color:blue;</c:if>
                             " >
                           
                             </div>
@@ -467,12 +465,7 @@
     <!-- Custom scripts for all pages-->
     <script src="/resources/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="/resources/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="/resources/js/demo/chart-area-demo.js"></script>
-    <script src="/resources/js/demo/chart-pie-demo.js"></script>
 
 </body>
 <!-- <script>

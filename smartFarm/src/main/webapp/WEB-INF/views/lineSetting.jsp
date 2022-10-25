@@ -87,13 +87,21 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> 
+<<<<<<< HEAD
 				<i class="fa-solid fa-cart-flatbed"></i><span>입/출</span>
+=======
+				<i class="fa-solid fa-cart-flatbed"></i><span>재고관리</span>
+>>>>>>> BKH
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<%-- <h6 class="collapse-header">Custom Components:</h6> 여기다 글쓰면 위에 주석처럼 달림 --%>
+<<<<<<< HEAD
 						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> <a
+=======
+						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입고/출고</a><a
+>>>>>>> BKH
 							class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
 					</div>
 				</div></li>
@@ -141,19 +149,30 @@
                     </a>
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
                             <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> Buyer</a>
                             <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> Orders</a>
+=======
+                            <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> 거래처 관리</a>
+                            <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> 발주 관리</a>
+>>>>>>> BKH
                         </div>
                     </div>
                 </li>
                 
+<<<<<<< HEAD
                 <!-- 출하관리 공정관리 -->
 				<li class="nav-item"><a class="nav-link" href="tables.html">
+=======
+               <!-- 출하관리 공정관리 -->
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
+>>>>>>> BKH
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
@@ -162,6 +181,16 @@
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
+=======
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+
+
+
+				<li class="nav-item"><a class="nav-link" href="report.do">
+>>>>>>> BKH
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
 			</c:if>
@@ -365,12 +394,7 @@
 		<!-- Custom scripts for all pages-->
 		<script src="/resources/js/sb-admin-2.min.js"></script>
 
-		<!-- Page level plugins -->
-		<script src="/resources/vendor/chart.js/Chart.min.js"></script>
 
-		<!-- Page level custom scripts -->
-		<script src="/resources/js/demo/chart-area-demo.js"></script>
-		<script src="/resources/js/demo/chart-pie-demo.js"></script>
 </body>
 
 <!-- <script>

@@ -56,7 +56,7 @@ public class EmployeeController {
 		System.out.println("deleteEmployee 진입");
 		System.out.println(vo.toString());
 
-//		EmployeeDAO.deleteEmployee(vo);
+		EmployeeDAO.deleteEmployee(vo);
 		return "redirect:/getEmployeeList.do";
 	}
 

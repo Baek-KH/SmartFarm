@@ -81,17 +81,29 @@
 					</div>
 				</div></li>
 
+<<<<<<< HEAD
 			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> 
 				<i class="fa-solid fa-cart-flatbed"></i><span>입/출</span>
+=======
+				<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo"> 
+				<i class="fa-solid fa-cart-flatbed"></i><span>재고관리</span>
+>>>>>>> BKH
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<%-- <h6 class="collapse-header">Custom Components:</h6> 여기다 글쓰면 위에 주석처럼 달림 --%>
+<<<<<<< HEAD
 						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입출/등록</a> <a
+=======
+						<a class="collapse-item" href="getStockHistoryList.do"><i class="fa-solid fa-truck-fast"></i> 입고/출고</a><a
+>>>>>>> BKH
 							class="collapse-item" href="getStockList.do"><i class="fa-solid fa-warehouse"></i> 재고</a>
 					</div>
 				</div></li>
@@ -139,19 +151,29 @@
                     </a>
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
                             <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> Buyer</a>
                             <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> Orders</a>
+=======
+                            <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> 거래처 관리</a>
+                            <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> 발주 관리</a>
+>>>>>>> BKH
                         </div>
                     </div>
                 </li>
                 
                 <!-- 출하관리 공정관리 -->
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="tables.html">
+=======
+				<li class="nav-item"><a class="nav-link" href="getForwardList.do">
+>>>>>>> BKH
 						<i class="fa-solid fa-truck"></i> <span>출하관리</span>
 				</a></li>
 				
 				
 				
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="tables.html">
 						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
 				</a></li>
@@ -160,6 +182,16 @@
 
 
 				<li class="nav-item"><a class="nav-link" href="tables.html">
+=======
+				<li class="nav-item"><a class="nav-link" href="TrayControlList.do?line_id=1">
+						<i class="fa-solid fa-gears"></i> <span>공정관리</span>
+				</a></li>
+				<!-- 출하관리 공정관리 -->
+
+
+
+				<li class="nav-item"><a class="nav-link" href="report.do">
+>>>>>>> BKH
 						<i class="fa-solid fa-eye"></i> <span>보고페이지</span>
 				</a></li>
 			</c:if>
@@ -246,11 +278,15 @@
 
                     <!-- Content Row -->
                  
+<<<<<<< HEAD
 
+=======
+					<div class="contianer}"">
+>>>>>>> BKH
                     <!-- Content Row -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">발주 관리</h6>
                         </div>
 
 					<div>
@@ -293,7 +329,7 @@
 
                     <div>
                         <div class="card-body">
-                            <h4>pip list</h4>
+                            <h4>발주 리스트</h4>
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
@@ -318,8 +354,12 @@
                                             <th>${ordersVO.getOrders_date()}</th>
                                             <th>${ordersVO.getOrders_arr_date()}</th>
                                             <th class="col-2">
+<<<<<<< HEAD
                                                 <input style="background-color:rgba(46,139,87); color:white;" class="btn  " type="submit" value="수정">
                                                 <input style="background-color:rgba(46,139,87); color:white;" class="btn  " type="submit" value="삭제">
+=======
+                                                <a href="getOrders.do?orders_id=${ordersVO.getOrders_id()}" style="background-color:rgba(46,139,87); color:white;" class="btn" type="submit" value="상세보기">상세보기</a>
+>>>>>>> BKH
                                             </th>
                                             
                                         </tr>
@@ -334,7 +374,11 @@
                 </div>
                 </div>
                     
+<<<<<<< HEAD
 
+=======
+			</div>
+>>>>>>> BKH
                
                 <!-- /.container-fluid -->
 
@@ -373,12 +417,6 @@
     <!-- Custom scripts for all pages-->
     <script src="/resources/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="/resources/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/resources/js/demo/chart-area-demo.js"></script>
-    <script src="/resources/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
