@@ -1,0 +1,42 @@
+package com.smartFarm.web.pip;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.smartFarm.mes.dao.pip.pipDAO;
+import com.smartFarm.mes.vo.pip.pipVO;
+
+@Service("pipSet") 	// pip 설정페이지
+public class pipSetImpl implements pipSet {
+	
+	@Autowired
+	private pipDAO pipDAO;
+	
+	@Override
+	public void insertpip(pipVO vo) {
+		pipDAO.insertBoard(vo);
+	}
+
+	@Override
+	public void deletepip(pipVO vo) {
+		pipDAO.deleteBoard(vo);
+	}
+
+	@Override
+	public void updatepip(pipVO vo) {
+		pipDAO.updateBoard(vo);	
+	}
+/*
+	@Override
+	public pipVO getpip(pipVO vo) {
+		return pipDAO.getXXX(vo);
+	}												<< �ӽ�
+
+	@Override
+	public List<pipVO> getXXXList(pipVO vo) {
+		return pipDAO.getXXXList(vo);
+	}
+*/
+}

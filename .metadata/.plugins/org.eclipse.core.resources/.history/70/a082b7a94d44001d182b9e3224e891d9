@@ -1,0 +1,44 @@
+package com.smartFarm.web.process.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.smartFarm.mes.dao.process.PipDAO;
+import com.smartFarm.mes.vo.process.PipVO;
+import com.smartFarm.web.process.pipService;
+
+
+@Service("boardServie")
+public class PipServiceImpl implements pipService {
+	
+	@Autowired
+	private PipDAO pipDAO;
+	
+	@Override
+	public void insertpip(PipVO vo) {
+		pipDAO.insertBoard(vo);
+	}
+
+	@Override
+	public void deletepip(PipVO vo) {
+		pipDAO.deleteBoard(vo);
+	}
+
+	@Override
+	public void updatepip(PipVO vo) {
+		pipDAO.updateBoard(vo);	
+	}
+/*
+	@Override
+	public pipVO getpip(pipVO vo) {
+		return pipDAO.getXXX(vo);
+	}												<< 임시
+
+	@Override
+	public List<pipVO> getXXXList(pipVO vo) {
+		return pipDAO.getXXXList(vo);
+	}
+*/
+}

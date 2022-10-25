@@ -209,8 +209,13 @@ body {
                     </a>
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
+                            <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> Buyer</a>
+                            <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> Orders</a>
+=======
                             <a class="collapse-item" href="getBuyerList.do"><i class="fa-solid fa-money-bill-1"></i> 거래처 관리</a>
                             <a class="collapse-item" href="getOrdersList.do"><i class="fa-regular fa-money-bill-1"></i> 발주 관리</a>
+>>>>>>> BKH
                         </div>
                     </div>
                 </li>
@@ -320,9 +325,14 @@ body {
 					<div class="row">
 
 						<!-- 생산율 -->
+<<<<<<< HEAD
+						
+=======
+>>>>>>> BKH
 						<div class="col-xl-6 col-md-6 mb-4">
 							<div class="card border-left-info shadow h-100 py-2">
 								<div class="card-body">
+								<div class="container">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
@@ -342,8 +352,13 @@ body {
 											</div>
 										</div>
 										<div class="col-auto">
+<<<<<<< HEAD
+											<i class="fa-solid fa-arrows-spin"  style="font-size:2em;"></i>
+=======
 											<i class="fa-solid fa-arrows-spin"></i>
+>>>>>>> BKH
 										</div>
+									</div>
 									</div>
 								</div>
 							</div>

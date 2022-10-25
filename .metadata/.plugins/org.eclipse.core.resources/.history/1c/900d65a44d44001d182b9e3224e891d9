@@ -1,0 +1,28 @@
+package com.smartFarm.web.process.impl;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.smartFarm.mes.vo.process.PipVO;
+
+public class pipRowMapper implements RowMapper<PipVO> {
+
+	@Override
+	public PipVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		
+		PipVO vo = new PipVO();
+		vo.setPip_no(rs.getInt("NO"));
+		vo.setPip_name(rs.getString("NAME"));
+		vo.setPip_period(rs.getDate("DATE"));
+		vo.setPip_category(rs.getString("CATEGORY"));
+		vo.setPip_min_temp(rs.getString("MINTEMP"));
+		vo.setPip_max_temp(rs.getString("MAXTEMP"));
+		vo.setPip_min_hum(rs.getString("MINHUM"));
+		vo.setPip_min_hum(rs.getString("MAXHUM"));	
+		
+		return vo;
+	}
+
+}

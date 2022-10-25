@@ -26,18 +26,39 @@ import com.smartFarm.mes.vo.stock.StockVO;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+<<<<<<< HEAD
+
+
+	@RequestMapping("/signUp")
+	public String main() {	
+		return "signUp";
+	}
+	@RequestMapping("/insertProduct")
+    public String insertProduct() {  
+        return "insertProduct";
+    }
+
+=======
 	
 	
 	
+>>>>>>> BKH
 	@RequestMapping("/")
 	public String signIn() {
 		return "signIn";
 	}
+<<<<<<< HEAD
+	@RequestMapping("/signIn")
+	public String login() {
+		return "signIn";
+	}
+=======
 	@RequestMapping("/signUp")
 	public String signUp() {
 		return "signUp";
 	}
 	
+>>>>>>> BKH
 	@RequestMapping("/statusList")
 	public String statusList() {
 		return "statusList";
@@ -68,6 +89,13 @@ public class HomeController {
 		return "orders";
 	}
 
+<<<<<<< HEAD
+	@RequestMapping("/orders2")
+    public String orders2() {
+        return "orders2";
+    }
+	
+=======
 	@RequestMapping(value = "/report.do")
 	public String getReport(LineDAO lineDAO,StatusDAO statusDAO, Model model) {
 
@@ -79,5 +107,6 @@ public class HomeController {
 		
 		
 	}
+>>>>>>> BKH
 	
 }
