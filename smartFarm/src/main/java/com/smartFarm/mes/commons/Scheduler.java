@@ -76,7 +76,7 @@ public class Scheduler {
 		}
 
 	}
-	@Scheduled(fixedRate = 60000)	// 테스트용 10분에 한번씩	
+	@Scheduled(fixedRate = 60000)	// 테스트용 1분에 한번씩	
 	public void trayUpdatePerDay() {
 		// end_date 가 현재날짜보다 뒤에있는 생육중인 Tray를 random 값으로 매일 성장
 	
